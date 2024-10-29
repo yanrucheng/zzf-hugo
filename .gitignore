@@ -1,0 +1,22 @@
+# Hugo build output
+/public/
+/resources/
+/hugo_stats.json
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime*
+
+# OS files
+ehthumbs.db
+Desktop.ini
