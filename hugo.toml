@@ -42,3 +42,4 @@ featured_image_class = "cover bg-top"
 cover_dimming_class = "bg-black-60"
 recent_posts_number = 3
 
+custom_css = ["/css/main.css"]

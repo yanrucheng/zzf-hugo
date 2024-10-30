@@ -1,0 +1,62 @@
+{
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2406-flower.HEIC": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2406-flower_full_resized.jpg": {
+            "size": null,
+            "crop": false,
+            "quality": "100",
+            "vert": "0",
+            "horz": "0",
+            "preset_name": "full"
+        }
+    },
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2406-fuji-1.HEIC": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2406-fuji-1_full_resized.jpg": {
+            "size": null,
+            "crop": false,
+            "quality": "100",
+            "vert": "0",
+            "horz": "0",
+            "preset_name": "full"
+        }
+    },
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2406-fuji-2.HEIC": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2406-fuji-2_full_resized.jpg": {
+            "size": null,
+            "crop": false,
+            "quality": "100",
+            "vert": "0",
+            "horz": "0",
+            "preset_name": "full"
+        }
+    },
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2406-rose.HEIC": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2406-rose_full_resized.jpg": {
+            "size": null,
+            "crop": false,
+            "quality": "100",
+            "vert": "0",
+            "horz": "0",
+            "preset_name": "full"
+        }
+    },
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2409-plane-sea.heic": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2409-plane-sea_full_resized.jpg": {
+            "size": null,
+            "crop": false,
+            "quality": "100",
+            "vert": "0",
+            "horz": "0",
+            "preset_name": "full"
+        }
+    },
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/web_img_conf.json": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/web_img_conf_full_resized.jpg": {
+            "size": null,
+            "crop": false,
+            "quality": "100",
+            "vert": "0",
+            "horz": "0",
+            "preset_name": "full"
+        }
+    }
+}
