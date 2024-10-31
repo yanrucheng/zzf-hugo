@@ -4,7 +4,7 @@ languageCode = "en-us"
 theme = ["ananke"]
 # resourceDir = "../resources"
 
-DefaultContentLanguage = "zh"
+DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
 googleAnalytics = ""
 enableRobotsTXT = true
@@ -13,7 +13,7 @@ enableRobotsTXT = true
 pagerSize = 3 # this is set low for demonstrating with dummy content. Set to a higher number
 
 [languages]
-[languages.zh]
+[languages.en]
 title = "ZhuZhu's home"
 weight = 1
 contentDir = "content"
