@@ -1,62 +1,70 @@
 {
-    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2406-flower.HEIC": {
-        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2406-flower_full_resized.jpg": {
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/240608-plane-sea-original.HEIC": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/240608-plane-sea-original_full-banner-thicker_q90_cropped.webp": {
             "size": null,
-            "crop": false,
-            "quality": "100",
-            "vert": "0",
+            "quality": "90",
+            "vert": "-0.07",
             "horz": "0",
-            "preset_name": "full"
+            "preset_shape": "banner-thicker",
+            "preset_size": null
+        },
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/240608-plane-sea-original_full-landscape_q90_cropped.webp": {
+            "size": null,
+            "quality": "90",
+            "vert": "-0.23",
+            "horz": "0",
+            "preset_shape": "landscape",
+            "preset_size": null
         }
     },
-    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2406-fuji-1.HEIC": {
-        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2406-fuji-1_full_resized.jpg": {
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/240608-shibuyasky-night.HEIC": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/240608-shibuyasky-night_full-landscape_q90_cropped.webp": {
             "size": null,
-            "crop": false,
-            "quality": "100",
-            "vert": "0",
+            "quality": "90",
+            "vert": "-0.1",
             "horz": "0",
-            "preset_name": "full"
+            "preset_shape": "landscape",
+            "preset_size": null
         }
     },
-    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2406-fuji-2.HEIC": {
-        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2406-fuji-2_full_resized.jpg": {
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/240608-shibuyasky.heic": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/240608-shibuyasky_full-landscape_q90_cropped.webp": {
             "size": null,
-            "crop": false,
-            "quality": "100",
-            "vert": "0",
+            "quality": "90",
+            "vert": "-0",
             "horz": "0",
-            "preset_name": "full"
+            "preset_shape": "landscape",
+            "preset_size": null
         }
     },
-    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2406-rose.HEIC": {
-        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2406-rose_full_resized.jpg": {
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/240610-fuji-down.HEIC": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/240610-fuji-down_full-landscape_q90_cropped.webp": {
             "size": null,
-            "crop": false,
-            "quality": "100",
-            "vert": "0",
+            "quality": "90",
+            "vert": "-0.05",
             "horz": "0",
-            "preset_name": "full"
+            "preset_shape": "landscape",
+            "preset_size": null
         }
     },
-    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/2409-plane-sea.heic": {
-        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/2409-plane-sea_full_resized.jpg": {
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/240610-fuji-up.HEIC": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/240610-fuji-up_full-landscape_q90_cropped.webp": {
             "size": null,
-            "crop": false,
-            "quality": "100",
-            "vert": "0",
+            "quality": "90",
+            "vert": "-0.3",
             "horz": "0",
-            "preset_name": "full"
+            "preset_shape": "landscape",
+            "preset_size": null
         }
     },
-    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/web_img_conf.json": {
-        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/web_img_conf_full_resized.jpg": {
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/240611-yoyogi-near.heic": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/240611-yoyogi-near_full-landscape_q90_cropped.webp": {
             "size": null,
-            "crop": false,
-            "quality": "100",
-            "vert": "0",
+            "quality": "90",
+            "vert": "-0.1",
             "horz": "0",
-            "preset_name": "full"
+            "preset_shape": "landscape",
+            "preset_size": null
         }
     }
 }
