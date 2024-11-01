@@ -10,19 +10,8 @@
     
     <!-- Render Child Sections (Branch Bundles) -->
     <section class="flex-ns flex-wrap justify-around mt5">
-      {{ range .Sections }}
-        <div class="relative w-100 w-30-l mb4 bg-white">
-          {{ .Render "summary" }}
-        </div>
-      {{ end }}
-    </section>
-
-    <!-- Title for Leaf Bundles (Content Pages) -->
-    <h2 class="tc mt4">Posts</h2>
-    
-    <!-- Render Leaf Bundles (Content Pages) -->
-    <section class="flex-ns flex-wrap justify-around mt5">
-      {{ range .Paginator.Pages }}
+      {{ $paginator := .Paginate .Sections .Site.Params.recent_posts_number }}
+      {{ range $paginator.Pages }}
         <div class="relative w-100 w-30-l mb4 bg-white">
           {{ .Render "summary" }}
         </div>
