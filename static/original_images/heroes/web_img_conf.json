@@ -66,5 +66,33 @@
             "preset_shape": "landscape",
             "preset_size": null
         }
+    },
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/241102-naritahanabi-zmm.HEIC": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/241102-naritahanabi-zmm_full-landscape_q90_cropped.webp": {
+            "size": null,
+            "quality": "90",
+            "vert": "-0.1",
+            "horz": "0",
+            "preset_shape": "landscape",
+            "preset_size": null
+        }
+    },
+    "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/original_images/heroes/241102-naritahanabi-both-ip14.png": {
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/241102-naritahanabi-both-ip14_full-landscape_q90_cropped.webp": {
+            "size": null,
+            "quality": "90",
+            "vert": "-0.2",
+            "horz": "0",
+            "preset_shape": "landscape",
+            "preset_size": null
+        },
+        "/Users/chengyanru/repos/hugo_projects/zzf-hugo/static/images/heroes/241102-naritahanabi-both-ip14_full-landscape_q100_cropped.webp": {
+            "size": null,
+            "quality": "100",
+            "vert": "-0.16",
+            "horz": "0",
+            "preset_shape": "landscape",
+            "preset_size": null
+        }
     }
 }
