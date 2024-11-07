@@ -14,15 +14,15 @@
 {{- $width := "100%" -}}
 {{- $filenotfound := true -}}
 {{- $unsupportedfile := true -}}
+{{- $skip_file_exist_check := eq ($params.skip_file_exist_check | default "false") "true" -}}
 
 {{- /* Find all files with filename (without suffix) matching "src" parameter. */ -}}
-{{- $video_files := ($params.page.Resources.Match (printf "%s*" $video_src)) -}}
+{{- $video_files := $params.page.Resources.Match (printf "%s*" $video_src) -}}
 
 {{- /* Find first image file with filename (without suffix) matching "src" parameter. */ -}}
 {{- $images := $params.page.Resources.ByType "image" -}}
 {{- $supportedimages :=  where $images ".MediaType.SubType" "ne" "heif" -}}
 {{- $poster := index $supportedimages 0 -}}
-
 
 {{- /* Find in page bundle all valid video files with matching name. */ -}}
 {{- with $video_files -}}
@@ -43,6 +43,11 @@
   {{- end -}}
 {{- end -}}
 
+{{- if $skip_file_exist_check -}}
+    {{- $filenotfound = false -}}
+    {{- $unsupportedfile = false -}}
+{{- end -}}
+
 {{- if $filenotfound -}}
   {{- errorf "No file with filename %q found." $video_src -}}
 {{- else if $unsupportedfile -}}
@@ -60,22 +65,22 @@
   {{ if eq ($params.muted | default "false") "true" }}muted{{ end }}
   {{ with $poster }}poster="{{ .RelPermalink }}"{{ end }}
   playsinline
-  class="html-video">
+  class="html-video {{ with $params.custom_class }}{{ . }}{{ end }}">
 
-  {{- with $video_webm }}
-    <source src="{{ .RelPermalink }}" type="video/webm">
-    {{- $video_dl = . -}}
-  {{- end }}
 
-  {{- with $video_ogg }}
-    <source src="{{ .RelPermalink }}" type="video/ogg">
-    {{- $video_dl = . -}}
-  {{- end }}
-
-  {{- with $video_mp4 }}
-    <source src="{{ .RelPermalink }}" type="video/mp4">
-    {{- $video_dl = . -}}
-  {{- end }}
+    {{- if $video_webm -}}
+        <source src="{{ $video_webm.RelPermalink }}" type="video/webm">
+        {{- $video_dl = $video_webm -}}
+    {{- else if $video_ogg -}}
+        <source src="{{ $video_ogg.RelPermalink }}" type="video/ogg">
+        {{- $video_dl = $video_ogg -}}
+    {{- else if $video_mp4 -}}
+        <source src="{{ $video_mp4.RelPermalink }}" type="video/mp4">
+        {{- $video_dl = $video_mp4 -}}
+    {{- else if $skip_file_exist_check -}}
+        <source src="{{ $video_src | relURL }}">
+        {{- $video_dl = $video_src -}}
+    {{- end }}
 
   <span>{{ i18n "videoUnsupported" $video_dl | safeHTML}}</span>
 </video>

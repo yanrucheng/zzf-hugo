@@ -33,6 +33,7 @@ params:
   recent_posts_number: 4
   custom_css:
     - live-photo.css
+    - custom-class.scss
   custom_js:
     - live-photo.js
   body_classes: "sans-serif"

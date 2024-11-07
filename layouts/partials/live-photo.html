@@ -2,26 +2,30 @@
 {{- $params := . -}}
 {{ $lines := $params.lines | default (slice) }}
 
-{{ if eq .live_mode "scroll" }}
+{{ if eq $params.live_mode "scroll" }}
 
-    <div class="live-photo">
+    <div class="live-photo {{ $params.custom_class }}">
       <div class="live-photo-container">
           {{ partial "video" (dict
-            "page"     ( $params.page )
-            "src"      ( $params.src )
-            "controls" "false"
-            "autoplay" "false"
-            "loop"     "false"
-            "muted"    "true"
+            "page"         ( $params.page )
+            "src"          ( $params.src )
+            "controls"     ( "false" )
+            "autoplay"     ( "false" )
+            "loop"         ( "false" )
+            "muted"        ( "true"  )
+
+            "skip_file_exist_check" ( $params.skip_file_exist_check )
           ) }}
       </div>
 
-      <div class="story">
-          {{ range $lines }}
-            <div>
-                <h3> {{ . | markdownify }} </h3>
-            </div>
-          {{ end }}
-      </div>
+      {{ with $lines }}
+        <div class="story">
+            {{ range . }}
+                <div>
+                    <h3> {{ . | markdownify }} </h3>
+                </div>
+            {{ end }}
+        </div>
+      {{ end }}
     </div>
 {{ end }} 

@@ -1,21 +1,33 @@
 {{ $featured_video := partial "func/GetFeaturedVideo.html" . }}
 {{ $featured_image := partial "func/GetFeaturedImage.html" . }}
 
-{{ $featured_media_class := site.Params.featured_media_class | default "cover bg-top" }}
 {{ $cover_dimming_class := site.Params.cover_dimming_class | default "bg-black-60" }}
 {{ $background_color_class := site.Params.background_color_class | default "bg-black" }}
 
-<header class="{{ $featured_media_class }} relative overflow-hidden {{ if not (or $featured_video $featured_image) }}{{ $background_color_class }}{{ end }}">
-  {{ if $featured_video }}
-    <!-- Video Background -->
-  <video autoplay loop muted playsinline class="absolute top-0 left-0 w-100 h-100 object-cover z--1">
-      <source src="{{ $featured_video | absURL }}" type="video/mp4">
-      <p>Your browser does not support HTML5 video.</p>
-    </video>
-  {{ else if $featured_image }}
-    <!-- Image Background -->
-    <div class="absolute top-0 left-0 w-100 h-100 bg-center cover" style="background-image: url('{{ $featured_image | absURL }}');"></div>
-  {{ end }}
+{{ if $featured_image }}
+<header class="relative overflow-hidden">
+
+  <!--
+  {{ partial "video" (dict 
+    "page"         ( .Page )
+    "src"          ( $featured_video )
+    "controls"     ( "false" )
+    "autoplay"     ( "true" )
+    "loop"         ( "true" )
+    "muted"        ( "true" )
+    "custom_class" ( "absolute w-100vw object-fit-cover z--1 translate-y--30 " )
+
+    "skip_file_exist_check" ( "true" )
+  ) }}
+  -->
+  {{ partial "live-photo" (dict 
+    "page"         ( .Page )
+    "src"          ( $featured_video )
+    "live_mode"    ( "scroll" )
+    "custom_class" ( "absolute w-100vw object-fit-cover z--1 translate-y--30 " )
+
+    "skip_file_exist_check" ( "true" )
+  ) }}
 
   <!-- Dimming Layer and Content -->
   <div class="{{ $cover_dimming_class }} relative z-1 w-100 h-100">
@@ -32,3 +44,40 @@
     </div>
   </div>
 </header>
+
+
+{{ else if $featured_image }}
+  {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
+  {{ $featured_image_class := site.Params.featured_image_class | default "cover bg-top" }}
+  <header class="{{ $featured_image_class }}" style="background-image: url('{{ $featured_image }}');">
+    <div class="{{ $cover_dimming_class }}">
+      {{ partial "site-navigation.html" .}}
+      <div class="tc-l pv4 pv6-l ph3 ph4-ns">
+        <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">
+          {{ .Title | default .Site.Title }}
+        </h1>
+        {{ with .Params.description }}
+          <h2 class="fw1 f5 f3-l white-80 measure-wide-l center mt3">
+            {{ . }}
+          </h2>
+        {{ end }}
+      </div>
+    </div>
+  </header>
+{{ else }}
+  <header>
+    <div class="pb3-m pb6-l {{ $background_color_class }}">
+      {{ partial "site-navigation.html" . }}
+      <div class="tc-l pv3 ph3 ph4-ns">
+        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
+          {{ .Title | default .Site.Title }}
+        </h1>
+        {{ with .Params.description }}
+          <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+            {{ . }}
+          </h2>
+        {{ end }}
+      </div>
+    </div>
+  </header>
+{{ end }}

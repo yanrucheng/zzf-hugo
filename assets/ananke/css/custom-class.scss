@@ -1,0 +1,14 @@
+.object-fit-cover { object-fit: cover; }
+
+$view-values: (50, 60, 70, 80, 90, 100);  // Percentages of viewport width
+@each $value in $view-values {
+  .w-#{$value}vw { width: #{$value}vw; }
+  .h-#{$value}vh { height: #{$value}vh; }
+}
+
+/* Base translate class */
+$translate-values: (-50, -40, -30, -20, -10, 10, 20, 30, 40, 50);
+@each $value in $translate-values {
+  .translate-y-#{$value} { transform: translateY(#{percentage($value / 100)}); }
+  .translate-x-#{$value} { transform: translateX(#{percentage($value / 100)}); }
+}
