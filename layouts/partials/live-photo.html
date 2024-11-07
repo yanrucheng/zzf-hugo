@@ -1,26 +1,24 @@
 
-<h2> at the partial now </h2>
-
-{{ printf "%#v\n" page }}
-<p></p>
-
-{{ (page.Resources.GetMatch .src ).RelPermalink }}
+{{ $lines := .lines | default (slice) }}
+{{ $src := .src }}
 
 {{ if eq .live_mode "scroll" }}
 
     <div class="live-photo">
       <div class="live-photo-container">
-          <!-- Display Video -->
-          <video muted loop playsinline>
-              <source src="{{ .src }}" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
+          {{ partial "video" (dict
+            "src" ( $src )
+            "controls" "false"
+            "autoplay" "false"
+            "loop" "false"
+            "muted" "true"
+          ) }}
       </div>
 
       <div class="story">
-          {{ range .lines }}
+          {{ range $lines }}
             <div>
-                <h3> {{ . }} </h3>
+                <h3> {{ . | markdownify }} </h3>
             </div>
           {{ end }}
       </div>

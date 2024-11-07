@@ -1,0 +1,77 @@
+{{- /* hugo-video partial
+/*
+/*    This file is part of hugo-video partial.
+/*    A Hugo component partial to embed videos using the HTML video element with inputs via dict.
+/*
+*/ -}}
+
+{{- $params := . -}}
+{{- $video_src := $params.src -}}
+{{- $video_mp4 := "" -}}
+{{- $video_webm := "" -}}
+{{- $video_ogg := "" -}}
+{{- $video_dl := "" -}}
+{{- $width := "100%" -}}
+{{- $filenotfound := true -}}
+{{- $unsupportedfile := true -}}
+
+{{- /* Find all files with filename (without suffix) matching "src" parameter. */ -}}
+{{- $video_files := (page.Resources.Match (printf "%s*" $video_src)) -}}
+
+{{- /* Find first image file with filename (without suffix) matching "src" parameter. */ -}}
+{{- $poster := ((page.Resources.ByType "image").GetMatch (printf "%s*" $video_src)) -}}
+
+{{- /* Find in page bundle all valid video files with matching name. */ -}}
+{{- with $video_files -}}
+  {{- $filenotfound = false -}}
+  {{- range . -}}
+    {{- if or (in .MediaType.Suffixes "mp4") (in .MediaType.Suffixes "m4v") -}}
+      {{- $unsupportedfile = false -}}
+      {{- $video_mp4 = . -}}
+    {{- end -}}
+    {{- if (in .MediaType.Suffixes "webm") -}}
+      {{- $unsupportedfile = false -}}
+      {{- $video_webm = . -}}
+    {{- end -}}
+    {{- if (in .MediaType.Suffixes "ogv") -}}
+      {{- $unsupportedfile = false -}}
+      {{- $video_ogg = . -}}
+    {{- end }}
+  {{- end -}}
+{{- end -}}
+
+{{- if $filenotfound -}}
+  {{- errorf "No file with filename %q found." $video_src -}}
+{{- else if $unsupportedfile -}}
+  {{- errorf "No valid video file with filename %q found." $video_src -}}
+{{- else -}}
+<video
+  {{ if ne ($params.controls | default "true") "false" }}controls{{ end }}
+  preload="auto"
+  width="{{ $params.width | default $width }}"
+  {{ with $params.height }}height="{{.}}"{{ end }}
+  {{ if eq ($params.autoplay | default "false") "true" }}autoplay{{ end }}
+  {{ if eq ($params.loop | default "false") "true" }}loop{{ end }}
+  {{ if eq ($params.muted | default "false") "true" }}muted{{ end }}
+  {{ with $poster }}poster="{{ .RelPermalink }}"{{ end }}
+  playsinline
+  class="html-video">
+
+  {{- with $video_webm }}
+    <source src="{{ .RelPermalink }}" type="video/webm">
+    {{- $video_dl = . -}}
+  {{- end }}
+
+  {{- with $video_ogg }}
+    <source src="{{ .RelPermalink }}" type="video/ogg">
+    {{- $video_dl = . -}}
+  {{- end }}
+
+  {{- with $video_mp4 }}
+    <source src="{{ .RelPermalink }}" type="video/mp4">
+    {{- $video_dl = . -}}
+  {{- end }}
+
+  <span>{{ i18n "videoUnsupported" $video_dl | safeHTML}}</span>
+</video>
+{{- end -}}

@@ -7,16 +7,11 @@ date: 2024-11-02T16:15:44+08:00
 {{< resources-list >}}
 -->
 
-Below is an example of a live photo:
-
-# p3
 {{< live-photo src="IMG_0665.mp4" live_mode="scroll" >}}
-
-test 1
-test 2
-test 3
-test 4
-
+倒计时
+1
+2
+3
 {{< /live-photo >}}
 
 <!--

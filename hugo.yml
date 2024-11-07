@@ -3,7 +3,6 @@ baseURL: https://zhuzhu.family
 languageCode: en-us
 theme:
   - ananke
-  - hugo-video
 
 DefaultContentLanguage: en
 SectionPagesMenu: main
