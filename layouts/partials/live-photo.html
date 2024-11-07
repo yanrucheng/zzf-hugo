@@ -1,17 +1,18 @@
 
-{{ $lines := .lines | default (slice) }}
-{{ $src := .src }}
+{{- $params := . -}}
+{{ $lines := $params.lines | default (slice) }}
 
 {{ if eq .live_mode "scroll" }}
 
     <div class="live-photo">
       <div class="live-photo-container">
           {{ partial "video" (dict
-            "src" ( $src )
+            "page"     ( $params.page )
+            "src"      ( $params.src )
             "controls" "false"
             "autoplay" "false"
-            "loop" "false"
-            "muted" "true"
+            "loop"     "false"
+            "muted"    "true"
           ) }}
       </div>
 

@@ -1,6 +1,11 @@
 {{ define "main" }}
 
+<p> layout test </p>
+<p>{{ .Page.Title }}</p>
 <p>{{ printf "%#v" .Page }}</p>
+<p> {{ page.Resources.Match "*.*"}} </p>
+
+<p>{{ (.Page.Resources.GetMatch "*").RelPermalink }}</p>
 
 {{.Content}}
 

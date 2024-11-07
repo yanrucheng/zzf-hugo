@@ -1,7 +1,8 @@
 {{/* layouts/shortcodes/live-photo.html */}}
 
 {{ partial "live-photo.html" (dict 
-    "src" (.Get "src") 
-    "live_mode" (.Get "live_mode") 
-    "lines" ( split .Inner "\n" )
+    "page"      ( .Page ) 
+    "src"       ( .Get "src" )  
+    "live_mode" ( .Get "live_mode" ) 
+    "lines"     ( split .Inner "\n" )
 ) }}

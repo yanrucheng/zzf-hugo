@@ -16,10 +16,13 @@
 {{- $unsupportedfile := true -}}
 
 {{- /* Find all files with filename (without suffix) matching "src" parameter. */ -}}
-{{- $video_files := (page.Resources.Match (printf "%s*" $video_src)) -}}
+{{- $video_files := ($params.page.Resources.Match (printf "%s*" $video_src)) -}}
 
 {{- /* Find first image file with filename (without suffix) matching "src" parameter. */ -}}
-{{- $poster := ((page.Resources.ByType "image").GetMatch (printf "%s*" $video_src)) -}}
+{{- $images := $params.page.Resources.ByType "image" -}}
+{{- $supportedimages :=  where $images ".MediaType.SubType" "ne" "heif" -}}
+{{- $poster := index $supportedimages 0 -}}
+
 
 {{- /* Find in page bundle all valid video files with matching name. */ -}}
 {{- with $video_files -}}
@@ -45,6 +48,8 @@
 {{- else if $unsupportedfile -}}
   {{- errorf "No valid video file with filename %q found." $video_src -}}
 {{- else -}}
+
+
 <video
   {{ if ne ($params.controls | default "true") "false" }}controls{{ end }}
   preload="auto"
