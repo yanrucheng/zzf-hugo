@@ -1,0 +1,41 @@
+{{/* 
+	GetFeaturedVideo
+
+	This partial gets the URL for a featured video for a given page.
+
+	If a featured_video was set in the page's front matter, then that will be used.
+
+	If not set, this will search page resources to find a video that contains the word
+	"feature" or "cover" in its name, and if found, returns the path to that resource.
+
+	If no featured_video was set, and there's no "feature" or "cover" video in page resources, then
+	this partial returns an empty string (which evaluates to false).
+
+	@return RelPermalink to featured video, or an empty string if not found.
+
+*/}}
+
+{{/* Declare a new string variable, $linkToVideo */}}
+{{ $linkToVideo := "" }}
+{{ $matches := "feature,cover" }}
+{{/* Use the value from front matter if present */}}
+{{ with .Params.featured_video }}
+  {{/* This is the default case, the video lives in the static directory.
+    In which case we'll use the static dir */}}
+  {{ $linkToVideo = trim . "/" | absURL }}
+  {{/* If we find a Page Resource matching the exact value, we use it instead. */}}
+  {{ with $.Resources.GetMatch . }}
+    {{ $linkToVideo = .RelPermalink }}
+  {{ end }}
+{{/* Find the first video with 'feature' or 'cover' in the name in this page bundle. */}}
+{{ else }}
+  {{ with .Resources.ByType "video" }}
+    {{ with .GetMatch (printf "**{%s}*" $matches) }}
+      {{ $linkToVideo = .RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* return either a permalink, or an empty string. Note that partials can only have a single
+return statement, so this needs to be at the end of the partial (and not in the if block) */}}
+{{ return $linkToVideo }}
