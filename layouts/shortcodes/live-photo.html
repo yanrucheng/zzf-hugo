@@ -1,6 +1,16 @@
 {{/* layouts/shortcodes/live-photo.html */}}
 
+{{ printf "%#v\n" page }}
+<p></p>
+{{ printf "%#v\n" .Page }}
+<p></p>
+
+{{ (page.Resources.GetMatch "IMG_0665.jpg").RelPermalink }}
+
+
+
 {{ partial "live-photo.html" (dict 
-    "animation_video_path" (.Get "animation_video_path") 
-    "animation_type" (.Get "animation_type") 
+    "src" (.Get "src") 
+    "live_mode" (.Get "live_mode") 
+    "lines" ( split .Inner "\n" )
 ) }}

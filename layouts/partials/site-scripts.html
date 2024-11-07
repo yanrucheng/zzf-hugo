@@ -1,0 +1,6 @@
+{{ range site.Params.custom_js }}
+  {{ with partialCached "func/script/GetResource" . . }}
+    {{ $js := . | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+  {{ end }}
+{{ end }}

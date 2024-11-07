@@ -1,22 +1,28 @@
-{{ if eq .animation_type "video" }}
-    <div class="scroll-animation-container">
-        <video id="scroll-video" muted loop playsinline>
-            <source src="{{ .Site.BaseURL }}{{ .animation_video_path }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+
+<h2> at the partial now </h2>
+
+{{ printf "%#v\n" page }}
+<p></p>
+
+{{ (page.Resources.GetMatch .src ).RelPermalink }}
+
+{{ if eq .live_mode "scroll" }}
+
+    <div class="live-photo">
+      <div class="live-photo-container">
+          <!-- Display Video -->
+          <video muted loop playsinline>
+              <source src="{{ .src }}" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+
+      <div class="story">
+          {{ range .lines }}
+            <div>
+                <h3> {{ . }} </h3>
+            </div>
+          {{ end }}
+      </div>
     </div>
-
-    <script>
-        const video = document.getElementById('scroll-video');
-
-        // Pause the video initially to prevent autoplay
-        video.pause();
-
-        // Update video playback based on scroll position
-        window.addEventListener('scroll', () => {
-            const scrollFraction = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-            const videoTime = scrollFraction * video.duration;
-            video.currentTime = videoTime;
-        });
-    </script>
-{{ end }}
+{{ end }} 
