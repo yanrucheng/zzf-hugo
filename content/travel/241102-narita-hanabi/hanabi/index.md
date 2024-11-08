@@ -15,6 +15,9 @@ date: 2024-11-02T16:15:44+08:00
 1
 {{< /live-photo >}}
 
+{{< live-photo src="IMG_0665.mp4" live_mode="click" />}}
+{{< live-photo src="IMG_0665.mp4" live_mode="loop" />}}
+
 <!--
 {{< video src="IMG_0665_timecode.mp4" controls="false" preload="auto" autoplay="true" loop="true" muted="true" >}}
 -->

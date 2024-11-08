@@ -28,4 +28,30 @@
         </div>
       {{ end }}
     </div>
+{{ else if eq $params.live_mode "click" }}
+      <div class="inner-video-click-play">
+          {{ partial "video" (dict
+            "page"         ( $params.page )
+            "src"          ( $params.src )
+            "controls"     ( "false" )
+            "autoplay"     ( "false" )
+            "loop"         ( "false" )
+            "muted"        ( "true"  )
+
+            "skip_file_exist_check" ( $params.skip_file_exist_check )
+          ) }}
+      </div>
+{{ else if eq $params.live_mode "loop" }}
+      <div>
+          {{ partial "video" (dict
+            "page"         ( $params.page )
+            "src"          ( $params.src )
+            "controls"     ( "false" )
+            "autoplay"     ( "true" )
+            "loop"         ( "true" )
+            "muted"        ( "true"  )
+
+            "skip_file_exist_check" ( $params.skip_file_exist_check )
+          ) }}
+      </div>
 {{ end }} 
