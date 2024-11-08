@@ -1,11 +1,33 @@
+{{/*
+  This template renders a live photo component with different video play modes based on the `mode` parameter.
+  
+  Parameters:
+  - `page`: The current page context, typically passed to the `video` partial for resource resolution.
+  - `src`: The source path of the video to be displayed.
+  - `mode`: Determines the playback mode of the video.
+    - `"scroll"` or `"scroll-full"`: Video is rendered inside a `live-photo-container` and displayed with an optional story content (`lines`).
+    - `"click"`: Video is rendered inside an `inner-video-click-play` container and plays when clicked.
+    - `"loop"`: Video is rendered to autoplay and loop continuously.
+  - `custom_class`: A custom CSS class applied to the `live-photo` wrapper for additional styling.
+  - `lines`: An optional array of text elements, rendered as `h3` elements within a `story` container, commonly used to display captions or descriptions for the video.
+  - `controls`: Specifies whether video controls should be shown (set to `"false"` by default).
+  - `autoplay`: Specifies if the video should autoplay (usually `"false"`, except for `"loop"` mode).
+  - `loop`: Specifies if the video should loop (set to `"true"` only in `"loop"` mode).
+  - `muted`: Sets the video to muted (set to `"true"` across all modes for silent playback).
+  - `skip_file_exist_check`: Boolean to skip file existence check in the `video` partial (useful for conditional loading or custom handling).
+*/}}
 
 {{- $params := . -}}
-{{ $lines := $params.lines | default (slice) }}
+{{- $lines := $params.lines | default (slice) -}}
 
-{{ if eq $params.live_mode "scroll" }}
+{{- if in (slice "scroll" "scroll-full") $params.mode -}}
 
-    <div class="live-photo {{ $params.custom_class }}">
-      <div class="live-photo-container">
+    {{- $full_width := eq $params.mode "scroll-full" -}}
+
+    <div class="live-photo {{ $params.custom_class }}
+        {{ if $full_width }}center-screen w-100vw top-0{{ end }}">
+      <div class="live-photo-container
+        {{ if $full_width }}h-100vh{{ end }}">
           {{ partial "video" (dict
             "page"         ( $params.page )
             "src"          ( $params.src )
@@ -28,7 +50,7 @@
         </div>
       {{ end }}
     </div>
-{{ else if eq $params.live_mode "click" }}
+{{ else if eq $params.mode "click" }}
       <div class="inner-video-click-play">
           {{ partial "video" (dict
             "page"         ( $params.page )
@@ -41,7 +63,7 @@
             "skip_file_exist_check" ( $params.skip_file_exist_check )
           ) }}
       </div>
-{{ else if eq $params.live_mode "loop" }}
+{{ else if eq $params.mode "loop" }}
       <div>
           {{ partial "video" (dict
             "page"         ( $params.page )
@@ -55,3 +77,4 @@
           ) }}
       </div>
 {{ end }} 
+

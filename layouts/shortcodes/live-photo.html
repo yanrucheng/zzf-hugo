@@ -9,7 +9,7 @@
     {{ partial "live-photo.html" (dict 
         "page"         ( $.Page ) 
         "src"          ( $.Get "src" )  
-        "live_mode"    ( $.Get "live_mode" ) 
+        "mode"    ( $.Get "mode" ) 
         "custom_class" ( $.Get "custom_class" )
         "lines"        ( split $inner "\n" )
     ) }}
@@ -17,7 +17,7 @@
     {{ partial "live-photo.html" (dict 
         "page"         ( $.Page ) 
         "src"          ( $.Get "src" )  
-        "live_mode"    ( $.Get "live_mode" ) 
+        "mode"    ( $.Get "mode" ) 
         "custom_class" ( $.Get "custom_class" )
     ) }}
 {{- end -}}
