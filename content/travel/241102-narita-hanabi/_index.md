@@ -7,6 +7,7 @@ try try
 
 or maybe the list will show
 
+<!--more-->
 {{< live-photo src = "IMG_0665.mp4" mode = "scroll-full" >}}
 倒计时
 3
