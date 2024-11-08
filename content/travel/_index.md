@@ -8,9 +8,3 @@ type: section-list
 
 anything
 
-{{< live-photo src = "IMG_0665.mp4" mode = "scroll-full" >}}
-倒计时
-3
-2
-1
-{{< /live-photo >}}
