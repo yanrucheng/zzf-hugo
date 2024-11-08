@@ -1,4 +1,5 @@
-{{- $inner := replaceRE "^\\s+|\\s+$" "" .Inner | split "\n" -}}
+{{- $inner := split (.Inner | chomp) "\n" -}}
+
 {{ partial "live-photo.html" (dict 
     "page"         $.Page
     "src"          ($.Get "src")  
