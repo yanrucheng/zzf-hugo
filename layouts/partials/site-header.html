@@ -4,10 +4,9 @@
 {{ $cover_dimming_class := site.Params.cover_dimming_class | default "bg-black-60" }}
 {{ $background_color_class := site.Params.background_color_class | default "bg-black" }}
 
-{{ if $featured_image }}
+{{ if $featured_video }}
 <header class="relative overflow-hidden">
 
-  <!--
   {{ partial "video" (dict 
     "page"         ( .Page )
     "src"          ( $featured_video )
@@ -19,7 +18,7 @@
 
     "skip_file_exist_check" ( "true" )
   ) }}
-  -->
+  <!--
   {{ partial "live-photo" (dict 
     "page"         ( .Page )
     "src"          ( $featured_video )
@@ -28,6 +27,7 @@
 
     "skip_file_exist_check" ( "true" )
   ) }}
+  -->
 
   <!-- Dimming Layer and Content -->
   <div class="{{ $cover_dimming_class }} relative z-1 w-100 h-100">
