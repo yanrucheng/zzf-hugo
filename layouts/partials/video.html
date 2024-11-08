@@ -49,9 +49,9 @@
 {{- end -}}
 
 {{- if $filenotfound -}}
-  {{- errorf "No file with filename %q found." $video_src -}}
+  {{- errorf "No file with filename %q found on page %q." $video_src $params.page.Path -}}
 {{- else if $unsupportedfile -}}
-  {{- errorf "No valid video file with filename %q found." $video_src -}}
+  {{- errorf "No valid video file with filename %q found on page %q." $video_src $params.page.Path -}}
 {{- else -}}
 
 
