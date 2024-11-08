@@ -4,17 +4,18 @@
 {{ $cover_dimming_class := site.Params.cover_dimming_class | default "bg-black-60" }}
 {{ $background_color_class := site.Params.background_color_class | default "bg-black" }}
 
+{{ $featured_video_y := .Page.Params.featured_video_y | default 0 }}
 {{ if $featured_video }}
-<header class="relative overflow-hidden">
+<header class="relative overflow-hidden inner-video-click-play">
 
   {{ partial "video" (dict 
     "page"         ( .Page )
     "src"          ( $featured_video )
     "controls"     ( "false" )
-    "autoplay"     ( "true" )
-    "loop"         ( "true" )
+    "autoplay"     ( "false" )
+    "loop"         ( "false" )
     "muted"        ( "true" )
-    "custom_class" ( "absolute w-100vw object-fit-cover z--1 translate-y--30 " )
+    "custom_class" ( printf "absolute w-100vw object-fit-cover z--1 translate-y-%d" ($featured_video_y))
 
     "skip_file_exist_check" ( "true" )
   ) }}

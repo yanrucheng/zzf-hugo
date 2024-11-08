@@ -36,6 +36,7 @@ params:
     - custom-class.scss
   custom_js:
     - live-photo.js
+    - video.js
   body_classes: "sans-serif"
   post_content_classes: "sans-serif"
 
