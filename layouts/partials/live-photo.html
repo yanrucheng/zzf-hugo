@@ -27,12 +27,17 @@
     {{ if $full_width }}center-screen w-100vw top-0{{ end }}"
   >
     {{- $idSuffix := (now.UnixNano) -}}
-    <div id="scrolly-video-{{ $idSuffix }}" {{ if $full_width }}class="h-100vh"{{ end }}></div>
+    <div id="scrolly-video-{{ $idSuffix }}"
+      class="live-photo-container
+      {{ if $full_width }}h-100vh{{ end }}"
+    ></div>
 
+    <script src="/js/scroll-video-loading.js"></script>
     <script type="text/javascript">
       new ScrollyVideo({
         scrollyVideoContainer: "scrolly-video-{{ $idSuffix }}",
-        src: "{{ $params.src }}"
+        src: "{{ $params.src }}",
+        onReady: window.finishLoadingFunc,
       });
     </script>
 
@@ -74,4 +79,3 @@
     ) }}
   </div>
 {{- end -}} 
-
