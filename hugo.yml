@@ -35,8 +35,10 @@ params:
     - live-photo.css
     - custom-class.scss
   custom_js:
-    - live-photo.js
+    #- live-photo.js
     - video.js
+  remote_js:
+    - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js"
   body_classes: "sans-serif"
   post_content_classes: "sans-serif"
 

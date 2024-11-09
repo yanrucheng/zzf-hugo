@@ -4,3 +4,7 @@
     <script src="{{ $js.RelPermalink }}" defer></script>
   {{ end }}
 {{ end }}
+
+{{ range site.Params.remote_js}}
+    <script src="{{ . }}"></script>
+{{ end }}
