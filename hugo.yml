@@ -34,11 +34,13 @@ params:
   custom_css:
     - live-photo.css
     - custom-class.scss
+    - "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" # progress bar
   custom_js:
     #- live-photo.js
     - video.js
   remote_js:
-    - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js"
+    - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js" # scrolly video
+    - "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" # progress bar
   body_classes: "sans-serif"
   post_content_classes: "sans-serif"
 
