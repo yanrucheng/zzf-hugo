@@ -28,7 +28,7 @@ date: 2024-11-02T16:15:44+08:00
 
 ---
 
-{{< live-photo src = "hanabi-girl-scroll.mp4" mode = "scroll-full" >}}
+{{< live-photo src = "IMG_0665.mp4" mode = "scroll-full" >}}
 倒计时
 3
 2
