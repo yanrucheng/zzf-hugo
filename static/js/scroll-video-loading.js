@@ -25,9 +25,10 @@ if (typeof window.fakeProgressDurationPerInstance === 'undefined') {
         loadingOverlay.style.left = 0;
         loadingOverlay.style.width = '100%';
         loadingOverlay.style.height = '100%';
-        loadingOverlay.style.background = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent grey overlay
+        loadingOverlay.style.background = 'rgba(0, 0, 0, 0.2)'; // Semi-transparent grey overlay
         loadingOverlay.style.zIndex = 1000;
         loadingOverlay.style.display = 'none';
+        loadingOverlay.style.pointerEvents = 'none'; // Allow clicks to pass through
         document.body.appendChild(loadingOverlay);
       }
 
