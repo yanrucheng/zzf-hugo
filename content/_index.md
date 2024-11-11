@@ -1,5 +1,6 @@
 ---
-title: "Our Home"
+#title: "Our Home"
+title: "空山新雨后 天气晚来秋"
 
 description: "Gather ye rosebuds while ye may, Old Time is still a-flying. "
 cascade:
@@ -17,5 +18,3 @@ cascade:
 ---
 
 🐷🐷，回家啦！
-
-这里收集了我们的点点滴滴...
