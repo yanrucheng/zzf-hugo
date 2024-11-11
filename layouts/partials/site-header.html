@@ -67,10 +67,13 @@
   </header>
 {{ else }}
   <header>
-    <div class="pb3-m pb6-l {{ $background_color_class }}">
+    <div class="pb3-m pb6-l {{ $.Params.custom_class.background_color_class | default $background_color_class }}">
       {{ partial "site-navigation.html" . }}
       <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
+        <h1 class="f2 f-subheadline-l fw2
+          {{ .Params.custom_class.title_class
+          | default "light-silver" }} mb0 lh-title"
+        >
           {{ .Title | default .Site.Title }}
         </h1>
         {{ with .Params.description }}

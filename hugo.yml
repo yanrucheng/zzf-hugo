@@ -6,6 +6,7 @@ theme:
 
 DefaultContentLanguage: en
 SectionPagesMenu: main
+buildFuture: true
 googleAnalytics: ""
 enableRobotsTXT: true
 pagination:
