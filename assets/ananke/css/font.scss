@@ -1,0 +1,35 @@
+$english-fonts: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Helvetica Neue",
+  Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+
+$chinese-fonts: "Noto Sans SC", ChangliSoneKeBen, "华文细黑", Heiti, "黑体",
+  "Microsoft YaHei", "微软雅黑", SimSun, "宋体";
+
+$fallback-fonts: $english-fonts, $chinese-fonts, sans-serif;
+
+.default-font {
+  font-family: $fallback-fonts !important;
+}
+
+.noto-sans {
+  font-family: "Noto Sans SC", $fallback-fonts !important;
+}
+
+.josefin-sans {
+  font-family: "Josefin Sans", $fallback-fonts;
+  font-style: normal;
+
+  .font-align {
+    padding-top: 0.3rem;
+  }
+}
+
+/*
+@font-face {
+  font-family: ChangliSongKeBen;
+  src: url('/font/HYChangLiSongKeBen(Original)W.ttf');
+}
+.chang-li-song-ke-ban {
+  font-family: $fallback-fonts;
+}
+*/
