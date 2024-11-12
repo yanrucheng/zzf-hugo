@@ -33,7 +33,7 @@ params:
     - font.scss
     - "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" # progress bar
   custom_js:
-    #- live-photo.js
+    - img.js
     - video.js
   remote_js:
     - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js" # scrolly video

@@ -43,21 +43,6 @@
   </header>
 
   <script>
-    // JavaScript to control greyscale-to-color effect on scroll
-    window.addEventListener("scroll", () => {
-      const hero = document.querySelector(".hero-image");
-      const scrollY = window.scrollY;
-
-      // Calculate the percentage of scroll within the hero section
-      const heroHeight = hero.offsetHeight;
-      const scrollPercentage = Math.min(scrollY / heroHeight, 1);
-      const grayscalePercentage = 50 * (1 - 3 * scrollPercentage);
-
-      console.log(heroHeight, scrollPercentage, grayscalePercentage);
-
-      // Adjust the grayscale filter based on scroll percentage
-      hero.style.filter = `grayscale(${grayscalePercentage}%)`;
-    });
   </script>
 
 {{ end }}

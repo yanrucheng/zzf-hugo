@@ -1,0 +1,28 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- $custom_class := .Get "class" -}}
+
+{{- with .Page.Resources.Get $src -}}
+  <figure class="scroll-img {{ $custom_class }}">
+    <img src="{{ .RelPermalink }}" alt="alt" >
+  </figure>
+
+{{- end -}}
+
+{{/*
+{{-  -}}
+{{-  -}}
+{{-  -}}
+{{-  -}}
+{{-  -}}
+*/}}
+
+
+
+
+
+
+
+
+
+
