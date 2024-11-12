@@ -1,3 +1,5 @@
+@import "tachyons-colors";
+
 .object-fit-cover { object-fit: cover; }
 
 .center-screen {
@@ -17,4 +19,63 @@ $translate-values: (-50, -40, -30, -20, -10, 10, 20, 30, 40, 50);
 @each $value in $translate-values {
   .translate-y-#{$value} { transform: translateY(#{percentage($value / 100)}); }
   .translate-x-#{$value} { transform: translateX(#{percentage($value / 100)}); }
+}
+
+
+// Define an SCSS map to link class names to CSS variables
+$colors: (
+  black: var(--black),
+  near-black: var(--near-black),
+  dark-gray: var(--dark-gray),
+  mid-gray: var(--mid-gray),
+  gray: var(--gray),
+  silver: var(--silver),
+  light-silver: var(--light-silver),
+  moon-gray: var(--moon-gray),
+  light-gray: var(--light-gray),
+  near-white: var(--near-white),
+  white: var(--white),
+  transparent: var(--transparent),
+  dark-red: var(--dark-red),
+  red: var(--red),
+  light-red: var(--light-red),
+  orange: var(--orange),
+  gold: var(--gold),
+  yellow: var(--yellow),
+  light-yellow: var(--light-yellow),
+  purple: var(--purple),
+  light-purple: var(--light-purple),
+  dark-pink: var(--dark-pink),
+  hot-pink: var(--hot-pink),
+  pink: var(--pink),
+  light-pink: var(--light-pink),
+  dark-green: var(--dark-green),
+  green: var(--green),
+  light-green: var(--light-green),
+  navy: var(--navy),
+  dark-blue: var(--dark-blue),
+  blue: var(--blue),
+  light-blue: var(--light-blue),
+  lightest-blue: var(--lightest-blue),
+  washed-blue: var(--washed-blue),
+  washed-green: var(--washed-green),
+  washed-yellow: var(--washed-yellow),
+  washed-red: var(--washed-red)
+);
+
+$opacities: (
+  70: 0.7,
+  80: 0.8,
+  90: 0.9,
+  100: 1
+);
+
+// Loop through each color and each opacity level to create classes
+@each $color-name, $color-value in $colors {
+  @each $opacity-name, $opacity-value in $opacities {
+    .fill-#{$color-name}-#{$opacity-name} {
+      fill: #{$color-value};
+      opacity: #{$opacity-value};
+    }
+  }
 }

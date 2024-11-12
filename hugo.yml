@@ -14,7 +14,7 @@ pagination:
 
 languages:
   en:
-    title: ZhuZhu's home
+    title: ZhuZhu's Home
     weight: 1
     contentDir: content
     # languageDirection: rtl # for Right-To-Left languages
@@ -22,8 +22,9 @@ languages:
 params:
   text_color: ""
   author: ""
-  favicon: ""
-  site_logo: ""
+  favicon: "/images/piggy-face.png"
+  site_logo: "/images/piggy-bank-outline.svg"
+  site_logo_text: Home
   description: Gather ye rosebuds while ye may, Old Time is still a-flying.
   recent_posts_number: 4
   custom_css:
@@ -46,7 +47,8 @@ params:
   # choose fitting and alignment styles for the featured image using Tachyons classes such as "cover|contain" for fitting and "bg-top|bg-center|bg-bottom" for alignment, or add any other class space-separated to customize further
   featured_image_class: cover bg-top
   # choose a color dimming class for the page or site header from any on this page: https://tachyons.io/docs/themes/skins/, preface it with "bg-" and add the value such as "-X0" where X is in [1,9]
-  cover_dimming_class: bg-black-50 my-title-font
+  cover_dimming_class: bg-black-50 josefin-sans
+  #cover_dimming_class: bg-black-50 my-content-font
 
 sitemap:
   changefreq: monthly

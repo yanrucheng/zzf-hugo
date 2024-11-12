@@ -13,8 +13,8 @@ cascade:
   # featured_image: '/images/heroes/241102-naritahanabi-zmm_full-landscape_q90_cropped.webp' # 8
   featured_image: '/images/heroes/241102-naritahanabi-both-ip14_full-landscape_q90_cropped.webp' # 8
 
-  featured_video: '/videos/hanabi-girl.mp4' # 8
-  featured_video_y: -30
+featured_video: '/videos/hanabi-girl.mp4' # 8
+featured_video_y: -30
 ---
 
 🐷🐷，回家啦！

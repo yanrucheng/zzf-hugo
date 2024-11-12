@@ -22,3 +22,12 @@
     "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji" !important;
 }
+
+.josefin-sans {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+}
+
+.josefin-sans .font-align {
+  padding-top: 0.3rem;
+}
