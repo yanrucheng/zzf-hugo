@@ -1,0 +1,78 @@
+{{/*
+{{- -}}
+*/}}
+
+{{- $src := .Get "src" -}}
+{{- $md := .Get "md" -}}
+{{- $custom_class := .Get "class" -}}
+{{- with .Page.Resources.Get $src -}}
+
+  <style>
+    .parallax-container {
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .parallax-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url( '{{ . }}' );
+      background-size: cover;
+      background-position: center;
+      z-index: 1; /* Places background behind foreground */
+    }
+
+    .foreground-content {
+      position: relative;
+      z-index: 2; /* Places foreground above background */
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background color */
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Make text transparent to allow the background to show through */
+    .transparent-text {
+      color: transparent; /* Text is transparent */
+      background-clip: text;
+      -webkit-background-clip: text; /* Required for WebKit browsers */
+    }
+  </style>
+
+  <div class="parallax-container {{ $custom_class }}">
+    <div class="parallax-layer parallax-background"></div>
+    <div class="parallax-layer">
+      <div class="foreground-content">
+        <!-- Only the text or specific elements allow background to show through -->
+        <p class="transparent-text">test</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      const backgrounds = document.querySelectorAll('.parallax-background');
+      const scrollY = window.scrollY;
+
+      backgrounds.forEach((bg) => {
+        // Calculate the percentage of scroll within the bg section
+        const bgHeight = bg.offsetHeight;
+        const bgTop = bg.getBoundingClientRect().top;
+        const relativeScrollY = scrollY - bgTop;
+
+        // Check if the element is in the viewport
+        if (relativeScrollY >= 0 && relativeScrollY <= bgHeight) {
+          const scrollPercentage = Math.min(relativeScrollY / bgHeight, 1);
+          bg.style.transform = `translateY(${scrollPercentage * 200}px)`; /* Adjust speed */
+
+          console.log(scrollY, bgTop, bgHeight, relativeScrollY, scrollPercentage);
+
+        }
+      });
+    });
+  </script>
+
+{{- end -}}

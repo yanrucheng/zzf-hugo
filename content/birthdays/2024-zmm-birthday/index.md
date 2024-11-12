@@ -16,9 +16,13 @@ custom_class:
 
 ## h1 test {.testtest}
 
+<!--
 {{< figure src=sjk-gyoen-lake.jpg class="full-width" >}}
-
 {{< scrolling-img src=sjk-gyoen-lake.jpg class="full-width" >}}
+-->
+
+{{< parallax-img src=sjk-gyoen-lake.jpg class="full-width" >}}
+
 
 
 # 序章 八十二亿分之一的幸运
