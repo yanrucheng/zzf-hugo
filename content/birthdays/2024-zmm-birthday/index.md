@@ -1,6 +1,8 @@
 ---
-title: "一樊亲启"
-description: "彦儒写给你的情书 - 2024 / 12 / 13"
+title: "幸好"
+description: |
+  無數時間線 無盡可能性 終於交織向你
+  彦儒寫給你的情書 - 2024 / 12 / 13
 date: 2024-10-13
 type: celebration
 layout: 2024-zmm-birthday

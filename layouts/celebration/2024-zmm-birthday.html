@@ -27,8 +27,8 @@
           <h1 class="mw7 f2 f-subheadline-l fw2 white-90 mb0 lh-title {{ .Site.Params.title_font }}">
             {{ .Title | default .Site.Title }}
           </h1>
-          {{ with .Params.description }}
-            <h2 class="fw1 f5 f3-l white-80 measure-wide-l mt3">
+          {{- range split .Params.description "\n" -}}
+            <h2 class="fw1 f6 f4-l white-80 measure-wide-l mt3">
               {{ . }}
             </h2>
           {{ end }}
