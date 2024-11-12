@@ -38,10 +38,11 @@ params:
   remote_js:
     - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js" # scrolly video
     - "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" # progress bar
-  primary_font: &font noto-sans # used as default
+  # possible values are: noto-sans, josefin-sans
+  primary_font: &font josefin-sans # used as default font. 
   secondary_font: *font # not specified yet
   nav_font: *font # specify in partial/site-navigation.html
-  title_font: *font # specify in partial/site-header.html
+  title_font: noto-sans # specify in partial/site-header.html
   summary_font: *font # specify in _default/summary-with-image.html
   body_font: *font # specify in _default/baseof.html
   post_content_classes: *font # specify in themes _default/single.html

@@ -20,7 +20,7 @@
   >
     <div class="{{ $cover_dimming_class }} h-100 w-100">
       {{ partial "site-navigation.html" .}}
-      <div class="tc-l pv5 pv7-l ph3 ph4-ns flex items-center justify-center">
+      <div class="tc-l pv5 pv7-l ph3 ph4-ns flex items-center justify-center {{ .Site.Params.title_font }}">
         <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">
           {{ .Title | default .Site.Title }}
         </h1>
@@ -52,7 +52,7 @@
 {{ define "main" }}
   <div class="flex-l mt2 mw8 center">
     <article class="center cf pv5 ph3 ph4-ns mw7">
-      <div class="nested-copy-line-height lh-copy f4 nested-links {{ $.Param "text_color" | default "mid-gray" }}">
+      <div class="nested-copy-line-height lh-copy f4 nested-links {{ $.Param "text_color" | default "mid-gray" }} {{ .Site.Params.body_font }}">
         {{ .Content }}
       </div>
     </article>
