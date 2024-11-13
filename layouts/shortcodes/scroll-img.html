@@ -1,0 +1,79 @@
+{{- $src := .Get "src" -}}
+{{- $custom_class := .Get "class" | default "" -}}
+{{- $is_parallax := .Get "parallax" | default "false" | eq "true" -}}
+{{- $is_grayout := .Get "grayout" | default "false" | eq "true" -}}
+{{- $grayout_speed := .Get "grayout_speed" | default 3.0 -}}
+{{- $initial_gray := .Get "initial_gray" | default 100 -}}
+
+{{- with .Page.Resources.GetMatch $src -}}
+  <div class="overflow-hidden relative {{ $custom_class }}
+  {{ if $is_parallax }} h-50vh {{ else }} h-100vh {{ end }}"
+  >
+    <div class="
+      {{ if $is_parallax }} parallax-background {{ end }}
+      {{ if $is_grayout }} scroll-grayout {{ end }}
+      absolute left-0 w-100 h-100 cover bg-center z-1"
+      style="background-image: url({{ .RelPermalink }})">
+    </div>
+    <div>
+      <div class="z-2 relative">
+        <!-- Content goes here -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Utility function to apply effects
+    function applyEffectToElements(selector, callback) {
+      const elements = document.querySelectorAll(selector);
+      const windowH = window.innerHeight;
+
+      elements.forEach((element) => {
+        const box = element.getBoundingClientRect();
+        const t = box.top;
+        const b = box.bottom;
+
+        if (t < windowH && b > 0) {
+          callback(element, t, b, windowH, false);
+        } else {
+          callback(element, t, b, windowH, true);
+        }
+      });
+    }
+
+    // Scroll Image Effect Module
+    function scrollGrayoutEffect() {
+      applyEffectToElements(".scroll-grayout", (element, _, b, windowH, outOfView) => {
+        const initialGray = {{ $initial_gray }};
+        const scrollSpeedFactor = {{ $grayout_speed }};
+
+        if (outOfView) {
+          element.style.filter = `grayscale(${initialGray}%)`;
+        } else {
+          const scrollPercentage = 1 - b / windowH;
+          const grayscalePercentage = Math.max( 0, Math.min(1,
+            1 - scrollPercentage * scrollSpeedFactor
+          )) * initialGray;
+          element.style.filter = `grayscale(${grayscalePercentage}%)`;
+        }
+      });
+    }
+
+    // Parallax Background Effect Module
+    function parallaxBackgroundEffect() {
+      applyEffectToElements(".parallax-background", (element, t, _, windowH) => {
+        const scrollPercentage = t / windowH;
+        element.style.backgroundPositionY = `${scrollPercentage * 50}%`;
+      });
+    }
+
+    // Main scroll event handler
+    function handleScroll() {
+      scrollGrayoutEffect();
+      parallaxBackgroundEffect();
+    }
+
+    // Attach scroll event
+    window.addEventListener("scroll", handleScroll);
+  </script>
+{{- end -}}

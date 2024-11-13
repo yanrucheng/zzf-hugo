@@ -15,13 +15,31 @@ custom_class:
 
 ## h1 test {.testtest}
 
+
+{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
+  grayout="true"
+  parallax="true"
+>}}
+
 <!--
+
+{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
+  parallax="true"
+>}}
+
+---
+
+{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
+  grayout="true"
+>}}
+
+---
+
+{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width" >}}
+
   寫給你的情書
 {{< figure src=sjk-gyoen-lake.jpg class="full-width" >}}
 -->
-{{< scrolling-img src=sjk-gyoen-lake.jpg class="full-width" >}}
-
-{{< parallax-img src=sjk-gyoen-lake.jpg class="full-width" >}}
 
 
 
