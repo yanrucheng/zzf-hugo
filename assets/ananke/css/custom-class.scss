@@ -33,7 +33,6 @@ $translate-values: (-50, -40, -30, -20, -10, 10, 20, 30, 40, 50);
 }
 
 
-// Define an SCSS map to link class names to CSS variables
 $colors: (
   black: var(--black),
   near-black: var(--near-black),
@@ -46,7 +45,37 @@ $colors: (
   light-gray: var(--light-gray),
   near-white: var(--near-white),
   white: var(--white),
-  transparent: var(--transparent),
+  
+  transparent: transparent,
+
+  // Black Opacities
+  black-90: var(--black-90),
+  black-80: var(--black-80),
+  black-70: var(--black-70),
+  black-60: var(--black-60),
+  black-50: var(--black-50),
+  black-40: var(--black-40),
+  black-30: var(--black-30),
+  black-20: var(--black-20),
+  black-10: var(--black-10),
+  black-05: var(--black-05),
+  black-025: var(--black-025),
+  black-0125: var(--black-0125),
+
+  white-90: var(--white-90),
+  white-80: var(--white-80),
+  white-70: var(--white-70),
+  white-60: var(--white-60),
+  white-50: var(--white-50),
+  white-40: var(--white-40),
+  white-30: var(--white-30),
+  white-20: var(--white-20),
+  white-10: var(--white-10),
+  white-05: var(--white-05),
+  white-025: var(--white-025),
+  white-0125: var(--white-0125),
+
+  // Color palette
   dark-red: var(--dark-red),
   red: var(--red),
   light-red: var(--light-red),
@@ -74,26 +103,17 @@ $colors: (
   washed-red: var(--washed-red)
 );
 
-$opacities: (
-  50: 0.5,
-  75: 0.75,
-  100: 1
-);
-
 // Loop through each color and each opacity level to create classes
 @each $color-name, $color-value in $colors {
-  @each $opacity-name, $opacity-value in $opacities {
-    .fill-#{$color-name}-#{$opacity-name} {
-      fill: #{$color-value};
-      opacity: #{$opacity-value};
-    }
+  .fill-#{$color-name} {
+    fill: #{$color-value};
+  }
 
-    .gd-bg-#{$color-name}-#{$opacity-name} {
-      background: linear-gradient(
-        to bottom,
-        rgba(#{transparentize( $color-value, 0)}, 0) 0%,
-        rgba(#{transparentize( $color-value, $opacity-value)}, 0) 100%,
-      );
-    }
+  .gd-bg-#{$color-name} {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 60%,
+      #{$color-value} 100%
+    );
   }
 }

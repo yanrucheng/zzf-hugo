@@ -1,0 +1,66 @@
+<!-- layouts/shortcodes/parallax_circles.html -->
+<div class="bubbles-container full-width">
+  <div class="bubbles">
+    {{- range seq 1 50 -}}
+      {{- $mn := 10 -}}
+      {{- $mx := 30 -}}
+      {{- $speed := math.Rand | mul (math.Sub $mx $mn) | math.Ceil | math.Add $mn -}}
+      <span 
+        class="z--100"
+        style="--i: {{ $speed }}"
+      ></span>
+    {{- end -}}
+  </div>
+</div>
+
+<style>
+
+  .bubbles-container {
+    box-sizing: border-box;
+    position: absolute;
+    overflow: hidden;
+  }
+
+  .bubbles {
+    height: 100vh; /* Ensures there's enough scrolling space */
+    position: relative;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .bubbles span {
+    position: relative;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    margin: 0 4px;
+    border-radius: 50%;
+    background: #4fc3dc;
+    box-shadow: 0 0 0 10px #4fc3dc44,
+      0 0 50px #4fc3dc,
+      0 0 100px #4fc3dc;
+    animation: animate 15s linear infinite;
+      animation-duration: calc(150s / var(--i));
+  }
+
+  .bubbles span:nth-child(even) {
+    background: #ff2d75;
+    box-shadow: 0 0 0 10px #ff2d7544,
+      0 0 50px #ff2d75,
+      0 0 100px #ff2d75;
+  }
+
+  @keyframes animate {
+    0% {
+      transform: translateY(100vh) scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-10vh) scale(1);
+      opacity: 0;
+    }
+  }
+
+
+</style>
