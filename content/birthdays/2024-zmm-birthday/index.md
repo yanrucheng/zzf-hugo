@@ -18,8 +18,8 @@ custom_class:
 <!--
   寫給你的情書
 {{< figure src=sjk-gyoen-lake.jpg class="full-width" >}}
-{{< scrolling-img src=sjk-gyoen-lake.jpg class="full-width" >}}
 -->
+{{< scrolling-img src=sjk-gyoen-lake.jpg class="full-width" >}}
 
 {{< parallax-img src=sjk-gyoen-lake.jpg class="full-width" >}}
 
