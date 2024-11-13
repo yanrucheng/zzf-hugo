@@ -2,7 +2,6 @@
 title: "幸好"
 description: |
   無數時間線 無盡可能性 終於交織向你
-  寫給你的情書
   彦儒
   2024 / 12 / 13
 date: 2024-10-13
@@ -17,6 +16,7 @@ custom_class:
 ## h1 test {.testtest}
 
 <!--
+  寫給你的情書
 {{< figure src=sjk-gyoen-lake.jpg class="full-width" >}}
 {{< scrolling-img src=sjk-gyoen-lake.jpg class="full-width" >}}
 -->
