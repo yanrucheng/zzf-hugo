@@ -4,7 +4,6 @@
 
 .full-width {
   width: calc(100vw - var(--scrollbar-width));;
-  position: relative;
   left: 50%;
   margin-left: calc(-50vw + 0.5*var(--scrollbar-width));
 }
