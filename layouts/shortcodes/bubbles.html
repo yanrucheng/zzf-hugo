@@ -1,6 +1,8 @@
 <!-- layouts/shortcodes/parallax_circles.html -->
-<div class="bubbles-container full-width">
-  <div class="bubbles">
+{{- $max_color_num := .Get "max_color_num" | default 3 -}} {{/* max_color_num within [1, 10] */}}
+
+<div class="box-border absolute overflow-hidden full-width">
+  <div class="bubbles h-100vh relative top-0 flex justify-between">
     {{- range seq 1 50 -}}
       {{- $mn := 10 -}}
       {{- $mx := 30 -}}
@@ -14,42 +16,43 @@
 </div>
 
 <style>
-
-  .bubbles-container {
-    box-sizing: border-box;
-    position: absolute;
-    overflow: hidden;
-  }
-
   .bubbles {
-    height: 100vh; /* Ensures there's enough scrolling space */
-    position: relative;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
+    --bubble-color-1: #4fc3dc; /* Light Cyan */
+    --bubble-color-2: #ff2d75; /* Light Red */
+    --bubble-color-3: #f1e05a; /* Light Yellow */
+    --bubble-color-4: #d1a7f7; /* Light Purple */
+    --bubble-color-5: #ff8a65; /* Light Orange */
+    --bubble-color-6: #81c784; /* Light Green */
+    --bubble-color-7: #b3e5fc; /* Light Blue */
+    --bubble-color-8: #f48fb1; /* Light Pink */
+    --bubble-color-9: #dce775; /* Light Lime */
+    --bubble-color-10: #ffb74d; /* Light Amber */
+    --box-shadow-1: 0 0 0 10px;
+    --box-shadow-2: 0 0 50px;
+    --box-shadow-3: 0 0 100px;
+    --bubble-size: 30px;
   }
 
   .bubbles span {
     position: relative;
-    width: 20px;
-    min-width: 20px;
-    height: 20px;
+    width: var(--bubble-size);
+    min-width: var(--bubble-size);
+    height: var(--bubble-size);
     margin: 0 4px;
     border-radius: 50%;
-    background: #4fc3dc;
-    box-shadow: 0 0 0 10px #4fc3dc44,
-      0 0 50px #4fc3dc,
-      0 0 100px #4fc3dc;
     animation: animate 15s linear infinite;
-      animation-duration: calc(150s / var(--i));
+    animation-duration: calc(150s / var(--i));
   }
 
-  .bubbles span:nth-child(even) {
-    background: #ff2d75;
-    box-shadow: 0 0 0 10px #ff2d7544,
-      0 0 50px #ff2d75,
-      0 0 100px #ff2d75;
-  }
+  {{- range seq 1 $max_color_num -}}
+    .bubbles span:nth-child({{ $max_color_num }}n+ {{ . }}) {
+      --bubble-color: var(--bubble-color-{{ . }}); /* Small scoped variable */
+      background: var(--bubble-color);
+      box-shadow: var(--box-shadow-1) var(--bubble-color)44,
+        var(--box-shadow-2) var(--bubble-color),
+        var(--box-shadow-3) var(--bubble-color);
+    }
+  {{- end -}}
 
   @keyframes animate {
     0% {

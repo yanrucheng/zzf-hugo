@@ -17,7 +17,7 @@ custom_class:
 
 
 
-{{< bubbles >}}
+{{< bubbles max_color_num=10 >}}
 
 <!--
 {{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
