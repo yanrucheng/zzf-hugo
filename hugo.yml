@@ -35,6 +35,7 @@ params:
   custom_js:
     - img.js
     - video.js
+    - style.js
   remote_js:
     - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js" # scrolly video
     - "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" # progress bar

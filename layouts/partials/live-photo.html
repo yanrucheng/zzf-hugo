@@ -24,7 +24,7 @@
   {{- $full_width := eq $params.mode "scroll-full" -}}
 
   <div class="live-photo {{ $params.custom_class }}
-    {{ if $full_width }}center-screen w-100vw top-0{{ end }}"
+    {{ if $full_width }}full-width{{ end }}"
   >
     {{- $idSuffix := (now.UnixNano) -}}
     <div id="scrolly-video-{{ $idSuffix }}"
