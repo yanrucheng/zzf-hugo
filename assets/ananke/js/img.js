@@ -26,3 +26,22 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
+window.addEventListener('scroll', function() {
+  const backgrounds = document.querySelectorAll('.parallax-background');
+  const windowH = window.innerHeight;
+
+  backgrounds.forEach((bg) => {
+    // Calculate the percentage of scroll within the bg section
+    const bgBox = bg.getBoundingClientRect();
+    const bgTop = bgBox.top;
+    const bgBottom = bgBox.bottom;
+
+    // Check if the element is in the viewport
+    if (bgTop < windowH && bgBottom > 0) {
+      const scrollPercentage = bgTop / windowH;
+      bg.style.backgroundPositionY = `${scrollPercentage * 50}%`; /* Adjust speed */
+    }
+  });
+});
+
