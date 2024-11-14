@@ -19,6 +19,8 @@ custom_class:
 
 {{< bubbles max_color_num=10 >}}
 
+{{< video-stack src=hanabi-example.mp4 >}}
+
 <!--
 {{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
   grayout="true"

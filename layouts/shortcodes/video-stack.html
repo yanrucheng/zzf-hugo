@@ -1,0 +1,95 @@
+{{/*
+{{-  -}}
+*/}}
+{{- $src := .Get "src" -}}
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 300vh; /* Extend height to allow scrolling */
+    background-color: #f0f0f0;
+  }
+
+  .video-stack {
+    position: relative;
+    height: 200vh; /* Space for videos to stack sequentially */
+  }
+
+  .video-card {
+    position: absolute;
+    top: 150%; /* Start offscreen (below the viewport) */
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Initially hidden */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  .video-card.visible {
+    top: 50%; /* Move into the viewport */
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .video-card.stacked {
+    top: 30%; /* Shift to "stacked" position */
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Higher z-index for stacking order */
+  }
+  video {
+    max-width: 90%;
+    max-height: 80%;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  video.hidden {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  .spacer {
+    height: 100vh; /* Add spacing to control when videos stack */
+  }
+</style>
+
+
+{{- with .Page.Resources.GetMatch $src -}}
+<div class="video-stack">
+  <div class="video-card" id="video1">
+    <video>
+      <source src="{{ . }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="video-card" id="video2">
+    <video>
+      <source src="{{ . }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+  <script>
+const videoCards = document.querySelectorAll(".video-card");
+
+document.addEventListener("scroll", () => {
+  videoCards.forEach((card, index) => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+      card.classList.add("visible");
+      // If it's the second card, make the first one "stacked"
+      if (index > 0) {
+        videoCards[index - 1].classList.add("stacked");
+      }
+    } else {
+      card.classList.remove("visible");
+      card.classList.remove("stacked");
+    }
+  });
+});
+  </script>
+
+{{- end -}}
