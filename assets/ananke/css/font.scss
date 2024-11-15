@@ -24,6 +24,10 @@ $fallback-fonts: $english-fonts, $chinese-fonts, sans-serif;
   }
 }
 
+.poppins {
+  font-family: "Poppins", $fallback-fonts;
+}
+
 /*
 @font-face {
   font-family: ChangliSongKeBen;
