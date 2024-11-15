@@ -20,9 +20,9 @@ custom_class:
 {{< bubbles max_color_num=10 >}}
 
 {{< gallery
-  hanabi-example.mp4
-  hanabi-example.mp4
-  sjk-gyoen-lake.jpg
+  hanabi-example.mp4 "NARITA 黄金传说" "大雨里，zbb抓拍到的完美瞬间" _
+  hanabi-example.mp4 _ _ _
+  sjk-gyoen-lake.jpg "新宿御苑" "幸运猪猪拥有完美的阳光" _
 >}}
 
 <!-- 

@@ -9,13 +9,10 @@
     /*Color mode HSL(hue, saturation, lightness)*/
     --first-color: hsl(82, 60%, 28%);
     --title-color: hsl(0, 0%, 15%);
-    --text-color: hsl(0, 0%, 35%);
-    --body-color: hsl(0, 0%, 95%);
     --container-color: hsl(0, 0%, 100%);
 
     /*========== Font and typography ==========*/
     /*.5rem = 8px | 1rem = 16px ...*/
-    --body-font: "Poppins", sans-serif;
     --h2-font-size: 1.25rem;
     --small-font-size: .813rem;
   }
@@ -41,7 +38,9 @@
     overflow: hidden;
   }
 
-  .card__img {
+  .card__media {
+    aspect-ratio: 0.9;
+    object-fit: cover;
     width: 328px;
     height: auto;
     border-radius: 1.5rem;
@@ -73,6 +72,7 @@
     font-weight: 500;
     color: var(--title-color);
     margin-bottom: .75rem;
+    margin-top: 0;
   }
 
   .card__button {
@@ -173,7 +173,7 @@
     .card__container {
       grid-template-columns: repeat(3, 1fr);
     }
-    .card__img {
+    .card__media {
       width: 348px;
     }
     .card__data {
@@ -184,22 +184,52 @@
 </style>
 
 
-<div class="card__container full-width relative">
-  {{- range .Params -}}
-    {{- with $.Page.Resources.GetMatch . -}}
-      {{- $type := .ResourceType -}}
-      <article class="card__article {{ if eq $type "video" }}inner-video-click-play{{ end }}">
-        {{- if eq $type "image" }}
-          <img src="{{ .RelPermalink }}" alt="{{ .Name | humanize | title }}" class="card__img">
-        {{- else if eq $type "video" }}
-          <video src="{{ .RelPermalink }}" class="card__img" preload=true></video>
-        {{- end }}
-        <div class="card__data">
-          <span class="card__description">Vancouver Mountains, Canada</span>
-          <h2 class="card__title">The Great Path</h2>
-          <a href="#" class="card__button">Read More</a>
-        </div>
-      </article>
-    {{- end }}
-  {{- end }}
+<div class="full-width relative grid justify-center">
+<div class="card__container justify-center">
+{{- $params := .Params -}}
+{{- $numParams := len $params -}}
+
+{{- if not (math.ModBool $numParams 4) -}}
+  {{- errorf (print
+  "The 'gallery' shortcode requires parameters in groups of 4 (FilePath, Title, Description, Link).\n\n"
+  "Schema: [FilePath, Title, Description, Link]\n\n"
+  "Example:\n"
+  "{{< gallery\n"
+  "  \"hanabi-example.mp4\" \"Hanabi Video\" \"A spectacular fireworks display.\" \"/hanabi/\"\n"
+  "  \"sjk-gyoen-lake.jpg\" \"Serene Lake\" \"A peaceful lake in autumn.\" \"/lake/\"\n"
+  "  \"cityscape.jpg\" \"Urban Nights\" \"The city comes alive at night.\" \"/city/\"\n"
+  ">}}\n\n"
+  "Received: %v\n"
+  "Total Parameters: %d"
+  ) $params $numParams -}}
+{{- end -}}
+
+{{- range $i := seq 0 4 $numParams -}}
+  {{- $filePath := index $params $i -}}
+  {{- $title := index $params (math.Add $i 1) -}}
+  {{- $description := index $params (math.Add $i 2) -}}
+  {{- $link := index $params (math.Add $i 3) -}}
+  {{- with $.Page.Resources.GetMatch $filePath -}}
+    {{- $type := .ResourceType -}}
+    <article class="card__article {{ if eq $type "video" }}inner-video-click-play{{ end }}">
+      {{- if and (ne $filePath "_") (eq $type "image") -}}
+        <img src="{{ .RelPermalink }}" alt="{{ .Name | humanize | title }}" class="card__media">
+      {{- else if and (ne $filePath "_") (eq $type "video") -}}
+        <video src="{{ .RelPermalink }}" class="card__media" preload=true></video>
+      {{- end -}}
+      <div class="card__data">
+        {{- if ne $description "_" -}}
+          <span class="card__description">{{ $description }}</span>
+        {{- end -}}
+        <h2 class="card__title">
+          {{ if ne $title "_" }} {{ $title }} {{ else }} {{ $filePath }} {{ end }}
+        </h2>
+        {{- if ne $link "_" -}}
+          <a href="{{ $link }}" class="card__button">Read More</a>
+        {{- end -}}
+      </div>
+    </article>
+  {{- end -}}
+{{- end -}}
+</div>
 </div>
