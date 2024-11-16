@@ -215,7 +215,7 @@
       {{- if and (ne $filePath "_") (eq $type "image") -}}
         <img src="{{ .RelPermalink }}" alt="{{ .Name | humanize | title }}" class="card__media">
       {{- else if and (ne $filePath "_") (eq $type "video") -}}
-        <video src="{{ .RelPermalink }}" class="card__media" preload=true></video>
+        <video src="{{ .RelPermalink }}" class="card__media" preload=true muted></video>
       {{- end -}}
       <div class="card__data">
         {{- if ne $description "_" -}}
