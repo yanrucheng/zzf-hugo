@@ -58,3 +58,12 @@ sitemap:
   priority: 0.5
   filename: sitemap.xml
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      attribute:
+        title: true
+        block: true
+

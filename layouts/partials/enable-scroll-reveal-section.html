@@ -1,0 +1,52 @@
+
+<style>
+
+  section {
+    padding: 1rem;
+  }
+
+  section h1 {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+  }
+
+  section * {
+    /*margin: 0 1rem;*/
+    transform: translateY(20px);
+    opacity: 0;
+    transition: 1s ease;
+  }
+
+  .scroll-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+</style>
+
+<script>
+
+  const eles_in_section = document.querySelectorAll("section *")
+
+  document.addEventListener("scroll", function() {
+    eles_in_section.forEach((e) => {
+      if (isInView(e)) {
+        e.classList.add("scroll-visible");
+      } else {
+        e.classList.remove("scroll-visible");
+      }
+    });
+  });
+
+  function isInView(element) {
+    const box = element.getBoundingClientRect();
+    return (
+      box.bottom > 0 && 
+      box.top < 
+        (window.innerHeight|| document.documentElement.clientHeight) - 150
+    );
+  }
+
+
+</script>

@@ -49,10 +49,16 @@
 {{ define "main" }}
   <div class="flex-l mt2 mw8 center">
     <article class="center cf pv5 ph3 ph4-ns mw7">
-      <div class="nested-copy-line-height lh-copy f4 nested-links {{ $.Param "text_color" | default "mid-gray" }} {{ .Site.Params.body_font }}">
+      <div class="nested-copy-line-height lh-copy f4 nested-links
+        {{ $.Param "text_color" | default "mid-gray" }}
+        {{ .Site.Params.body_font }}"
+      >
         {{ .Content }}
       </div>
     </article>
   </div>
+
+  {{ partial "enable-scroll-reveal-section.html" . }}
+
 {{ end }}
 {{ define "footer" }}{{ partial "site-footer.html" . }}{{ end }}
