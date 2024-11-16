@@ -1,0 +1,41 @@
+<div class="stop-shortcode" data-delay="{{ .Get 0 | default "2" }}">
+  <!-- This is an invisible element -->
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const stopElements = document.querySelectorAll(".stop-shortcode");
+
+    stopElements.forEach((element) => {
+      let delay = parseFloat(element.dataset.delay) || 2; // Default to 2 seconds
+      let isTriggered = false;
+
+      const lockScroll = () => {
+        if (isTriggered) return; // Prevent multiple triggers
+        isTriggered = true;
+
+        // Lock scrolling
+        document.body.style.overflow = "hidden";
+
+        // Unlock after delay
+        setTimeout(() => {
+          document.body.style.overflow = "";
+        }, delay * 1000);
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              lockScroll();
+              observer.unobserve(entry.target); // Stop observing after trigger
+            }
+          });
+        },
+        { threshold: 0.1 } // Adjust threshold as needed
+      );
+
+      observer.observe(element);
+    });
+  });
+</script>

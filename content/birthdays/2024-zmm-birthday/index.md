@@ -58,6 +58,8 @@ custom_class:
 
 </section>
 
+{{< stop 1 sec >}}
+
 <section> 
 
 # 1. 我想变得更好
@@ -110,6 +112,7 @@ custom_class:
   hanabi-example.mp4 _ _ _
   sjk-gyoen-lake.jpg "新宿御苑" "幸运猪猪拥有完美的阳光" _
 >}}
+{{< stop 1 sec >}}
 
 <!--
 {{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
