@@ -2,18 +2,17 @@
 <style>
 
   section {
-    padding: 1rem;
+    padding: 0 0 1rem 0; /* only padding on the bottom */
   }
 
   section h1 {
-    height: 50vh;
+    height: 40vh;
     display: flex;
     align-items: center;
   }
 
   section * {
-    /*margin: 0 1rem;*/
-    transform: translateY(20px);
+    /*margin: 0 1rem;*/ transform: translateY(20px);
     opacity: 0;
     transition: 1s ease;
   }
@@ -44,7 +43,7 @@
     return (
       box.bottom > 0 && 
       box.top < 
-        (window.innerHeight|| document.documentElement.clientHeight) - 150
+        (1 - 1/4) * (window.innerHeight|| document.documentElement.clientHeight)
     );
   }
 
