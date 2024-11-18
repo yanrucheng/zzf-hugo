@@ -1,0 +1,33 @@
+{{- $src := .Get "src" -}}
+{{- $lines := split (.Inner | chomp) "\n" -}}
+
+<div class="full-width relative">
+<div class="flex items-center 
+  {{ if .Get "reverse" }}flex-row-reverse{{ else }}flex-row{{ end }}
+  mw8 center"
+>
+{{- with .Page.Resources.GetMatch $src -}}
+{{- $type := .ResourceType -}}
+  <div class="w-50 pa3 flex justify-center">
+    {{- if and (ne $src "_") (eq $type "image") -}}
+      <img src="{{ .RelPermalink }}" alt="{{ .Name | humanize | title }}" class="w-100 card__media">
+    {{- else if and (ne $src "_") (eq $type "video") -}}
+      <video src="{{ .RelPermalink }}" class="w-100 card__media" preload=true muted></video>
+    {{- end -}}
+  </div>
+  <div class="w-50 pa3">
+    <div class="lh-copy f4">
+      {{- with $lines -}}
+        <section class="nested-copy-line-height lh-copy f4 nested-links
+          flex flex-column justify-center"
+        >
+          {{- range . -}}
+            <p> {{ . | markdownify }} </p>
+          {{- end -}}
+        </section>
+      {{- end -}}
+    </div>
+  </div>
+{{- end -}}
+</div>
+</div>

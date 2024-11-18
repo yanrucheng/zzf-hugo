@@ -20,9 +20,15 @@
 {{- $video_files := $params.page.Resources.Match (printf "%s*" $video_src) -}}
 
 {{- /* Find first image file with filename (without suffix) matching "src" parameter. */ -}}
-{{- $images := $params.page.Resources.ByType "image" -}}
-{{- $supportedimages :=  where $images ".MediaType.SubType" "ne" "heif" -}}
-{{- $poster := index $supportedimages 0 -}}
+{{- $poster := "" -}}
+{{- $images := (( $params.page.Resources.ByType "image").Match (printf "%s*" $video_src)) -}}
+{{- if $images -}}
+    {{- $supportedimages := where $images ".MediaType.SubType" "ne" "heif" -}}
+    {{- if $supportedimages -}}
+        {{- $poster := index $supportedimages 0 -}}
+    {{- end -}}
+{{- end -}}
+
 
 {{- /* Find in page bundle all valid video files with matching name. */ -}}
 {{- with $video_files -}}
