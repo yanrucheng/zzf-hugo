@@ -4,6 +4,7 @@
 {{- $is_grayout := .Get "grayout" | default "false" | eq "true" -}}
 {{- $grayout_speed := .Get "grayout_speed" | default 2.0 -}}
 {{- $initial_gray := .Get "initial_gray" | default 100 -}}
+{{- $lines := split (.Inner | chomp) "\n" -}}
 
 {{- with .Page.Resources.GetMatch $src -}}
   <div class="overflow-hidden relative {{ $custom_class }}
@@ -15,9 +16,20 @@
       absolute left-0 w-100 h-100 cover bg-center z-1"
       style="background-image: url({{ .RelPermalink }})">
     </div>
-    <div>
-      <div class="z-2 relative">
+    <div class="h-100">
+      <div class="z-2 relative flex-l center mw8 h-100">
         <!-- Content goes here -->
+      {{- with $lines -}}
+        <section class="nested-copy-line-height lh-copy f4 nested-links
+          center ph3 ph4-ns w-60-l w-80 h-100
+          flex flex-column justify-center
+          white-90"
+        >
+          {{- range . -}}
+            <h2> {{ . | markdownify }} </h2>
+          {{- end -}}
+        </section>
+      {{- end -}}
       </div>
     </div>
   </div>

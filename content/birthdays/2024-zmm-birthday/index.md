@@ -50,15 +50,15 @@ custom_class:
 
 只是直到此刻，才终于相聚。
 
-这份美好，
-
-正如猪猪家一如既往那样，
-
-幸运满满，举重若轻。
-
 </section>
 
-{{< stop 1 sec >}}
+{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
+  grayout="true"
+  parallax="true"
+>}}是你
+为灰色的世界
+带来了色彩
+{{< /scroll-img >}}
 
 <section> 
 
@@ -106,36 +106,33 @@ custom_class:
 
 </section>
 
-
 {{< gallery
   hanabi-example.mp4 "NARITA 黄金传说" "大雨里，zbb抓拍到的完美瞬间" _
   hanabi-example.mp4 _ _ _
   sjk-gyoen-lake.jpg "新宿御苑" "幸运猪猪拥有完美的阳光" _
 >}}
+
+
 {{< stop 1 sec >}}
 
 <!--
-{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
-  grayout="true"
-  parallax="true"
->}}
 
 
 ---
 
 {{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
   parallax="true"
->}}
+/>}}
 
 ---
 
 {{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
   grayout="true"
->}}
+/>}}
 
 ---
 
-{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width" >}}
+{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width" />}}
 
   寫給你的情書
 {{< figure src=sjk-gyoen-lake.jpg class="full-width" >}}
@@ -155,6 +152,7 @@ custom_class:
 ---
 
 
+{{< stop 1 sec >}}
 
 ---
 
