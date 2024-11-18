@@ -52,9 +52,14 @@ custom_class:
 
 </section>
 
-{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
+{{< bubbles max_color_num=10 >}}
+
+{{< scroll-img src=sjk-gyoen-lake.jpg
   grayout="true"
   parallax="true"
+  class="full-width h-70vh"
+  grayout_speed=1
+  parallax_speed=0.1
 >}}是你
 为灰色的世界
 带来了色彩
@@ -87,8 +92,6 @@ custom_class:
 340个夜晚的备考，
 
 你的朋友们笑着说，
-
-{{< bubbles max_color_num=10 >}}
 
 “你找了个爱学习的男朋友。”
 

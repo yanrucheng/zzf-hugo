@@ -1,7 +1,7 @@
 <!-- layouts/shortcodes/parallax_circles.html -->
 {{- $max_color_num := .Get "max_color_num" | default 3 -}} {{/* max_color_num within [1, 10] */}}
 
-<div class="box-border absolute overflow-hidden full-width">
+<div class="box-border absolute overflow-hidden full-width translate-y--100">
   <div class="bubbles h-100vh relative top-0 flex justify-between">
     {{- range seq 1 50 -}}
       {{- $mn := 10 -}}
