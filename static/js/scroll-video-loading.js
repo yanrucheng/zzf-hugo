@@ -62,7 +62,7 @@ if (typeof window.fakeProgressDurationPerInstance === 'undefined') {
 
   function lockPage() {
     NProgress.configure({
-      showSpinner: false,
+      showSpinner: true,
     });
     NProgress.start();
     document.getElementById('loading-overlay').style.display = 'block';
@@ -73,6 +73,8 @@ if (typeof window.fakeProgressDurationPerInstance === 'undefined') {
     clearInterval(window.fakeProgressInterval); // Stop the interval if it’s still running
     document.getElementById('loading-overlay').style.display = 'none';
     document.body.style.overflow = 'auto';
+    const resizeEvent = new Event('resize');
+    window.dispatchEvent(resizeEvent); // ensure the scrollbar width is sub from 100vw
   }
 
 
