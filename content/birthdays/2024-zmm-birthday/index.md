@@ -57,9 +57,11 @@ custom_class:
 {{< scroll-img src=sjk-gyoen-lake.jpg
   grayout="true"
   parallax="true"
-  class="full-width h-70vh"
+  class="full-width"
   grayout_speed=1
-  parallax_speed=0.1
+  parallax_speed=0.3
+  parallax_window_height=60
+  parallax_position_y=60
 >}}是你
 为灰色的世界
 带来了色彩

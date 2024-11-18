@@ -1,21 +1,29 @@
 {{- $src := .Get "src" -}}
 {{- $custom_class := .Get "class" | default "" -}}
-{{- $is_parallax := .Get "parallax" | default "false" | eq "true" -}}
+
 {{- $is_grayout := .Get "grayout" | default "false" | eq "true" -}}
-{{- $grayout_speed := .Get "grayout_speed" | default 2.0 -}}
-{{- $parallax_speed := .Get "grayout_speed" | default 0.2 -}}
 {{- $initial_gray := .Get "initial_gray" | default 100 -}}
+{{- $grayout_speed := .Get "grayout_speed" | default 2.0 -}}
+
+{{- $is_parallax := .Get "parallax" | default "false" | eq "true" -}}
+{{/* parallax speed: 100 means static img, 0 means normal img */}}
+{{- $parallax_speed := .Get "parallax_speed" | default 0.4 -}}
+{{/* parallax window height: 100 means full screen */}}
+{{- $parallax_window_height := .Get "parallax_window_height" | default 50 -}}
+{{/* parallax position y: 100 means bg-bottom, 0 means bg-top */}}
+{{- $parallax_position_y := .Get "parallax_position_y" | default 50 -}}
+
 {{- $lines := split (.Inner | chomp) "\n" -}}
 
 {{- with .Page.Resources.GetMatch $src -}}
   <div class="overflow-hidden relative
-  {{ if $is_parallax }} h-50vh {{ else }} h-100vh {{ end }}
+  {{ if $is_parallax }} h-{{ $parallax_window_height }}vh {{ else }} h-100vh {{ end }}
   {{ $custom_class }}"
   >
     <div class="
       {{ if $is_parallax }} parallax-background {{ end }}
       {{ if $is_grayout }} scroll-grayout {{ end }}
-      absolute left-0 w-100 h-100 cover bg-center z-1"
+      absolute left-0 w-100 h-100 cover bg-bottom z-1"
       style="background-image: url({{ .RelPermalink }})">
     </div>
     <div class="h-100">
@@ -80,10 +88,13 @@
 
     // Parallax Background Effect Module
     function parallaxBackgroundEffect() {
-      applyEffectToElements(".parallax-background", (element, t, _) => {
-        const parallaxSpeedFactor = {{ $parallax_speed }};
-        const scrollPercentage = t / window.innerHeight;
-        element.style.backgroundPositionY = `${scrollPercentage * (1 - parallaxSpeedFactor) * 100}%`;
+      applyEffectToElements(".parallax-background", (element, t, b) => {
+        const speedFactor = {{ $parallax_speed }};
+        const defaultOffset = {{ $parallax_position_y }};
+        //const scrollPercentage = (window.innerHeight - b) / (window.innerHeight - b + t);
+        const scrollPercentage = (window.innerHeight - t) / window.innerHeight;
+        const offset = defaultOffset - scrollPercentage * speedFactor * 100;
+        element.style.backgroundPositionY = `${offset}%`;
       });
     }
 
