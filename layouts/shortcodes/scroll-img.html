@@ -3,12 +3,14 @@
 {{- $is_parallax := .Get "parallax" | default "false" | eq "true" -}}
 {{- $is_grayout := .Get "grayout" | default "false" | eq "true" -}}
 {{- $grayout_speed := .Get "grayout_speed" | default 2.0 -}}
+{{- $parallax_speed := .Get "grayout_speed" | default 0.2 -}}
 {{- $initial_gray := .Get "initial_gray" | default 100 -}}
 {{- $lines := split (.Inner | chomp) "\n" -}}
 
 {{- with .Page.Resources.GetMatch $src -}}
-  <div class="overflow-hidden relative {{ $custom_class }}
-  {{ if $is_parallax }} h-50vh {{ else }} h-100vh {{ end }}"
+  <div class="overflow-hidden relative
+  {{ if $is_parallax }} h-50vh {{ else }} h-100vh {{ end }}
+  {{ $custom_class }}"
   >
     <div class="
       {{ if $is_parallax }} parallax-background {{ end }}
@@ -22,7 +24,7 @@
       {{- with $lines -}}
         <section class="nested-copy-line-height lh-copy f4 nested-links
           center ph3 ph4-ns w-60-l w-80 h-100
-          flex flex-column justify-center
+          flex flex-column justify-around
           white-90"
         >
           {{- range . -}}
@@ -56,7 +58,7 @@
     function scrollGrayoutEffect() {
       applyEffectToElements(".scroll-grayout", (element, t, b, outOfView) => {
         const initialGray = {{ $initial_gray }};
-        const scrollSpeedFactor = {{ $grayout_speed }};
+        const grayoutSpeed = {{ $grayout_speed }};
 
         if (outOfView) {
           element.style.filter = `grayscale(${initialGray}%)`;
@@ -66,10 +68,10 @@
           const grayscalePercentage = Math.max( 0, Math.min(1,
             // y = -ax + b
             // 0.5 = -a0.5 + b
-            // a = scrollSpeedFactor
+            // a = grayoutSpeed
             // b = 0.5 + 0.5a = (1 + a) / 2
-            // y = -ax + b = -ax + a/2 + 1/2 = scrollSpeedFactor * (1/2 - scrollPercentage) + 1/2
-            scrollSpeedFactor * (1/2 - scrollPercentage) + 1/2
+            // y = -ax + b = -ax + a/2 + 1/2 = grayoutSpeed * (1/2 - scrollPercentage) + 1/2
+            grayoutSpeed * (1/2 - scrollPercentage) + 1/2
           )) * initialGray;
           element.style.filter = `grayscale(${grayscalePercentage}%)`;
         }
@@ -79,8 +81,9 @@
     // Parallax Background Effect Module
     function parallaxBackgroundEffect() {
       applyEffectToElements(".parallax-background", (element, t, _) => {
+        const parallaxSpeedFactor = {{ $parallax_speed }};
         const scrollPercentage = t / window.innerHeight;
-        element.style.backgroundPositionY = `${scrollPercentage * 50}%`;
+        element.style.backgroundPositionY = `${scrollPercentage * (1 - parallaxSpeedFactor) * 100}%`;
       });
     }
 

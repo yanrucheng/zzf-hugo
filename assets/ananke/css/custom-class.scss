@@ -24,12 +24,23 @@ $view-values: (50, 60, 70, 80, 90, 100);  // Percentages of viewport width
   .h-#{$value}vh { height: #{$value}vh; }
 }
 
+$y-values: (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+$x-values: (0, 50, 100);
+@each $y in $y-values {
+  @each $x in $x-values {
+    .object-position-#{$x}-#{$y} {
+      object-position: #{percentage($x / 100)} #{percentage($y / 100)}; 
+    }
+  }
+}
+
+
 .grayscale-100 { filter: grayscale(100%); }
 .grayscale-70 { filter: grayscale(70%); }
 .grayscale-50 { filter: grayscale(50%); }
 
 /* Base translate class */
-$translate-values: (-50, -40, -30, -20, -10, 10, 20, 30, 40, 50);
+$translate-values: (-100, -50, -40, -30, -20, -10, 10, 20, 30, 40, 50, 100);
 @each $value in $translate-values {
   .translate-y-#{$value} { transform: translateY(#{percentage($value / 100)}); }
   .translate-x-#{$value} { transform: translateX(#{percentage($value / 100)}); }

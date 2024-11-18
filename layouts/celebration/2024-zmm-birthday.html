@@ -23,12 +23,12 @@
       <div class="h-100 w-100">
         {{ partial "site-navigation.html" .}}
         <div class=" mw8 flux-l center">
-        <div class="center cf pv5 ph3 ph4-ns mw7">
-          <h1 class="mw7 f2 f-subheadline-l fw2 white-90 mb0 lh-title {{ .Site.Params.title_font }}">
+        <div class="center cf pv5 ph3 ph4-ns mw7 w-60-l w-80">
+          <h1 class="mw7 f1 f-subheadline-l fw2 white-90 mb0 lh-title {{ .Site.Params.title_font }}">
             {{ .Title | default .Site.Title }}
           </h1>
           {{- range split .Params.description "\n" -}}
-            <h2 class="fw1 f6 f4-l white-80 measure-wide-l mt3">
+            <h2 class="fw1 f5 f4-l white-80 measure-wide-l mt3">
               {{ . }}
             </h2>
           {{ end }}
@@ -48,7 +48,7 @@
 {{ end }}
 {{ define "main" }}
   <div class="flex-l mt2 mw8 center">
-    <article class="center cf pv5 ph3 ph4-ns mw7">
+    <article class="center cf pv5 ph3 ph4-ns mw7 w-60-l w-80">
       <div class="nested-copy-line-height lh-copy f4 nested-links
         {{ $.Param "text_color" | default "mid-gray" }}
         {{ .Site.Params.body_font }}"
