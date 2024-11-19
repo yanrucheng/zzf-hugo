@@ -7,7 +7,8 @@ description: |
 date: 2024-10-13
 type: celebration
 layout: 2024-zmm-birthday
-featured_image: "sjk-gyoen-lake.jpg"
+featured_image: hasedera-temple-sea-city_full-landscape_q100_cropped.webp
+featured_image_class: bg-left
 custom_class:
   background_color_class: bg-light-silver
   title_class: near-white
@@ -94,20 +95,25 @@ custom_class:
 {{< bubbles max_color_num=10 >}}
 
 {{< gallery
-  wufu-redwall.mp4 "漫天飞雪 五福" "2023/12/13, 大雪里猪猪一起白头到老" _
-  hanabi-example.mp4 "初夏篝火 ふふ河口湖" "2024/6/12, 我们第一次拥有一堆自己的篝火, 自己添柴, 自己烤棉花糖" _
-  sjk-gyoen-lake.jpg "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _
+  wufu-redwall.mp4 "漫天飞雪 五福" "2023/12/13, 大雪里猪猪一起白头到老" _ "object-position-75-0"
+  hanabi-example.mp4 "初夏篝火 ふふ河口湖" "2024/6/12, 我们第一次拥有一堆自己的篝火, 自己添柴, 自己烤棉花糖" _ _
+  七里滨-fuji.mp4 "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _ "object-position-0-0"
 >}}
 
 
-{{< stop 1 sec >}}
+# 2. 屏息心跳的瞬间
+
+
+
 
 <!--
 
+{{< stop 1 sec >}}
+
 {{< gallery
-  hanabi-example.mp4 "NARITA 黄金传说" "大雨里，zbb抓拍到的完美瞬间" _
-  hanabi-example.mp4 _ _ _
-  sjk-gyoen-lake.jpg "新宿御苑" "幸运猪猪拥有完美的阳光" _
+  hanabi-example.mp4 "NARITA 黄金传说" "大雨里，zbb抓拍到的完美瞬间" _ _
+  hanabi-example.mp4 _ _ _ _
+  sjk-gyoen-lake.jpg "新宿御苑" "幸运猪猪拥有完美的阳光" _ _
 >}}
 
 {{< two-columns src="sjk-gyoen-lake.jpg" alt="" >}}

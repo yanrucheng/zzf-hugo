@@ -6,8 +6,7 @@
 <style>
   :root {
     /*========== Colors ==========*/
-    /*Color mode HSL(hue, saturation, lightness)*/
-    --first-color: hsl(82, 60%, 28%);
+    /*Color mode HSL(hue, saturation, lightness)*/ --first-color: hsl(82, 60%, 28%);
     --title-color: hsl(0, 0%, 15%);
     --container-color: hsl(0, 0%, 100%);
 
@@ -189,33 +188,37 @@
 {{- $params := .Params -}}
 {{- $numParams := len $params -}}
 
-{{- if not (math.ModBool $numParams 4) -}}
+{{- if not (math.ModBool $numParams 5) -}}
   {{- errorf (print
-  "The 'gallery' shortcode requires parameters in groups of 4 (FilePath, Title, Description, Link).\n\n"
+  "The 'gallery' shortcode requires parameters in groups of 5 (FilePath, Title, Description, Link, Custom Class).\n\n"
   "Schema: [FilePath, Title, Description, Link]\n\n"
   "Example:\n"
   "{{< gallery\n"
-  "  \"hanabi-example.mp4\" \"Hanabi Video\" \"A spectacular fireworks display.\" \"/hanabi/\"\n"
-  "  \"sjk-gyoen-lake.jpg\" \"Serene Lake\" \"A peaceful lake in autumn.\" \"/lake/\"\n"
-  "  \"cityscape.jpg\" \"Urban Nights\" \"The city comes alive at night.\" \"/city/\"\n"
+  "  \"hanabi-example.mp4\" \"Hanabi Video\" \"A spectacular fireworks display.\" \"/hanabi/\" _\n"
+  "  \"sjk-gyoen-lake.jpg\" \"Serene Lake\" \"A peaceful lake in autumn.\" \"/lake/\" _\n"
+  "  \"cityscape.jpg\" \"Urban Nights\" \"The city comes alive at night.\" \"/city/\" \"object-position-0-0\"\n"
   ">}}\n\n"
   "Received: %v\n"
   "Total Parameters: %d"
   ) $params $numParams -}}
 {{- end -}}
 
-{{- range $i := seq 0 4 $numParams -}}
+{{- range $i := seq 0 5 $numParams -}}
   {{- $filePath := index $params $i -}}
   {{- $title := index $params (math.Add $i 1) -}}
   {{- $description := index $params (math.Add $i 2) -}}
   {{- $link := index $params (math.Add $i 3) -}}
+  {{- $class := index $params (math.Add $i 4) -}}
+
   {{- with $.Page.Resources.GetMatch $filePath -}}
     {{- $type := .ResourceType -}}
     <article class="card__article {{ if eq $type "video" }}inner-video-click-play{{ end }}">
       {{- if and (ne $filePath "_") (eq $type "image") -}}
-        <img src="{{ .RelPermalink }}" alt="{{ .Name | humanize | title }}" class="card__media">
+        <img src="{{ .RelPermalink }}" alt="{{ .Name | humanize | title }}"
+          class="card__media {{ $class }}">
       {{- else if and (ne $filePath "_") (eq $type "video") -}}
-        <video src="{{ .RelPermalink }}" class="card__media" preload=true muted></video>
+        <video src="{{ .RelPermalink }}" preload=true muted
+          class="card__media {{ $class }}"></video>
       {{- end -}}
       <div class="card__data">
         {{- if ne $description "_" -}}

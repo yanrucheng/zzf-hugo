@@ -9,13 +9,14 @@
   </style>
 
   {{ $featured_image := partial "func/GetFeaturedImage.html" . }}
-  {{ $featured_image_class := site.Params.featured_image_class | default "cover bg-top" }}
+  {{- $featured_image_class := .Page.Params.featured_image_class
+    | default site.Params.featured_image_class
+    | default "bg-top"
+  -}}
 
   {{ $cover_dimming_class := "bg-black-40" }}
   {{ $background_color_class := site.Params.background_color_class | default "bg-black" }}
-
-  {{ $featured_image_class := site.Params.featured_image_class | default "cover bg-bottom" }}
-  <header class="{{ $featured_image_class }} h-100vh"
+  <header class="{{ $featured_image_class }} cover h-100vh"
     style="background-image: url('{{ $featured_image }}');"
   >
     <div class="{{ $cover_dimming_class }} flex justify-between h-100">
