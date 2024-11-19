@@ -52,8 +52,6 @@ custom_class:
 
 </section>
 
-{{< bubbles max_color_num=10 >}}
-
 {{< scroll-img src=sjk-gyoen-lake.jpg
   grayout="true"
   parallax="true"
@@ -83,17 +81,34 @@ custom_class:
 
 340个夜晚的备考，
 
-你的朋友们笑着说，
+我们是勤奋的猪猪家
 
-“你找了个爱学习的男朋友。”
+但也远不止如此...
 
-爱学习？
+猪猪家的每一步，
 
-猪猪家远不止是学习猪猪家...
+都值得。
+
+</section>
+
+{{< bubbles max_color_num=10 >}}
+
+{{< gallery
+  wufu-redwall.mp4 "漫天飞雪 五福" "2023/12/13, 大雪里猪猪一起白头到老" _
+  hanabi-example.mp4 "初夏篝火 ふふ河口湖" "2024/6/12, 我们第一次拥有一堆自己的篝火, 自己添柴, 自己烤棉花糖" _
+  sjk-gyoen-lake.jpg "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _
+>}}
 
 
-2024年 12月 13日
+{{< stop 1 sec >}}
 
+<!--
+
+{{< gallery
+  hanabi-example.mp4 "NARITA 黄金传说" "大雨里，zbb抓拍到的完美瞬间" _
+  hanabi-example.mp4 _ _ _
+  sjk-gyoen-lake.jpg "新宿御苑" "幸运猪猪拥有完美的阳光" _
+>}}
 
 {{< two-columns src="sjk-gyoen-lake.jpg" alt="" >}}
 五福玲珑居
@@ -102,36 +117,6 @@ custom_class:
 
 雪景
 {{< /two-columns >}}
-
-
-- [ ] yoyogi公园
-- [ ] fufu 篝火
-- [ ] 黑钻沙滩
-
-
-—— 猪猪家的每一步，
-
-都值得。
-
-{{< gallery
-  hanabi-example.mp4 "NARITA 黄金传说" "大雨里，zbb抓拍到的完美瞬间" _
-  hanabi-example.mp4 _ _ _
-  sjk-gyoen-lake.jpg "新宿御苑" "幸运猪猪拥有完美的阳光" _
->}}
-
-</section>
-
-{{< gallery
-  hanabi-example.mp4 "NARITA 黄金传说" "大雨里，zbb抓拍到的完美瞬间" _
-  hanabi-example.mp4 _ _ _
-  sjk-gyoen-lake.jpg "新宿御苑" "幸运猪猪拥有完美的阳光" _
->}}
-
-
-{{< stop 1 sec >}}
-
-<!--
-
 
 ---
 
