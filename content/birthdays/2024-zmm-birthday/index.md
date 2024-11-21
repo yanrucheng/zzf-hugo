@@ -7,7 +7,7 @@ description: |
 date: 2024-10-13
 type: celebration
 layout: 2024-zmm-birthday
-featured_image: hasedera-temple-sea-city_full-landscape_q100_cropped.webp
+featured_image: "scene/hasedera-temple-sea-city_full-landscape_q100_cropped.webp"
 featured_image_class: bg-left
 custom_class:
   background_color_class: bg-light-silver
@@ -16,7 +16,7 @@ custom_class:
 
 
 
-<section> 
+<section>
 
 # 序章：八十二亿分之一的幸运
 
@@ -53,7 +53,7 @@ custom_class:
 
 </section>
 
-{{< scroll-img src=sjk-gyoen-lake.jpg
+{{< scroll-img src="scene/sjk-gyoen-lake.jpg"
   grayout="true"
   parallax="true"
   class="full-width"
@@ -66,7 +66,7 @@ custom_class:
 带来了色彩
 {{< /scroll-img >}}
 
-<section> 
+<section>
 
 # 1. 我想变得更好
 
@@ -95,15 +95,58 @@ custom_class:
 {{< bubbles max_color_num=10 >}}
 
 {{< gallery
-  wufu-redwall.mp4 "漫天飞雪 五福" "2023/12/13, 大雪里猪猪一起白头到老" _ "object-position-75-0"
-  fufu-campfire.mp4 "初夏篝火 ふふ河口湖" "2024/6/12, 我们第一次拥有一堆自己的篝火, 自己添柴, 自己烤棉花糖" _ _
-  七里滨-背影.mp4 "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _ "object-position-0-0"
+  "portrait/wufu-redwall.mp4" "漫天飞雪 五福" "2023/12/13, 大雪里猪猪一起白头到老" _ "object-position-75-0"
+  "portrait/fufu-campfire.mp4" "初夏篝火 ふふ河口湖" "2024/6/12, 我们第一次拥有一堆自己的篝火, 自己添柴, 自己烤棉花糖" _ _
+  "portrait/七里滨-背影.mp4" "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _ "object-position-0-0"
 >}}
 
 
+<section>
+
 # 2. 屏息心跳的瞬间
 
+但人生不止努力和坚持，
 
+也有那些令人屏息的瞬间，
+
+像电影里的定格画面，
+
+像心跳漏掉的一拍。
+
+</section>
+
+{{< live-photo src = "hanabi/11-goldtale-1026.mp4" mode = "scroll-full" >}}
+倒计时
+3
+2
+1
+{{< /live-photo >}}
+
+<section>
+
+---
+
+每一帧，每一秒，都是惊叹。
+
+仿佛世界暂停，时间凝固，你我融化在那瞬间的奇迹里。
+
+无论是自然的鬼斧神工，还是你眼中映出的星辰，都让人屏住呼吸。
+
+---
+
+那些屏息的时刻，是因为与你分享。
+
+从彩虹尽头的金光，到森林深处的涧流，
+
+每一个画面，都是我们的诗。
+
+---
+
+在这片属于我们的星海中，
+
+每一道光影，都是你。
+
+</section>
 
 
 <!--
