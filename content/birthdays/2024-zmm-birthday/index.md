@@ -96,8 +96,8 @@ custom_class:
 
 {{< gallery
   wufu-redwall.mp4 "漫天飞雪 五福" "2023/12/13, 大雪里猪猪一起白头到老" _ "object-position-75-0"
-  hanabi-example.mp4 "初夏篝火 ふふ河口湖" "2024/6/12, 我们第一次拥有一堆自己的篝火, 自己添柴, 自己烤棉花糖" _ _
-  七里滨-fuji.mp4 "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _ "object-position-0-0"
+  fufu-campfire.mp4 "初夏篝火 ふふ河口湖" "2024/6/12, 我们第一次拥有一堆自己的篝火, 自己添柴, 自己烤棉花糖" _ _
+  七里滨-背影.mp4 "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _ "object-position-0-0"
 >}}
 
 
@@ -110,17 +110,9 @@ custom_class:
 
 {{< stop 1 sec >}}
 
-{{< gallery
-  hanabi-example.mp4 "NARITA 黄金传说" "大雨里，zbb抓拍到的完美瞬间" _ _
-  hanabi-example.mp4 _ _ _ _
-  sjk-gyoen-lake.jpg "新宿御苑" "幸运猪猪拥有完美的阳光" _ _
->}}
-
 {{< two-columns src="sjk-gyoen-lake.jpg" alt="" >}}
 五福玲珑居
-
 红墙
-
 雪景
 {{< /two-columns >}}
 
