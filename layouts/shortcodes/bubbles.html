@@ -4,8 +4,8 @@
 <div class="box-border absolute overflow-hidden full-width translate-y--100">
   <div class="bubbles h-100vh relative top-0 flex justify-between">
     {{- range seq 1 50 -}}
-      {{- $mn := 10 -}}
-      {{- $mx := 30 -}}
+      {{- $mn := 40 -}}
+      {{- $mx := 120 -}}
       {{- $speed := math.Rand | mul (math.Sub $mx $mn) | math.Ceil | math.Add $mn -}}
       <span 
         class="z--100"
@@ -38,10 +38,10 @@
     width: var(--bubble-size);
     min-width: var(--bubble-size);
     height: var(--bubble-size);
-    margin: 0 4px;
+    margin: 0 -20px;
     border-radius: 50%;
     animation: animate 15s linear infinite;
-    animation-duration: calc(150s / var(--i));
+    animation-duration: calc(600s / var(--i));
   }
 
   {{- range seq 1 $max_color_num -}}
