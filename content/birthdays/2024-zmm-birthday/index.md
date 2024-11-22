@@ -33,7 +33,7 @@ custom_class:
 
 爱情，从来不是人人都有的幸运。
 
-正如歌里唱的：[^1]
+正如歌里唱的
 
 > 如果我们从不曾相识，
 
@@ -100,6 +100,9 @@ custom_class:
   "portrait/七里滨-背影.mp4" "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _ "object-position-0-0"
 >}}
 
+<!--
+-->
+
 
 <section>
 
@@ -111,24 +114,33 @@ custom_class:
 
 像电影里的定格画面，
 
-像心跳漏掉的一拍。
-
 </section>
 
-{{< live-photo src = "hanabi/11-goldtale-1026.mp4" mode = "scroll-full" >}}
-倒计时
-3
-2
-1
-{{< /live-photo >}}
-
+{{< scroll-img src="scene/sjk-gyoen-lake.jpg"
+  grayout="true"
+  parallax="true"
+  class="full-width"
+  grayout_speed=1
+  parallax_speed=0.3
+  parallax_window_height=60
+  parallax_position_y=60
+>}}是你
+为灰色的世界
+带来了色彩
+{{< /scroll-img >}}
 <section>
 
+像心跳漏掉的一拍
+
+每一帧，每一秒
+
+都是惊叹
+
+仿佛世界暂停，时间凝固
+
+你我融化在那瞬间的奇迹里
+
 ---
-
-每一帧，每一秒，都是惊叹。
-
-仿佛世界暂停，时间凝固，你我融化在那瞬间的奇迹里。
 
 无论是自然的鬼斧神工，还是你眼中映出的星辰，都让人屏住呼吸。
 
@@ -142,62 +154,18 @@ custom_class:
 
 ---
 
-在这片属于我们的星海中，
-
-每一道光影，都是你。
-
 </section>
 
+{{< live-photo src = "hanabi/11-goldtale-1026.mp4" mode = "scroll-full" >}}
+在这片属于我们的星海中
+每一道光影
 
-<!--
+都是我们的回忆
+{{< /live-photo >}}
 
-{{< stop 1 sec >}}
-
-{{< two-columns src="sjk-gyoen-lake.jpg" alt="" >}}
-五福玲珑居
-红墙
-雪景
-{{< /two-columns >}}
-
----
-
-{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
-  parallax="true"
-/>}}
-
----
-
-{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width"
-  grayout="true"
-/>}}
-
----
-
-{{< scroll-img src=sjk-gyoen-lake.jpg class="full-width" />}}
-
-  寫給你的情書
-{{< figure src=sjk-gyoen-lake.jpg class="full-width" >}}
--->
 
 
 <!--
-
----
-
-
-
----
-
-
-
----
-
-
-{{< stop 1 sec >}}
-
----
-
-[^1]: test
 -->
 
 

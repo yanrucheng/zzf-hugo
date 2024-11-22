@@ -154,8 +154,7 @@
       padding: 1rem;
     }
   }
-
-  /* For medium devices */
+/* For medium devices */
   @media screen and (min-width: 768px) {
     .card__container {
       grid-template-columns: repeat(2, 1fr);
@@ -217,7 +216,18 @@
         <img src="{{ .RelPermalink }}" alt="{{ .Name | humanize | title }}"
           class="card__media {{ $class }}">
       {{- else if and (ne $filePath "_") (eq $type "video") -}}
-        <video src="{{ .RelPermalink }}" preload=true muted
+        {{- $video_base := index (strings.Split . ".") 0 -}}
+        {{- $poster_src := "" -}}
+        {{- range $.Page.Resources.ByType "image" }}
+          {{- $poster_base := index (strings.Split . ".") 0 -}}
+          {{- if (eq $poster_base $video_base ) -}}
+            {{- $poster_src = .RelPermalink -}}
+            {{- break -}}
+          {{- end -}}
+        {{- end -}}
+        <video src="{{ .RelPermalink }}" 
+          {{ if $poster_src }} poster="{{ $poster_src }}" {{ end }}
+          preload=true muted
           class="card__media {{ $class }}"></video>
       {{- end -}}
       <div class="card__data">
