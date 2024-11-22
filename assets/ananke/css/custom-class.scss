@@ -8,20 +8,36 @@
   margin-left: calc(-50vw + 0.5*var(--scrollbar-width));
 }
 
-.grid {
-  display: grid;
+$width-values: (60, 70, 80, 90);
+@each $w in $width-values {
+  .centered-#{$w}vw {
+    width: calc(#{$w}vw - var(--scrollbar-width));
+    left: 50%;
+    margin-left: calc(-#{$w / 2}vw + 0.5*var(--scrollbar-width));
+  }
 }
 
-.center-screen {
-  position: relative;
-  left: 50%;
-  margin-left: calc(-50vw + 0.5*var(--scrollbar-width));
+.grid {
+  display: grid;
 }
 
 $view-values: (50, 60, 70, 80, 90, 100);  // Percentages of viewport width
 @each $value in $view-values {
   .w-#{$value}vw { width: calc(#{$value}vw - var(--scrollbar-width)); }
   .h-#{$value}vh { height: #{$value}vh; }
+
+}
+@media screen and (min-width: 60em) {
+  @each $w in $width-values {
+    .centered-#{$w}vw-l {
+      width: calc(#{$w}vw - var(--scrollbar-width));
+      left: 50%;
+      margin-left: calc(-#{$w / 2}vw + 0.5*var(--scrollbar-width));
+    }
+  }
+  @each $value in $view-values {
+    .w-#{$value}vw-l { width: calc(#{$value}vw - var(--scrollbar-width)); }
+  }
 }
 
 $y-values: (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100);

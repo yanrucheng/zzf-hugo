@@ -57,10 +57,10 @@ custom_class:
   grayout="true"
   parallax="true"
   class="full-width"
-  grayout_speed=1
-  parallax_speed=0.3
+  grayout_speed=1.2
+  parallax_speed=0.8
   parallax_window_height=60
-  parallax_position_y=60
+  parallax_position_y=40
 >}}是你
 为灰色的世界
 带来了色彩
@@ -116,50 +116,52 @@ custom_class:
 
 </section>
 
-{{< scroll-img src="scene/sjk-gyoen-lake.jpg"
-  grayout="true"
+{{< scroll-img src="portrait/sjk-gyoen-lake-girl.jpg"
   parallax="true"
-  class="full-width"
-  grayout_speed=1
-  parallax_speed=0.3
-  parallax_window_height=60
-  parallax_position_y=60
->}}是你
-为灰色的世界
-带来了色彩
+  class="centered-60vw-l full-width"
+  parallax_speed=0
+  parallax_window_height=80
+  parallax_position_y=90
+>}}像心跳漏掉的一拍
+每一秒
+都是惊叹
 {{< /scroll-img >}}
+
 <section>
 
-像心跳漏掉的一拍
+仿佛世界暂停
 
-每一帧，每一秒
+时间凝固
 
-都是惊叹
+</section>
 
-仿佛世界暂停，时间凝固
+{{< scroll-img src="portrait/changgusi-girl-forest.jpg"
+  parallax="true"
+  class="full-width"
+  parallax_speed=0
+  parallax_window_height=80
+  parallax_position_y=70
+>}}无论是自然的鬼斧神工
+还是你眼中映出的星辰
+都让人屏住呼吸
+{{< /scroll-img >}}
 
-你我融化在那瞬间的奇迹里
+<section>
 
----
 
-无论是自然的鬼斧神工，还是你眼中映出的星辰，都让人屏住呼吸。
+那些屏息的时刻
 
----
+从 森林 到 大海
 
-那些屏息的时刻，是因为与你分享。
+每一个画面
 
-从彩虹尽头的金光，到森林深处的涧流，
-
-每一个画面，都是我们的诗。
-
----
+都是我们的诗
 
 </section>
 
 {{< live-photo src = "hanabi/11-goldtale-1026.mp4" mode = "scroll-full" >}}
-在这片属于我们的星海中
+从 点亮 到 绽放
 每一道光影
-
 都是我们的回忆
 {{< /live-photo >}}
 
