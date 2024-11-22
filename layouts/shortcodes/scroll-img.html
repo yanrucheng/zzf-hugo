@@ -6,7 +6,7 @@
 {{- $grayout_speed := .Get "grayout_speed" | default 2.0 -}}
 
 {{- $is_parallax := .Get "parallax" | default "false" | eq "true" -}}
-{{/* parallax speed: 100 means static img, 0 means normal img */}}
+{{/* parallax speed: 1 means static img, 0 means normal img */}}
 {{- $parallax_speed := .Get "parallax_speed" | default 0.4 -}}
 {{/* parallax window height: 100 means full screen */}}
 {{- $parallax_window_height := .Get "parallax_window_height" | default 50 -}}
@@ -54,7 +54,7 @@
         const t = box.top;
         const b = box.bottom;
 
-        if (t < window.innerHeight && b > 0) {
+        if (t < (window.scrollY + window.innerHeight) && b > 0) {
           callback(element, t, b, false); // box fully or partially in view
         } else {
           callback(element, t, b, true); // box out of view
@@ -69,29 +69,30 @@
         const grayoutSpeed = {{ $grayout_speed }};
 
         if (outOfView) {
-          element.style.filter = `grayscale(${initialGray}%)`;
-        } else {
-          // touching bottom = 0, touching top = 1
-          const scrollPercentage = (window.innerHeight - b) / (window.innerHeight - b + t);
-          const grayscalePercentage = Math.max( 0, Math.min(1,
-            // y = -ax + b
-            // 0.5 = -a0.5 + b
-            // a = grayoutSpeed
-            // b = 0.5 + 0.5a = (1 + a) / 2
-            // y = -ax + b = -ax + a/2 + 1/2 = grayoutSpeed * (1/2 - scrollPercentage) + 1/2
-            grayoutSpeed * (1/2 - scrollPercentage) + 1/2
-          )) * initialGray;
-          element.style.filter = `grayscale(${grayscalePercentage}%)`;
+          return;
         }
+        // touching bottom = 0, touching top = 1
+        const scrollPercentage = (window.innerHeight - b) / (window.innerHeight - b + t);
+        const grayscalePercentage = Math.max( 0, Math.min(1,
+          // y = -ax + b
+          // 0.5 = -a0.5 + b
+          // a = grayoutSpeed
+          // b = 0.5 + 0.5a = (1 + a) / 2
+          // y = -ax + b = -ax + a/2 + 1/2 = grayoutSpeed * (1/2 - scrollPercentage) + 1/2
+          grayoutSpeed * (1/2 - scrollPercentage) + 1/2
+        )) * initialGray;
+        element.style.filter = `grayscale(${grayscalePercentage}%)`;
       });
     }
 
     // Parallax Background Effect Module
     function parallaxBackgroundEffect() {
-      applyEffectToElements(".parallax-background", (element, t, b) => {
+      applyEffectToElements(".parallax-background", (element, t, b, outOfView) => {
+        if(outOfView) {
+          return;
+        }
         const speedFactor = {{ $parallax_speed }};
         const defaultOffset = {{ $parallax_position_y }};
-        //const scrollPercentage = (window.innerHeight - b) / (window.innerHeight - b + t);
         const scrollPercentage = (window.innerHeight - t) / window.innerHeight;
         const offset = defaultOffset - scrollPercentage * speedFactor * 100;
         element.style.backgroundPositionY = `${offset}%`;
