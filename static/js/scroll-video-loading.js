@@ -52,7 +52,6 @@ if (typeof window.fakeProgressDurationPerInstance === 'undefined') {
     // Increment the loaded counter
     window.scrollyVideoLoaded++;
     NProgress.inc(0.9 / window.scrollyVideoCounter);
-    console.log(NProgress.status);
 
     // If all instances are ready, stop the loading early
     if (window.scrollyVideoLoaded === window.scrollyVideoCounter) {
