@@ -1,5 +1,6 @@
 <!-- layouts/shortcodes/parallax_circles.html -->
 {{- $max_color_num := .Get "max_color_num" | default 3 -}} {{/* max_color_num within [1, 10] */}}
+{{- $halo :=  eq ( .Get "halo" | default "false") "true" -}} {{/* max_color_num within [1, 10] */}}
 
 <div class="box-border absolute overflow-hidden full-width translate-y--100">
   <div class="bubbles h-100vh relative top-0 flex justify-between">
@@ -17,20 +18,20 @@
 
 <style>
   .bubbles {
-    --bubble-color-1: #4fc3dc; /* Light Cyan */
-    --bubble-color-2: #ff2d75; /* Light Red */
-    --bubble-color-3: #f1e05a; /* Light Yellow */
-    --bubble-color-4: #d1a7f7; /* Light Purple */
-    --bubble-color-5: #ff8a65; /* Light Orange */
-    --bubble-color-6: #81c784; /* Light Green */
-    --bubble-color-7: #b3e5fc; /* Light Blue */
-    --bubble-color-8: #f48fb1; /* Light Pink */
-    --bubble-color-9: #dce775; /* Light Lime */
-    --bubble-color-10: #ffb74d; /* Light Amber */
+    --bubble-color-1: 79, 195, 220; /* Light Cyan */
+    --bubble-color-2: 255, 45, 117; /* Light Red */
+    --bubble-color-3: 241, 224, 90; /* Light Yellow */
+    --bubble-color-4: 209, 167, 247; /* Light Purple */
+    --bubble-color-5: 255, 138, 101; /* Light Orange */
+    --bubble-color-6: 129, 199, 132; /* Light Green */
+    --bubble-color-7: 179, 229, 252; /* Light Blue */
+    --bubble-color-8: 244, 143, 177; /* Light Pink */
+    --bubble-color-9: 220, 231, 117; /* Light Lime */
+    --bubble-color-10: 255, 183, 77; /* Light Amber */
     --box-shadow-1: 0 0 0 10px;
     --box-shadow-2: 0 0 50px;
     --box-shadow-3: 0 0 100px;
-    --bubble-size: 30px;
+    --bubble-size: 10px;
   }
 
   .bubbles span {
@@ -47,10 +48,10 @@
   {{- range seq 1 $max_color_num -}}
     .bubbles span:nth-child({{ $max_color_num }}n+ {{ . }}) {
       --bubble-color: var(--bubble-color-{{ . }}); /* Small scoped variable */
-      background: var(--bubble-color);
-      box-shadow: var(--box-shadow-1) var(--bubble-color)44,
-        var(--box-shadow-2) var(--bubble-color),
-        var(--box-shadow-3) var(--bubble-color);
+      background: rgb(var(--bubble-color));
+      box-shadow: var(--box-shadow-1) rgba(var(--bubble-color), {{ if $halo }} 0.25 {{else}} 1 {{ end }}),
+        var(--box-shadow-2) rgb(var(--bubble-color)),
+        var(--box-shadow-3) rgb(var(--bubble-color));
     }
   {{- end -}}
 
@@ -63,7 +64,7 @@
       opacity: 0;
     }
     100% {
-      transform: translateY(-10vh) scale(1);
+      transform: translateY(-10vh) scale(1.2);
       opacity: 0;
     }
   }

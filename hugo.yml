@@ -48,7 +48,7 @@ params:
   body_font: *font # specify in _default/baseof.html
   post_content_classes: *font # specify in themes _default/single.html
 
-  body_bg: bg-near-white # specify in _default/baseof.html
+  body_bg: "bg-near-white" # specify in _default/baseof.html
   background_color_class: bg-washed-red
   featured_image_class: cover bg-top
   cover_dimming_class: bg-black-50
