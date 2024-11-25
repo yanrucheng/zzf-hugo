@@ -227,7 +227,7 @@
         {{- end -}}
         <video src="{{ .RelPermalink }}" 
           {{ if $poster_src }} poster="{{ $poster_src }}" {{ end }}
-          preload=true muted
+          preload=false muted
           class="card__media {{ $class }}"></video>
       {{- end -}}
       <div class="card__data">

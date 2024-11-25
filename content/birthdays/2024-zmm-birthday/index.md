@@ -97,7 +97,7 @@ custom_class:
 {{< gallery
   "portrait/wufu-redwall.mp4" "漫天飞雪 五福" "2023/12/13, 大雪里猪猪一起白头到老" _ "object-position-75-0"
   "portrait/fufu-campfire.mp4" "初夏篝火 ふふ河口湖" "2024/6/12, 我们第一次拥有一堆自己的篝火, 自己添柴, 自己烤棉花糖" _ _
-  "portrait/七里滨-背影.mp4" "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _ "object-position-0-0"
+  "portrait/kamakura-qilibin-backview.mp4" "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _ "object-position-0-0"
 >}}
 
 <!--
