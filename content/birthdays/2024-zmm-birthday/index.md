@@ -15,6 +15,7 @@ custom_class:
 ---
 
 
+<!--more-->
 
 <section>
 
@@ -148,10 +149,9 @@ custom_class:
 
 <section>
 
+从河口湖畔的篝火
 
-那些屏息的时刻
-
-从 森林 到 大海
+到七里滨沿岸的远山
 
 每一个画面
 
@@ -165,9 +165,12 @@ custom_class:
 都是我们的回忆
 {{< /live-photo >}}
 
+# 樊樊 生日快乐
+{.justify-center .flex}
+
+![Birthday cakse](/scene/cake.jpg "Happy birthday!")
+{.fade-image}
 
 
-<!--
--->
 
-
+## 写在后面

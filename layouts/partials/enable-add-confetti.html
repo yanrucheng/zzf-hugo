@@ -1,0 +1,24 @@
+<script>
+  // Ensure JSConfetti is instantiated only once
+  if (!window.jsConfettiInstance) {
+    window.jsConfettiInstance = new JSConfetti();
+  }
+
+  // Function to add confetti
+  function add_confetti() {
+    window.jsConfettiInstance.addConfetti({
+      confettiColors: [
+        '#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7',
+      ],
+    });
+  }
+
+  // Add event listener to elements with the class `.click-add-confetti`
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.click-add-confetti').forEach((element) => {
+      element.addEventListener('click', () => {
+        add_confetti();
+      });
+    });
+  });
+</script>
