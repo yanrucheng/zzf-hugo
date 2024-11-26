@@ -17,7 +17,7 @@ custom_class:
 
 <!--more-->
 
-<section>
+<section data-slideInLeft>
 
 # 序章：八十二亿分之一的幸运
 
@@ -30,7 +30,6 @@ custom_class:
 全世界，
 
 > 超过 **8,200,000,000** 人。
-
 
 爱情，从来不是人人都有的幸运。
 
@@ -67,7 +66,7 @@ custom_class:
 带来了色彩
 {{< /scroll-img >}}
 
-<section>
+<section data-slideInLeft>
 
 # 1. 我想变得更好
 
@@ -105,7 +104,7 @@ custom_class:
 -->
 
 
-<section>
+<section data-slideInLeft>
 
 # 2. 屏息心跳的瞬间
 
@@ -128,7 +127,7 @@ custom_class:
 都是惊叹
 {{< /scroll-img >}}
 
-<section>
+<section data-slideInLeft>
 
 仿佛世界暂停
 
@@ -147,7 +146,7 @@ custom_class:
 都让人屏住呼吸
 {{< /scroll-img >}}
 
-<section>
+<section data-slideInLeft>
 
 从河口湖畔的篝火
 
@@ -172,5 +171,8 @@ custom_class:
 {.fade-image .click-firework .in-view-firework}
 
 
+<section data-slideInLeft>
 
 ## 写在后面
+
+</section>

@@ -31,15 +31,18 @@ params:
     - live-photo.css
     - custom-class.scss
     - font.scss
+    - scroll-trigger.css
     - "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" # progress bar
   custom_js:
     - img.js
     - video.js
     - style.js
+    - scroll-trigger.js
   remote_js:
     - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js" # scrolly video
     - "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" # progress bar
     - "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" # confetti effect
+    - "https://cdn.jsdelivr.net/npm/@terwanerik/scrolltrigger@1.0.5/dist/ScrollTrigger.min.js" # for scroll based effect
   # possible values are: noto-sans, josefin-sans, poppins
   primary_font: &font poppins # used as default font. 
   secondary_font: *font # not specified yet

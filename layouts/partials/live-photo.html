@@ -11,8 +11,7 @@
   - `custom_class`: A custom CSS class applied to the `live-photo` wrapper for additional styling.
   - `lines`: An optional array of text elements, rendered as `h3` elements within a `story` container, commonly used to display captions or descriptions for the video.
   - `controls`: Specifies whether video controls should be shown (set to `"false"` by default).
-  - `autoplay`: Specifies if the video should autoplay (usually `"false"`, except for `"loop"` mode).
-  - `loop`: Specifies if the video should loop (set to `"true"` only in `"loop"` mode).
+  - `autoplay`: Specifies if the video should autoplay (usually `"false"`, except for `"loop"` mode). - `loop`: Specifies if the video should loop (set to `"true"` only in `"loop"` mode).
   - `muted`: Sets the video to muted (set to `"true"` across all modes for silent playback).
   - `skip_file_exist_check`: Boolean to skip file existence check in the `video` partial (useful for conditional loading or custom handling).
 */}}
@@ -42,7 +41,7 @@
     </script>
 
     {{- with $lines -}}
-      <div class="story">
+      <div data-slideInBottomImmediate class="story">
         {{- range . -}}
           <div>
             <h3> {{ . | markdownify }} </h3>

@@ -1,0 +1,41 @@
+[data-slideInLeft] .visible, [data-slideInLeft] .invisible,
+[data-slideInRight] .visible, [data-slideInRight] .invisible ,
+[data-slideInBottom] .visible, [data-slideInBottom] .invisible,
+[data-slideInBothSides] .visible, [data-slideInBothSides] .invisible {
+  opacity: 1.0;
+  transform: translate(0, 0);
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+[data-slideInBottomImmediate] .visible,
+[data-slideInBottomImmediate] .invisible {
+  opacity: 1.0;
+  transform: translate(0, 0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+
+[data-slideInLeft] .invisible,  {
+  opacity: 0.0;
+  transform: translate(20px, 0);
+}
+
+[data-slideInRight] .invisible {
+  opacity: 0.0;
+  transform: translate(-20px, 0);
+}
+
+[data-slideInBottom] .invisible, [data-slideInBottomImmediate] .invisible {
+  opacity: 0.0;
+  transform: translate(0, 20px);
+}
+
+[data-slideInBothSides] .invisible:nth-child(even) {
+  opacity: 0.0;
+  transform: translate(20px, 0);
+}
+
+[data-slideInBothSides] .invisible:nth-child(odd) {
+  opacity: 0.0;
+  transform: translate(-20px, 0);
+}
