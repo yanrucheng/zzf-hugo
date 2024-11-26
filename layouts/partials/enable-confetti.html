@@ -1,0 +1,176 @@
+<!--
+  enable-confetti.html - Hugo Partial for Confetti Effects
+
+  This partial adds interactive confetti effects to elements on your webpage.
+  Include this partial in your Hugo layouts to enable the functionality.
+
+  Classes Supported:
+  ------------------
+  1. .click-confetti
+     - Add this class to any clickable element (e.g., buttons, links) to trigger
+       the confetti effect when clicked.
+     - Example:
+       <button class="click-confetti">Click Me for Confetti</button>
+
+  2. .click-snow
+     - Add this class to any clickable element (e.g., buttons, links) to trigger
+       the snowing effect when clicked.
+     - Example:
+       <button class="click-snow">Click Me for Snow</button>
+
+  3. .in-view-confetti
+     - Add this class to elements that should trigger the confetti effect when
+       they scroll into the viewport.
+     - Confetti will only trigger once per element.
+     - Example:
+       <div class="in-view-confetti" style="height: 100vh;">Scroll into view!</div>
+
+  Notes:
+  ------
+  - The color sets for confetti effects are pre-defined and rotate sequentially.
+  - Make sure to include the JSConfetti library in your project for this partial to work:
+      https://github.com/catdad/canvas-confetti
+-->
+
+<script>
+  // Function to add confetti
+  function realistic_confetti() {
+    // Store global variables within the function scope
+    if (!window._confettiGlobals) {
+      window._confettiGlobals = {
+        currentColorSetIndex: 0, // Track the current color set index
+      };
+    }
+
+    const colorSets = [
+      ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7'], // Sakura
+      ['#0077b6', '#00b4d8', '#90e0ef', '#caf0f8', '#ade8f4'], // Ocean Breeze
+      ['#ff4500', '#ff7f50', '#ffae42', '#ffd700', '#ffe4b5'], // Sunset Glow
+      ['#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51'], // Forest Whisper
+      ['#ff00e4', '#ff80ed', '#ffb3b3', '#ffbdbd', '#ffe4e1'], // Candy Pop
+      ['#3c096c', '#9d4edd', '#c77dff', '#e0aaff', '#ffc6ff'], // Galaxy Magic
+    ];
+
+    const count = 200;
+    const defaults = {
+      origin: { y: 0.7 },
+    };
+
+    function fire(particleRatio, opts) {
+      confetti({
+        ...defaults,
+        ...opts,
+        particleCount: Math.floor(count * particleRatio),
+        colors: colorSets[window._confettiGlobals.currentColorSetIndex], // Use the current color set
+      });
+    }
+
+    // Trigger bursts of confetti with realistic effects
+    fire(0.25, { spread: 26, startVelocity: 55, });
+    fire(0.2, { spread: 60, });
+    fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8, });
+    fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2, });
+    fire(0.1, { spread: 120, startVelocity: 45, });
+
+    // Move to the next color set
+    window._confettiGlobals.currentColorSetIndex =
+      (window._confettiGlobals.currentColorSetIndex + 1) % colorSets.length;
+  }
+
+  // Throttle function: limits how often a function can execute
+  function throttle(func, delay) {
+    let lastCall = 0;
+    return (...args) => {
+      const now = new Date().getTime();
+      if (now - lastCall >= delay) {
+        lastCall = now;
+        return func(...args);
+      }
+    };
+  }
+
+  // Add event listener to elements with the class `.click-add-confetti`
+  document.addEventListener('DOMContentLoaded', () => {
+    const throttledAddConfetti = throttle(realistic_confetti, 1200); // Limit clicks to once every 2 seconds
+    document.querySelectorAll('.click-confetti').forEach((element) => {
+      element.addEventListener('click', () => { throttledAddConfetti(); });
+      element.addEventListener('dragstart', (event) => { event.preventDefault(); });
+    });
+
+    document.querySelectorAll('.click-snow').forEach((element) => {
+      element.addEventListener('click', () => { snow(); });
+    });
+
+      // Observer for elements with the `in-view-confetti` class
+    const inViewObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          realistic_confetti(); // Trigger confetti when the element is in view
+          inViewObserver.unobserve(entry.target); // Stop observing after the first trigger
+        }
+      });
+    });
+
+    // Observe all elements with the class `in-view-confetti`
+    document.querySelectorAll('.in-view-confetti').forEach((element) => {
+      inViewObserver.observe(element);
+    });
+  });
+
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function uuidv4() {
+    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+      (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
+  );
+}
+
+  function snow(duration = 8 * 1000) {
+    // Define and store global variables within the function scope
+    if (!window._snowGlobals) {
+      window._snowGlobals = {
+        currentId: null, // Tracks the ID of the active animation
+      };
+    }
+
+    const uniqueId = uuidv4(); // Generate a unique ID for this function call
+    window._snowGlobals.currentId = uniqueId; // Set as the current active ID
+    const animationEnd = Date.now() + duration;
+    let skew = 1;
+
+    function frame() {
+      // Stop recursion if the ID no longer matches the active ID
+      if (window._snowGlobals.currentId !== uniqueId) {
+        return;
+      }
+
+      const timeLeft = animationEnd - Date.now();
+      const ticks = Math.max(200, 500 * (timeLeft / duration));
+      skew = Math.max(0.8, skew - 0.001);
+
+      confetti({
+        particleCount: 1,
+        startVelocity: 0,
+        ticks: ticks,
+        origin: {
+          x: Math.random(),
+          y: (Math.random() * skew) - 0.2, // Skew particles toward the top
+        },
+        colors: ['#ffffff'],
+        shapes: ['circle'],
+        gravity: randomInRange(0.4, 0.6),
+        scalar: randomInRange(0.2, 0.7),
+        drift: randomInRange(-0.4, 0.4),
+      });
+
+      if (timeLeft > 0) {
+        requestAnimationFrame(frame);
+      }
+    }
+
+    frame();
+
+  }
+</script>
