@@ -169,7 +169,7 @@ custom_class:
 {.justify-center .flex}
 
 ![Birthday cakse](/scene/cake.jpg "Happy birthday!")
-{.fade-image .click-confetti .in-view-confetti}
+{.fade-image .click-firework .in-view-firework}
 
 
 
