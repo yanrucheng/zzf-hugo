@@ -1,109 +1,121 @@
 {{- $src := .Get "src" -}}
 {{- with .Page.Resources.GetMatch $src -}}
-  <audio id="bg-music" loop autoplay>
+  <audio id="bg_music" loop autoplay>
     <source src="{{ .RelPermalink }}" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 {{- end -}}
 
-<div id="music-toggle" class="fixed bottom-1 left-1 z-5 pa2">
-    <button id="music-icon" class="bg-transparent bn pointer flex items-center justify-center circle-bg shadow">
-        <svg id="music-icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 transparent rotate-animation music-icon-color">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
-        </svg>
-    </button>
+<div id="music_toggle" class="fixed bottom-1 left-1 z-5 pa2">
+  <button id="music_icon" class="bg-transparent bn pointer flex items-center justify-center circle_bg shadow">
+    <svg 
+      id="music_icon_svg" 
+      xmlns="http://www.w3.org/2000/svg" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke-width="1.5" 
+      stroke="currentColor" 
+      class="size_6 transparent rotate_animation music_icon_color"
+    >
+      <path 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" 
+      />
+    </svg>
+  </button>
 </div>
 
 <script>
-    window.addEventListener('DOMContentLoaded', function () {
-        const bgMusic = document.getElementById('bg-music');
-        const musicIconSvg = document.getElementById('music-icon-svg');
+  window.addEventListener('DOMContentLoaded', function () {
+    const bg_music = document.getElementById('bg_music');
+    const music_icon_svg = document.getElementById('music_icon_svg');
 
-        // Set initial volume to 20%
-        const bgm_volume = 0.06;
-        const bgm_toggle_ease_time_ms = 1500;
-        bgMusic.volume = bgm_volume;
+    // Set initial volume to 20%
+    const bgm_volume = 0.06;
+    const bgm_toggle_ease_time_ms = 1500;
+    bg_music.volume = bgm_volume;
 
-        // Initialize audio state
-        let isPlaying = false;
+    // Initialize audio state
+    let is_playing = false;
 
-        // Smooth volume transition
-        const smoothVolumeChange = (targetVolume, duration) => {
-            const step = (targetVolume - bgMusic.volume) / (duration / 50); // 50ms steps
-            const interval = setInterval(() => {
-                bgMusic.volume = Math.min(Math.max(bgMusic.volume + step, 0), 1); // Clamp between 0 and 1
-                if ((step > 0 && bgMusic.volume >= targetVolume) || (step < 0 && bgMusic.volume <= targetVolume)) {
-                    clearInterval(interval);
-                }
-            }, 50);
-        };
+    // Smooth volume transition
+    const smooth_volume_change = (target_volume, duration) => {
+      const step = (target_volume - bg_music.volume) / (duration / 50); // 50ms steps
+      const interval = setInterval(() => {
+        bg_music.volume = Math.min(Math.max(bg_music.volume + step, 0), 1); // Clamp between 0 and 1
+        if ((step > 0 && bg_music.volume >= target_volume) || (step < 0 && bg_music.volume <= target_volume)) {
+          clearInterval(interval);
+        }
+      }, 50);
+    };
 
-        // Toggle music play/pause with smooth volume transition
-        musicIconSvg.addEventListener('click', function () {
-            if (isPlaying) {
-                musicIconSvg.style.animationPlayState = 'paused'; // Pause rotation
-                smoothVolumeChange(0, bgm_toggle_ease_time_ms); // Fade out over 3 seconds
-                setTimeout(() => {
-                    bgMusic.pause();
-                }, bgm_toggle_ease_time_ms);
-            } else {
-                bgMusic.play();
-                musicIconSvg.style.animationPlayState = 'running'; // Resume rotation
-                smoothVolumeChange(bgm_volume, bgm_toggle_ease_time_ms); // Fade in over 3 seconds
-            }
-            isPlaying = !isPlaying;
-        });
+    // Toggle music play/pause with smooth volume transition
+    music_icon_svg.addEventListener('click', function () {
+      if (is_playing) {
+        music_icon_svg.style.animationPlayState = 'paused'; // Pause rotation
+        smooth_volume_change(0, bgm_toggle_ease_time_ms); // Fade out
+        setTimeout(() => {
+          bg_music.pause();
+        }, bgm_toggle_ease_time_ms);
+      } else {
+        bg_music.play();
+        music_icon_svg.style.animationPlayState = 'running'; // Resume rotation
+        smooth_volume_change(bgm_volume, bgm_toggle_ease_time_ms); // Fade in
+      }
+      is_playing = !is_playing;
     });
+  });
 </script>
 
 <style>
-    .circle-bg {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%; /* Circular shape */
-        background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
-    }
+  .circle_bg {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* Circular shape */
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+  }
 
-    .shadow {
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-        transition: box-shadow 0.3s ease;
-    }
+  .shadow {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transition: box-shadow 0.3s ease;
+  }
 
-    .shadow:hover {
-        box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-    }
+  .shadow:hover {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+  }
 
-    .size-6 {
-        width: 32px;
-        height: 32px;
-    }
+  .size_6 {
+    width: 32px;
+    height: 32px;
+  }
 
-    .transparent {
-        opacity: 0.8;
-        transition: opacity 0.3s ease;
-    }
+  .transparent {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
 
-    .transparent:hover {
-        opacity: 1;
-    }
+  .transparent:hover {
+    opacity: 1;
+  }
 
-    .rotate-animation {
-        animation: rotate 2s linear infinite;
-        animation-play-state: paused; /* Start paused */
-        transform-origin: center;
-    }
+  .rotate_animation {
+    animation: rotate 2s linear infinite;
+    animation-play-state: paused; /* Start paused */
+    transform-origin: center;
+  }
 
-    .music-icon-color {
-        stroke: #00000088;
-        fill: #ffffff00;
-    }
+  .music_icon_color {
+    stroke: #00000088;
+    fill: #ffffff00;
+  }
 
-    @keyframes rotate {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
     }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 </style>
