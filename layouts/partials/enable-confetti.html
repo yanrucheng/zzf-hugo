@@ -87,42 +87,6 @@
     window.rotate_confetti_colors();
   }
 
-  function firework(duration = 8000, fire_gap = 800) {
-    const animation_end = Date.now() + duration;
-    const defaults = { startVelocity: 20, spread: 360, ticks: 60, zIndex: 0 };
-
-    function two_bursts(particle_count) {
-      confetti({
-        ...defaults,
-        particleCount: particle_count,
-        colors: window.get_confetti_color(),
-        origin: { x: random_in_range(0.1, 0.3), y: Math.random() - 0.2 },
-      });
-      confetti({
-        ...defaults,
-        particleCount: particle_count,
-        colors: window.get_confetti_color(),
-        origin: { x: random_in_range(0.7, 0.9), y: Math.random() - 0.2 },
-      });
-    }
-
-    const interval = setInterval(() => {
-      const time_left = animation_end - Date.now();
-      if (time_left <= 0) {
-        clearInterval(interval);
-        window.rotate_confetti_colors();
-        return;
-      }
-      const particle_count = 300 * (time_left / duration);
-
-      two_bursts(particle_count);
-      window.rotate_confetti_colors();
-      two_bursts(particle_count);
-      window.rotate_confetti_colors();
-    }, fire_gap);
-  }
-
-
   // Throttle function: limits how often a function can execute
   function throttle(func, delay) {
     let lastCall = 0;
@@ -141,6 +105,39 @@
     return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
       (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
     );
+  }
+
+  function firework(duration = 8000, fire_gap = 800) {
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 20, spread: 360, ticks: 60, zIndex: 0 };
+
+    // Initialize global tracking
+    window._fireworkGlobals = window._fireworkGlobals || { currentId: null };
+    const uniqueId = uuidv4();
+    window._fireworkGlobals.currentId = uniqueId;
+
+    const burst = (count) => {
+      const color = window.get_confetti_color();
+      const origins = [{ x: random_in_range(0.1, 0.3), y: Math.random() - 0.2 },
+                      { x: random_in_range(0.7, 0.9), y: Math.random() - 0.2 }];
+      origins.forEach(origin => confetti({ ...defaults, particleCount: count, colors: color, origin }));
+    };
+
+    const fireworkCycle = (count) => {
+      burst(count);
+      window.rotate_confetti_colors();
+      burst(count);
+      window.rotate_confetti_colors();
+    };
+
+    fireworkCycle(300);
+    const interval = setInterval(() => {
+      if (window._fireworkGlobals.currentId !== uniqueId || Date.now() >= animationEnd) {
+        clearInterval(interval);
+        return;
+      }
+      fireworkCycle(300 * ((animationEnd - Date.now()) / duration));
+    }, fire_gap);
   }
 
   function snow(duration = 8 * 1000) {
@@ -190,7 +187,6 @@
         scalar: random_in_range(0.4, 1),
         drift: random_in_range(-0.4, 0.4),
       });
-
       if (timeLeft > 0) {
         requestAnimationFrame(frame);
       }
@@ -200,20 +196,18 @@
 
   // Add event listener to elements with the class `.click-add-confetti`
   document.addEventListener('DOMContentLoaded', () => {
-
     function add_click_confetti_effect(selector, effect_function, throttle_delay = 0) {
       const throttled_function = throttle_delay > 0 ? throttle(effect_function, throttle_delay) : effect_function;
-
       document.querySelectorAll(selector).forEach((element) => {
-        element.addEventListener('click', throttled_function);
-        element.addEventListener('dragstart', (event) => event.preventDefault());
+        element.addEventListener('click', () => {throttled_function();});
+        element.addEventListener('dragstart', (event) => {event.preventDefault();});
       });
     }
 
     // Add effects with optional throttling
     add_click_confetti_effect('.click-confetti', realistic_confetti, 1200);
     add_click_confetti_effect('.click-snow', snow);
-    add_click_confetti_effect('.click-firework', firework, 8000);
+    add_click_confetti_effect('.click-firework', firework);
 
     function create_in_view_observer(callback_function) {
       return new IntersectionObserver((entries, observer) => {
