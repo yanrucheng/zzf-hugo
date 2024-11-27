@@ -158,7 +158,11 @@ custom_class:
 
 </section>
 
-{{< live-photo src = "hanabi/11-goldtale-1026.mp4" mode = "scroll-full" >}}
+{{< live-photo 
+  src = "hanabi/11-goldtale-1026.mp4"
+  mode = "scroll-full" 
+  custom_class = "white txt-shdw-black-60"
+>}}
 从 点亮 到 绽放
 每一道光影
 都是我们的回忆

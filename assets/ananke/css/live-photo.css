@@ -1,9 +1,3 @@
-:root {
-  --highlight-color: #8cc63e;
-  --primary-color: #404040;
-  --secondary-color: #f1f1f1;
-}
-
 div.live-photo {
   height: 600vh;
   position: relative;
@@ -29,7 +23,6 @@ div.live-photo div.story {
   top: 0;
   left: 0;
   width: 100%;
-  color: var(--secondary-color);
 }
 
 div.live-photo div.story div {
