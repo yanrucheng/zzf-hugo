@@ -17,6 +17,8 @@ custom_class:
 
 <!--more-->
 
+{{< bg-music src="audio/snowbreak-bgm.opus" >}}
+
 <section data-slideInLeft>
 
 # 序章：八十二亿分之一的幸运
