@@ -2,6 +2,7 @@
 title: "Live Photo Example"
 date: 2024-11-02T16:15:44+08:00
 type: page
+draft: true
 ---
 
 <!--
