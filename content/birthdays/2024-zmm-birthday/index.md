@@ -7,7 +7,7 @@ description: |
 date: 2024-10-13
 type: celebration
 layout: 2024-zmm-birthday
-featured_image: "scene/hasedera-temple-sea-city_full-landscape_q100_cropped.webp"
+featured_image: "scene/hasedera-temple-sea-city_full-landscape_q100_cropped.jpg"
 featured_image_class: bg-left
 custom_class:
   background_color_class: bg-light-silver
