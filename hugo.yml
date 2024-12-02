@@ -38,11 +38,17 @@ params:
     - video.js
     - style.js
     - scroll-trigger.js
-  remote_js:
-    - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js" # scrolly video
+  external_js: # in cdn or in static/js
     - "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" # progress bar
-    - "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" # confetti effect
-    - "https://cdn.jsdelivr.net/npm/@terwanerik/scrolltrigger@1.0.5/dist/ScrollTrigger.min.js" # for scroll based effect
+    # scrolly video
+    # - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js"
+    - js/scrolly-video.js
+    # confetti effect
+    # - "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"
+    - js/canvas-confetti.js
+    # scroll effect
+    # - "https://cdn.jsdelivr.net/npm/@terwanerik/scrolltrigger@1.0.5/dist/ScrollTrigger.min.js"
+    - "https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/ScrollTrigger/1.0.5/ScrollTrigger.min.js"
   # possible values are: noto-sans, josefin-sans, poppins
   primary_font: &font poppins # used as default font. 
   secondary_font: *font # not specified yet

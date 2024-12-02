@@ -1,10 +1,16 @@
-{{ range site.Params.custom_js }}
-  {{ with partialCached "func/script/GetResource" . . }}
+{{- range site.Params.custom_js -}}
+  {{- with partialCached "func/script/GetResource" . . -}}
     {{ $js := . | resources.Minify | resources.Fingerprint }}
     <script src="{{ $js.RelPermalink }}" defer></script>
-  {{ end }}
-{{ end }}
+  {{- end -}}
+{{- end -}}
 
-{{ range site.Params.remote_js}}
-    <script src="{{ . }}"></script>
-{{ end }}
+{{- range site.Params.external_js -}}
+  {{ $linkToJS := "" }}
+  {{- if strings.Contains . "http" -}}
+    {{ $linkToJS = . }}
+  {{- else -}}
+    {{ $linkToJS = trim . "/" | absURL }}
+  {{- end -}}
+  <script src="{{ $linkToJS }}"></script>
+{{- end -}}
