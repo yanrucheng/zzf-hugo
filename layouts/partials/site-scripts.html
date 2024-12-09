@@ -10,7 +10,7 @@
   {{- if strings.Contains . "http" -}}
     {{ $linkToJS = . }}
   {{- else -}}
-    {{ $linkToJS = trim . "/" | absURL }}
+    {{ $linkToJS = trim . "/" | relURL }}
   {{- end -}}
   <script src="{{ $linkToJS }}"></script>
 {{- end -}}

@@ -31,7 +31,7 @@
       {{ if $full_width }}h-100vh{{ end }}"
     ></div>
 
-    <script src="/js/scroll-video-loading.js"></script>
+    <script src= {{ "js/scroll-video-loading.js" | relURL }} ></script>
     <script type="text/javascript">
       new ScrollyVideo({
         scrollyVideoContainer: "scrolly-video-{{ $idSuffix }}",

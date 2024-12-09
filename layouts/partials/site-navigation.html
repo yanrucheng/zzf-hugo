@@ -3,7 +3,7 @@
     <a href="{{ .Site.Home.RelPermalink }}" class="f3 fw3 hover-white no-underline white-90 dib">
       {{- with .Site.Params.site_logo -}}
           <span class="flex items-center justify-center">
-            <img src="{{ relURL . }}" alt="{{ $.Site.Title }}" class='w100 mw2 mr2'>
+            <img src="{{ ( trim . "/" ) | relURL }}" alt="{{ $.Site.Title }}" class='w100 mw2 mr2'>
             {{- with $.Site.Params.site_logo_text -}}
               <span class="font-align"> {{ . }} </span>
             {{- end -}}
