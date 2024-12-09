@@ -22,8 +22,8 @@ languages:
 params:
   text_color: ""
   author: ""
-  favicon: "/images/piggy-face.png"
-  site_logo: "/images/piggy-bank-outline.svg"
+  favicon: "images/piggy-face.png"
+  site_logo: "images/piggy-bank-outline.svg"
   site_logo_text: Home
   description: Gather ye rosebuds while ye may, Old Time is still a-flying.
   recent_posts_number: 4
