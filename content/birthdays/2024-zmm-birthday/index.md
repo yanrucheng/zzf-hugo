@@ -1,8 +1,7 @@
 ---
 title: "幸好"
 description: |
-  無數時間線 無盡可能性 終於交織向你
-  彦儒
+  无数时间线 无尽可能性 终于交织向你
   2024 / 12 / 13
 date: 2024-10-13
 type: celebration
@@ -80,11 +79,13 @@ custom_class:
 
 5000道题目的淬炼，
 
-数不清的口诀，
+数不清的口诀与知识点，
 
 340个夜晚的备考，
 
-我们是勤奋的猪猪家
+我们是勤奋的猪猪家，
+
+是 **在职** **零基础** **一战一次过** **历年最难法考** 的聪明猪组合。
 
 但也远不止如此...
 
@@ -97,20 +98,16 @@ custom_class:
 {{< bubbles max_color_num=10 >}}
 
 {{< gallery
-  "portrait/wufu-redwall.mp4" "漫天飞雪 五福" "2023/12/13, 大雪里猪猪一起白头到老" _ "object-position-75-0 click-snow"
+  "portrait/wufu-redwall.mp4" "漫天飞雪 五福" "2023/12/13, 大雪里猪猪一起白了头" _ "object-position-75-0 click-snow"
   "portrait/fufu-campfire.mp4" "初夏篝火 ふふ河口湖" "2024/6/12, 我们第一次拥有一堆自己的篝火, 自己添柴, 自己烤棉花糖" _ ""
-  "portrait/kamakura-qilibin-backview.mp4" "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我对你的依赖" _ "object-position-0-0"
+  "portrait/kamakura-qilibin-backview.mp4" "黑钻沙滩 七里滨镰仓" "2024/11/3, 璀璨闪烁的暗色海砂，浪涛卷过的海岸泛起的荧光，像南美的大闪蝶, 像南极的极光, 像我们互相的依赖" _ "object-position-0-0"
 >}}
-
-<!--
--->
-
 
 <section data-slideInLeft>
 
 # 2. 屏息心跳的瞬间
 
-但人生不止努力和坚持，
+人生不止努力和坚持，
 
 也有那些令人屏息的瞬间，
 
