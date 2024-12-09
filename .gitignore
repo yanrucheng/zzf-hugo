@@ -20,3 +20,5 @@ Thumbs.db
 # OS files
 ehthumbs.db
 Desktop.ini
+
+go.sum
