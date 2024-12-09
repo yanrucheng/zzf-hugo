@@ -1,5 +1,5 @@
 title: Home of ZhuZhu
-baseURL: https://zhuzhu.family
+baseURL: https://zhuzhu.family/zzf-hugo
 languageCode: en-us
 theme:
   - ananke
