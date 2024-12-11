@@ -18,4 +18,4 @@ featured_video_x: 50
 featured_video_y: 70
 ---
 
-🐷🐷，回家啦！
+🐷🐷 回家咯

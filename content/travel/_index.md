@@ -7,4 +7,4 @@ type: section-list
 ---
 
 Two roads diverged in a wood </br>
-And i took the one less traveled by </br>
+I took the one less traveled by
