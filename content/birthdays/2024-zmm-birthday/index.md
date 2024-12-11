@@ -1,5 +1,6 @@
 ---
-title: "幸好"
+title: "zmm 2024生日快乐"
+heading: "幸好"
 description: |
   无数时间线 无尽可能性 终于交织向你
   2024 / 12 / 13

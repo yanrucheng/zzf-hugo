@@ -40,7 +40,7 @@
         <div class=" mw8 flux-l center">
         <div class="center cf pv5 ph3 ph4-ns mw7 w-60vw-l w-80vw">
           <h1 class="mw7 f1 f-subheadline-l fw2 white-90 mb0 lh-title {{ .Site.Params.title_font }}">
-            {{ .Title | default .Site.Title }}
+            {{ .Params.heading | default .Title | default .Site.Title }}
           </h1>
           {{- range split .Params.description "\n" -}}
             <h2 class="fw1 f5 f4-l white-80 measure-wide-l mt3">
