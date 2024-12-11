@@ -1,8 +1,7 @@
 ---
 title: "Our Home"
-#title: "空山新雨后 天气晚来秋"
 
-description: "Gather ye rosebuds while ye may, Old Time is still a-flying. "
+description: "We are the dreamer of dreams."
 cascade:
   # candidate
   # featured_image: '/images/heroes/240608-plane-sea-original_full-landscape_q90_cropped.webp' # 7
