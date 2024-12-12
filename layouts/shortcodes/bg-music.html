@@ -1,6 +1,6 @@
 {{- $src := .Get "src" -}}
 {{- with .Page.Resources.GetMatch $src -}}
-  <audio id="bg_music" loop autoplay>
+  <audio id="bg_music" loop>
     <source src="{{ .RelPermalink }}" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
