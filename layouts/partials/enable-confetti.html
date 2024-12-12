@@ -38,29 +38,37 @@
     if (!window._confettiManager) {
       window._confettiManager = {
         currentColorSetIndex: 0, // Tracks the current color set index
-        colorSets: [
-          ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7'], // Sakura
-          ['#0077b6', '#00b4d8', '#90e0ef', '#caf0f8', '#ade8f4'], // Ocean Breeze
-          ['#ff4500', '#ff7f50', '#ffae42', '#ffd700', '#ffe4b5'], // Sunset Glow
-          ['#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51'], // Forest Whisper
-          ['#ff00e4', '#ff80ed', '#ffb3b3', '#ffbdbd', '#ffe4e1'], // Candy Pop
-          ['#3c096c', '#9d4edd', '#c77dff', '#e0aaff', '#ffc6ff'], // Galaxy Magic
-        ],
+        colorSets: {
+          sakura: ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7'], // Sakura
+          ocean: ['#0077b6', '#00b4d8', '#90e0ef', '#caf0f8', '#ade8f4'], // Ocean Breeze
+          sunset: ['#ff4500', '#ff7f50', '#ffae42', '#ffd700', '#ffe4b5'], // Sunset Glow
+          forest: ['#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51'], // Forest Whisper
+          candy: ['#ff00e4', '#ff80ed', '#ffb3b3', '#ffbdbd', '#ffe4e1'], // Candy Pop
+          galaxy: ['#3c096c', '#9d4edd', '#c77dff', '#e0aaff', '#ffc6ff'], // Galaxy Magic
+        },
       };
+
+      // Initialize colorSetNames after colorSets is defined
+      window._confettiManager.colorSetNames = Object.keys(window._confettiManager.colorSets);
     }
+
+    const confettiManager = window._confettiManager;
 
     // Get the current confetti color set
     window.get_confetti_color = function () {
-      return window._confettiManager.colorSets[
-        window._confettiManager.currentColorSetIndex
-      ];
+      const colorSetName = confettiManager.colorSetNames[confettiManager.currentColorSetIndex];
+      return confettiManager.colorSets[colorSetName];
     };
 
     // Rotate to the next confetti color set
     window.rotate_confetti_colors = function () {
-      window._confettiManager.currentColorSetIndex =
-        (window._confettiManager.currentColorSetIndex + 1) %
-        window._confettiManager.colorSets.length;
+      confettiManager.currentColorSetIndex =
+        (confettiManager.currentColorSetIndex + 1) % confettiManager.colorSetNames.length;
+    };
+
+    // Get a confetti color set by name
+    window.get_confetti_color_by_name = function (name) {
+      return confettiManager.colorSets[name] || null;
     };
   })();
 
@@ -107,7 +115,11 @@
     );
   }
 
-  function firework(duration = 8000, fire_gap = 800) {
+  function firework(color = "random", duration = 8000, fire_gap = 800) {
+    console.log('Firework duration:', duration);
+    console.log('Firework gap:', fire_gap);
+    console.log('Firework color:', color);
+
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 20, spread: 360, ticks: 60, zIndex: 0 };
 
@@ -116,18 +128,36 @@
     const uniqueId = uuidv4();
     window._fireworkGlobals.currentId = uniqueId;
 
+    const getColorSet = () => {
+      if (color === "random") {
+        return window.get_confetti_color(); // Existing random logic
+      } else {
+        const namedColorSet = window.get_confetti_color_by_name(color);
+        if (namedColorSet) {
+          return namedColorSet;
+        } else {
+          console.warn(`Color set '${color}' not found. Falling back to random.`);
+          return window.get_confetti_color(); // Fallback to random
+        }
+      }
+    };
+
     const burst = (count) => {
-      const color = window.get_confetti_color();
-      const origins = [{ x: random_in_range(0.1, 0.3), y: Math.random() - 0.2 },
-                      { x: random_in_range(0.7, 0.9), y: Math.random() - 0.2 }];
-      origins.forEach(origin => confetti({ ...defaults, particleCount: count, colors: color, origin }));
+      const colorSet = getColorSet();
+      const origins = [
+        { x: random_in_range(0.1, 0.3), y: Math.random() - 0.2 },
+        { x: random_in_range(0.7, 0.9), y: Math.random() - 0.2 },
+      ];
+      origins.forEach((origin) =>
+        confetti({ ...defaults, particleCount: count, colors: colorSet, origin })
+      );
     };
 
     const fireworkCycle = (count) => {
       burst(count);
-      window.rotate_confetti_colors();
+      if (color === "random") window.rotate_confetti_colors(); // Rotate only if random
       burst(count);
-      window.rotate_confetti_colors();
+      if (color === "random") window.rotate_confetti_colors(); // Rotate only if random
     };
 
     fireworkCycle(300);
@@ -208,6 +238,13 @@
     add_click_confetti_effect('.click-confetti', realistic_confetti, 1200);
     add_click_confetti_effect('.click-snow', snow);
     add_click_confetti_effect('.click-firework', firework);
+    add_click_confetti_effect('.click-firework-sakura', ()=>firework("sakura"));
+    add_click_confetti_effect('.click-firework-ocean', ()=>firework("ocean"));
+    add_click_confetti_effect('.click-firework-sunset', ()=>firework("sunset"));
+    add_click_confetti_effect('.click-firework-forest', ()=>firework("forest"));
+    add_click_confetti_effect('.click-firework-candy', ()=>firework("candy"));
+    add_click_confetti_effect('.click-firework-galaxy', ()=>firework("galaxy"));
+
 
     function create_in_view_observer(callback_function) {
       return new IntersectionObserver((entries, observer) => {
