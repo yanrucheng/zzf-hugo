@@ -9,13 +9,13 @@ cascade:
   # featured_image: '/images/heroes/240608-shibuyasky-night_full-landscape_q90_cropped.webp' # 8
   # featured_image: '/images/heroes/240610-fuji-up_full-landscape_q90_cropped.webp' # 7.5
   # featured_image: '/images/heroes/240611-yoyogi-near_full-landscape_q90_cropped.webp' # 8
-  # featured_image: '/images/heroes/241102-naritahanabi-zmm_full-landscape_q90_cropped.webp' # 8
-  featured_image: '/images/heroes/241102-naritahanabi-both-ip14_full-landscape_q90_cropped.webp' # 8
-  featured_image_class: bg-left
+  featured_image: '/images/heroes/241102-naritahanabi-zmm_full-landscape_q90_cropped.webp' # 8
+  # featured_image: '/images/heroes/241102-naritahanabi-both-ip14_full-landscape_q90_cropped.webp' # 8
+  featured_image_class: bg-center
 
-featured_video: '/videos/hanabi-girl.mp4' # 8
-featured_video_x: 50
-featured_video_y: 70
+# featured_video: '/videos/hanabi-girl.mp4' # 8
+# featured_video_x: 50
+# featured_video_y: 70
 ---
 
 🐷🐷 回家咯
