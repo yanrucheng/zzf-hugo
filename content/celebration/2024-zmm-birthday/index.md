@@ -167,7 +167,7 @@ custom_class:
 {{< /live-photo >}}
 
 # 樊樊 生日快乐
-{.justify-center .flex}
+{.justify-center .flex .click-confetti}
 
 ![Birthday cake](/scene/cake.jpg "Happy birthday!")
 {.fade-image .click-firework .in-view-firework}
@@ -176,7 +176,7 @@ custom_class:
 <section data-slideInLeft>
 
 > *本页面中的图片、视频均由 zbb 使用 iPhone 16 Pro Max 拍摄，**未经任何调色、美颜或后期处理**。* <br>
-> *页面中的烟花视频由 2024/11/02 成田建立70周年花火一同在场的日本摄影师拍摄，并发布于 YouTube，特此鸣谢这位作者的创作与分享。*
+> *页面中的花火翻页特效，即 2024/11/02 成田建立70周年纪念花火大会的最终章：**NARITA的黄金传说**，其原始素材来自网络。*
 
 </section>
 
