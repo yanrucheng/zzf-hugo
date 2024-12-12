@@ -206,14 +206,18 @@ zbb 最终的愿望是做出一个日记平台，我们两人可以把每次旅�
 
 ## 🚧 搭建网页的难处
 
-1. **zbb 本质不是前端开发**： 
+1. **zbb 本质不是前端开发**
    一开始 zbb 花了 14 - 21 天摸索前端开发的技能树，做出来的外观很不好看，严重打击了 zbb 的信心。不过 zbb 想，努力后续就能越做越好。当时 zbb 希望这个网页能比自己的个人网页更好看。
 
-2. **动态网页的运营成本**： 
-   动态网页需要后端服务器，就像一个政府办事大厅，需要有人值班接待每位来访者。一个服务器实例大概需要 ¥50 - 100/月。
+2. **动态网页就像雇了一位全职”店员”**
+   运营一个动态网页的难处，就在于它需要一个“店员”——也就是服务器，全天候在岗。每当有人来到网页，店员就会根据需求去准备信息（提供服务）。但这个店员的工资可不便宜，一个月至少要￥50-100。如果店员很忙（比如访问量大），可能还需要多请几位“助理”，成本一下子就上去了。
 
-3. **静态网页的局限**： 
-   静态网页不需要服务器，但内容是固定的，就像公告栏上的告示。zbb 的最终方案是“自动刷新告示牌”，搭建了一套系统，zz 家只需编辑普通文本，这套系统就会自动生成公告并张贴在网页上。这样 zz 家就可以免费持续更新了。
+3. **静态网页就像一块固定的”公告牌”**
+   相比之下，静态网页的维护成本很低，甚至是免费的。它就像在小区门口挂了一块公告牌，内容一旦写好了，就可以一直挂在那儿，来的人随时都能看到。不需要雇人值班。但问题是，这块公告牌的内容是固定的。如果后续想换内容，得把牌子拿回去重新制作，这就有点麻烦。
+
+4. **zbb的方案是“自动更新的智能公告牌”**
+   zbb最终选择了一种既省钱又方便的先进方案：搭建一个“智能公告牌”系统。zbb只需要在家里用简单的文字编辑器写下新内容，这套系统会自动把文字转换成一份全新的公告，并“神奇”地把它张贴到小区门口的公告牌上。不需要额外雇人值班，还能随时更新内容。这种方式不仅免去了长期的运营成本，还让zbb有更多精力专注在内容创作上。
+
 
 ---
 
@@ -250,22 +254,22 @@ zbb写完了生日页面的第二篇内容，因为总共计划写4篇，所以�
 加入了烟花特效，每一处烟花都是数学的集合。最终挑出了 6 组颜色组合：樱花、海洋微风、日落光线、森林低语、棒棒糖、星空魔法。既然都好看，那就都选上！点击蛋糕可以体验。
 
 ### 🎆 烟花颜色搭配 
-<span style="color: #ff0a54;" class="click-firework-sakura">樱花：</span> <code style="color: #ff0a54;">#ff0a54</code>, <code style="color: #ff477e;">#ff477e</code>, <code style="color: #ff7096;">#ff7096</code>, <code style="color: #ff85a1;">#ff85a1</code>, <code style="color: #fbb1bd;">#fbb1bd</code>, <code style="color: #f9bec7;">#f9bec7</code>
+<span style="color: #ff477e;" class="click-firework-sakura">樱花：</span> <code style="color: #ff0a54;">#ff0a54</code>, <code style="color: #ff477e;">#ff477e</code>, <code style="color: #ff7096;">#ff7096</code>, <code style="color: #ff85a1;">#ff85a1</code>, <code style="color: #fbb1bd;">#fbb1bd</code>, <code style="color: #f9bec7;">#f9bec7</code>
 
-<span style="color: #0077b6;" class="click-firework-ocean">海洋微风：</span> <code style="color: #0077b6;">#0077b6</code>, <code style="color: #00b4d8;">#00b4d8</code>, <code style="color: #90e0ef;">#90e0ef</code>, <code style="color: #caf0f8;">#caf0f8</code>, <code style="color: #ade8f4;">#ade8f4</code>
+<span style="color: #00b4d8;" class="click-firework-ocean">海洋微风：</span> <code style="color: #0077b6;">#0077b6</code>, <code style="color: #00b4d8;">#00b4d8</code>, <code style="color: #90e0ef;">#90e0ef</code>, <code style="color: #caf0f8;">#caf0f8</code>, <code style="color: #ade8f4;">#ade8f4</code>
 
-<span style="color: #ff4500;" class="click-firework-sunset">日落光线：</span> <code style="color: #ff4500;">#ff4500</code>, <code style="color: #ff7f50;">#ff7f50</code>, <code style="color: #ffae42;">#ffae42</code>, <code style="color: #ffd700;">#ffd700</code>, <code style="color: #ffe4b5;">#ffe4b5</code>
+<span style="color: #ff7f50;" class="click-firework-sunset">日落光线：</span> <code style="color: #ff4500;">#ff4500</code>, <code style="color: #ff7f50;">#ff7f50</code>, <code style="color: #ffae42;">#ffae42</code>, <code style="color: #ffd700;">#ffd700</code>, <code style="color: #ffe4b5;">#ffe4b5</code>
 
-<span style="color: #264653;" class="click-firework-forest">森林低语：</span> <code style="color: #264653;">#264653</code>, <code style="color: #2a9d8f;">#2a9d8f</code>, <code style="color: #e9c46a;">#e9c46a</code>, <code style="color: #f4a261;">#f4a261</code>, <code style="color: #e76f51;">#e76f51</code>
+<span style="color: #2a9d8f;" class="click-firework-forest">森林低语：</span> <code style="color: #264653;">#264653</code>, <code style="color: #2a9d8f;">#2a9d8f</code>, <code style="color: #e9c46a;">#e9c46a</code>, <code style="color: #f4a261;">#f4a261</code>, <code style="color: #e76f51;">#e76f51</code>
 
-<span style="color: #ff00e4;" class="click-firework-candy">棒棒糖：</span> <code style="color: #ff00e4;">#ff00e4</code>, <code style="color: #ff80ed;">#ff80ed</code>, <code style="color: #ffb3b3;">#ffb3b3</code>, <code style="color: #ffbdbd;">#ffbdbd</code>, <code style="color: #ffe4e1;">#ffe4e1</code>
+<span style="color: #ff80ed;" class="click-firework-candy">棒棒糖：</span> <code style="color: #ff00e4;">#ff00e4</code>, <code style="color: #ff80ed;">#ff80ed</code>, <code style="color: #ffb3b3;">#ffb3b3</code>, <code style="color: #ffbdbd;">#ffbdbd</code>, <code style="color: #ffe4e1;">#ffe4e1</code>
 
-<span style="color: #3c096c;" class="click-firework-galaxy">星空魔法：</span> <code style="color: #3c096c;">#3c096c</code>, <code style="color: #9d4edd;">#9d4edd</code>, <code style="color: #c77dff;">#c77dff</code>, <code style="color: #e0aaff;">#e0aaff</code>, <code style="color: #ffc6ff;">#ffc6ff</code>
+<span style="color: #9d4edd;" class="click-firework-galaxy">星空魔法：</span> <code style="color: #3c096c;">#3c096c</code>, <code style="color: #9d4edd;">#9d4edd</code>, <code style="color: #c77dff;">#c77dff</code>, <code style="color: #e0aaff;">#e0aaff</code>, <code style="color: #ffc6ff;">#ffc6ff</code>
 
 > **11月25日** 
 zmm 试过点击三联画廊里最左边的视频吗？全屏会有下雪特效哦，猜猜看下雪特效是怎么做的？<strong class="click-snow">下雪特效</strong> 其实就是通过初速度=0的白色、浅灰、浅蓝烟花模拟全屏飘落实现的
 
-<span style="color: #d9d9d9;" class="click-snow">雪花：</span> <code style="color: #d9d9d9;">#d9d9d9</code>, <code style="color: #bfbfbf;">#bfbfbf</code>, <code style="color: #a6a6a6;">#a6a6a6</code>, <code style="color: #e0e6ed;">#e0e6ed</code>, <code style="color: #f2f5fa;">#f2f5fa</code>, <code style="color: #cfd8e5;">#cfd8e5</code>, <code style="color: #bcc9d8;">#bcc9d8</code>
+<span style="color: #a6a6a6;" class="click-snow">雪花：</span> <code style="color: #d9d9d9;">#d9d9d9</code>, <code style="color: #bfbfbf;">#bfbfbf</code>, <code style="color: #a6a6a6;">#a6a6a6</code>, <code style="color: #e0e6ed;">#e0e6ed</code>, <code style="color: #f2f5fa;">#f2f5fa</code>, <code style="color: #cfd8e5;">#cfd8e5</code>, <code style="color: #bcc9d8;">#bcc9d8</code>
 
 > **11月28日** 
 左下角加入了背景音乐的控制器，旋转的音符从矢量图到动画效果都是 zbb 自己实现的。
