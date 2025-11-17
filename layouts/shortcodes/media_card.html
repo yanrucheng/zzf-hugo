@@ -189,10 +189,10 @@
 
 {{- if not (math.ModBool $numParams 5) -}}
   {{- errorf (print
-  "The 'gallery' shortcode requires parameters in groups of 5 (FilePath, Title, Description, Link, Custom Class).\n\n"
+  "The 'media_card' shortcode requires parameters in groups of 5 (FilePath, Title, Description, Link, Custom Class).\n\n"
   "Schema: [FilePath, Title, Description, Link]\n\n"
   "Example:\n"
-  "{{< gallery\n"
+  "{{< media_card\n"
   "  \"hanabi-example.mp4\" \"Hanabi Video\" \"A spectacular fireworks display.\" \"/hanabi/\" _\n"
   "  \"sjk-gyoen-lake.jpg\" \"Serene Lake\" \"A peaceful lake in autumn.\" \"/lake/\" _\n"
   "  \"cityscape.jpg\" \"Urban Nights\" \"The city comes alive at night.\" \"/city/\" \"object-position-0-0\"\n"
