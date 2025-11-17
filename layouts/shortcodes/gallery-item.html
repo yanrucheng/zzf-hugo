@@ -1,0 +1,114 @@
+{{/*
+  Gallery Item Shortcode
+  ----------------------
+  A single media item with hover info effect and configurable aspect ratio.
+  Looks like reveal photographic gallery with no rounded corners.
+
+  Parameters:
+  - src: Path to media file (required)
+  - alt: Alt text for media (optional, defaults to filename)
+  - title: Title text for hover card (optional)
+  - desc: Description text for hover card (optional)
+  - ratio: Aspect ratio class (optional, defaults to 16:9)
+    Available ratios: 2:3, 3:2, 1:1, 16:9, 9:16, 1:2.5, 1:3.5
+  - class: Additional custom classes (optional)
+
+  Usage:
+  {{< gallery-item src="image.jpg" alt="Image" title="My Image" desc="Description" ratio="1:1" >}}
+*/}}
+{{- $src := .Get "src" | default "" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $desc := .Get "desc" | default "" -}}
+{{- $ratio := .Get "ratio" | default "16:9" -}}
+{{- $class := .Get "class" | default "" -}}
+
+{{- if not $src -}}
+  {{- errorf "The 'gallery-item' shortcode requires a 'src' parameter." -}}
+{{- end -}}
+
+{{- $fileName := path.Base $src -}}
+{{- $alt := cond (not $alt) (humanize (strings.TrimSuffix (path.Ext $fileName) $fileName)) $alt -}}
+
+{{- $ratioClass := "aspect-video" -}}
+{{- if eq $ratio "2:3" -}}
+  {{- $ratioClass = "aspect-[2/3]" -}}
+{{- else if eq $ratio "3:2" -}}
+  {{- $ratioClass = "aspect-[3/2]" -}}
+{{- else if eq $ratio "1:1" -}}
+  {{- $ratioClass = "aspect-square" -}}
+{{- else if eq $ratio "16:9" -}}
+  {{- $ratioClass = "aspect-video" -}}
+{{- else if eq $ratio "9:16" -}}
+  {{- $ratioClass = "aspect-[9/16]" -}}
+{{- else if eq $ratio "1:2.5" -}}
+  {{- $ratioClass = "aspect-[1/2.5]" -}}
+{{- else if eq $ratio "1:3.5" -}}
+  {{- $ratioClass = "aspect-[1/3.5]" -}}
+{{- end -}}
+
+{{- $mediaType := "" -}}
+{{- $resource := .Page.Resources.GetMatch $src -}}
+{{- $isVideo := false -}}
+
+{{- with $resource -}}
+  {{- $mediaType = .ResourceType -}}
+  {{- if eq $mediaType "video" -}}
+    {{- $isVideo = true -}}
+  {{- end -}}
+{{- else -}}
+  {{- $ext := path.Ext $src -}}
+  {{- $videoExts := slice ".mp4" ".webm" ".ogg" ".mov" -}}
+  {{- $isVideo = in $videoExts $ext -}}
+{{- end -}}
+
+<div class="gallery-item relative overflow-hidden {{ $ratioClass }} {{ $class }}">
+  <figure class="m-0 h-full w-full">
+    {{- if $isVideo -}}
+      {{- if $resource -}}
+        <video
+          src="{{ $resource.RelPermalink }}"
+          alt="{{ $alt }}"
+          preload="lazy"
+          muted
+          playsinline
+          class="gallery-media h-full w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+        ></video>
+      {{- else -}}
+        <video
+          src="{{ $src }}"
+          alt="{{ $alt }}"
+          preload="lazy"
+          muted
+          playsinline
+          class="gallery-media h-full w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+        ></video>
+      {{- end -}}
+    {{- else -}}
+      {{- if $resource -}}
+        <img
+          src="{{ $resource.RelPermalink }}"
+          alt="{{ $alt }}"
+          class="gallery-media h-full w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+        >
+      {{- else -}}
+        <img
+          src="{{ $src }}"
+          alt="{{ $alt }}"
+          class="gallery-media h-full w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+        >
+      {{- end -}}
+    {{- end -}}
+
+    {{- if or $title $desc -}}
+      <figcaption class="gallery-caption absolute left-0 right-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 transition-opacity duration-300 hover:opacity-100">
+        {{- with $title -}}
+          <h3 class="text-lg font-semibold mb-1">{{ . }}</h3>
+        {{- end -}}
+        {{- with $desc -}}
+          <p class="text-sm">{{ . }}</p>
+        {{- end -}}
+      </figcaption>
+    {{- end -}}
+  </figure>
+</div>

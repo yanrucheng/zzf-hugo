@@ -1,5 +1,5 @@
 title: Home of ZhuZhu
-baseURL: https://zhuzhu.family/zzf-hugo
+baseURL: https://zhuzhu.family/
 languageCode: en-us
 theme:
   - ananke
@@ -32,6 +32,7 @@ params:
     - custom-class.scss
     - font.scss
     - scroll-trigger.css
+    - css/gallery.css
     - "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" # progress bar
   custom_js:
     - img.js

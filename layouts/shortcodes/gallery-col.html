@@ -1,0 +1,29 @@
+{{/*
+  Gallery Column Shortcode
+  ------------------------
+  A vertical container that can hold multiple gallery rows, used for creating
+  hierarchical layouts. For example, a 2-column row where each column contains
+  a vertical stack of items.
+
+  Parameters:
+  - gap: Gap between items/rows in the column (optional, defaults to 1rem)
+  - class: Additional custom classes (optional)
+
+  Usage:
+  {{< gallery-row cols="2" >}}
+    {{< gallery-col >}}
+      {{< gallery-item src="image1.jpg" ratio="2:3" >}}
+      {{< gallery-item src="image2.jpg" ratio="2:3" >}}
+    {{< /gallery-col >}}
+    {{< gallery-col >}}
+      {{< gallery-item src="image3.jpg" ratio="2:3" >}}
+      {{< gallery-item src="image4.jpg" ratio="2:3" >}}
+    {{< /gallery-col >}}
+  {{< /gallery-row >}}
+*/}}
+{{- $gap := .Get "gap" | default "1rem" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<div class="gallery-col flex flex-col gap-{{ replace $gap "rem" "" }} {{ $class }}">
+  {{- .Inner -}}
+</div>
