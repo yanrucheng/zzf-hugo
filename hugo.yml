@@ -48,7 +48,7 @@ params:
     - js/canvas-confetti.js
     # scroll effect
     # - "https://cdn.jsdelivr.net/npm/@terwanerik/scrolltrigger@1.0.5/dist/ScrollTrigger.min.js"
-    - "https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/ScrollTrigger/1.0.5/ScrollTrigger.min.js"
+    - js/ScrollTrigger.min.js
   # possible values are: noto-sans, josefin-sans, poppins
   primary_font: &font poppins # used as default font. 
   secondary_font: *font # not specified yet
