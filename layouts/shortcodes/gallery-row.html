@@ -16,7 +16,7 @@
   {{< /gallery-row >}}
 */}}
 {{- $cols := .Get "cols" | default "3" -}}
-{{- $gap := .Get "gap" | default "1rem" -}}
+{{- $gap := .Get "gap" | default "1" -}}
 {{- $class := .Get "class" | default "" -}}
 
 {{- $colSpan := "grid-cols-3" -}}
@@ -28,6 +28,6 @@
   {{- $colSpan = "grid-cols-3" -}}
 {{- end -}}
 
-<div class="gallery-row grid {{ $colSpan }} gap-{{ replace $gap "rem" "" }} items-stretch {{ $class }}">
+<div class="gallery-row grid {{ $colSpan }} gap-{{ $gap }} items-stretch {{ $class }}">
   {{- .Inner -}}
 </div>

@@ -5,6 +5,9 @@
     display: grid;
     gap: 0.5rem; /* Reduced default gap */
     margin-bottom: 0.5rem; /* Reduced margin */
+    /* Ensure all direct children (items or cols) match height */
+    align-items: stretch;
+    justify-items: stretch;
 }
 
 /* Gap classes */
@@ -51,6 +54,13 @@
     flex-direction: column;
     gap: 1rem;
     height: 100%;
+    /* Ensure columns match siblings in height */
+    align-self: stretch;
+    /* For nested rows, ensure they fill available space proportionally */
+    > .gallery-row {
+        flex: 1 1 auto;
+        min-height: 0; /* Prevent overflow issues */
+    }
 }
 
 /* Flex utility classes */
@@ -71,10 +81,11 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    height: 100%; /* Ensure full height in row */
-    width: 100%; /* Ensure full width in column */
+    width: 100%; /* Ensure full width in all containers */
     display: flex;
     align-items: stretch;
+    /* Ensure proper containment */
+    box-sizing: border-box;
 }
 
 /* Aspect ratios */
@@ -121,8 +132,10 @@
     display: block;
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: cover; /* This will crop images to fit the ratio while maintaining aspect */
     transition: transform 0.3s ease-in-out;
+    /* Ensure no accidental gaps */
+    box-sizing: border-box;
 }
 
 .gallery-item:hover .gallery-media {
