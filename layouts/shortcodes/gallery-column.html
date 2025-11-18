@@ -1,0 +1,61 @@
+{{/*
+  Gallery Column Shortcode
+  -----------------------
+  A vertical container for gallery items with consistent width across all items.
+  Can contain 1 or more gallery rows or items.
+
+  Parameters:
+  - rows: Not used directly, items stack vertically by default
+  - gap: Gap between items (optional, defaults to 1rem)
+  - class: Additional custom classes (optional)
+  - ratio-layout: Enable ratio-based layout with uniform column width (optional, defaults to false)
+  - height-controlled: Enable height-controlled layout with items fitting within container height (optional, defaults to false)
+  - width: Column width for ratio-based layout (optional, defaults to 500px)
+
+  Layout Types:
+  1. Grid Layout (default - responsive, even height distribution)
+     - Items have the same width (100% of container)
+     - Aspect ratio controls the height of items
+     - Best for items with the same aspect ratio
+
+  2. Ratio-Based Layout (fixed width, variable height)
+     - Items have the same width (fixed by width parameter)
+     - Height is automatically calculated based on aspect ratio
+     - Maintains consistent column width
+  {{< gallery-column ratio-layout="true" width="300px" >}}
+    {{< gallery-item src="image1.jpg" ratio="16:9" >}}
+    {{< gallery-item src="image2.jpg" ratio="3:2" >}}
+  {{< /gallery-column >}}
+
+  3. Height-Controlled Layout (fixed container height, variable width)
+     - Items fit within container height without overflow
+     - Width is automatically calculated based on aspect ratio and container height
+     - Items maintain their aspect ratios
+  {{< gallery-column height-controlled="true" height="800px" >}}
+    {{< gallery-item src="image1.jpg" ratio="16:9" >}}
+    {{< gallery-item src="image2.jpg" ratio="3:2" >}}
+  {{< /gallery-column >}}
+*/}}
+{{- $rows := .Get "rows" | default "auto" -}}
+{{- $gap := .Get "gap" | default "1" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $ratioLayout := .Get "ratio-layout" | default "false" -}}
+{{- $heightControlled := .Get "height-controlled" | default "false" -}}
+{{- $width := .Get "width" | default "500px" -}}
+{{- $height := .Get "height" | default "100%" -}}
+
+{{- /* Layout selection */ -}}
+
+{{- if eq $ratioLayout "true" -}}
+  <div class="gallery-col ratio-layout gap-{{ $gap }} {{ $class }}" style="width: {{ $width }};">
+{{- else if eq $heightControlled "true" -}}
+  {{- /* Handle height style */ -}}
+  {{- $style := slice -}}
+  {{- $style = $style | append (printf "height: %s" $height) -}}
+  {{- $styleAttr := cond (gt (len $style) 0) (printf "style=\"%s\"" (delimit $style "; ")) "" -}}
+  <div class="gallery-col height-controlled gap-{{ $gap }} {{ $class }}" {{ $styleAttr | safeHTMLAttr }}>
+{{- else -}}
+  <div class="gallery-col gap-{{ $gap }} {{ $class }}">
+{{- end -}}
+  {{- .Inner -}}
+</div>

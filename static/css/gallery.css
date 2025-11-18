@@ -118,6 +118,48 @@
     }
 }
 
+/* Ratio-based column layout - Fixed width, variable height */
+.gallery-col.ratio-layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: inherit;
+}
+
+/* Height-controlled layout - Fixed height (container), variable width */
+.gallery-col.height-controlled {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+/* Calculate dimensions based on aspect ratio for fixed-width column layout */
+.gallery-col.ratio-layout > .gallery-item {
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: var(--rw)/var(--rh) !important;
+}
+
+/* Calculate dimensions for height-controlled column layout */
+.gallery-col.height-controlled > .gallery-item {
+    /* Set base height and let flex grow handle the rest */
+    flex: calc(var(--rh) / var(--rw)) 1 0;
+    min-height: 0; /* Prevent overflow */
+    aspect-ratio: var(--rw)/var(--rh) !important;
+}
+
+/* Nested rows inside ratio-based columns */
+.gallery-col.ratio-layout > .gallery-row {
+    width: 100%;
+}
+
+/* Nested rows inside height-controlled columns */
+.gallery-col.height-controlled > .gallery-row {
+    flex: calc(var(--rh) / var(--rw)) 1 0;
+    min-height: 0; /* Prevent overflow */
+}
+
 /* Flex utility classes */
 .flex {
     display: flex !important;
