@@ -8,16 +8,29 @@
   - cols: Number of columns (1-3, optional, defaults to 3)
   - gap: Gap between items (optional, defaults to 1rem)
   - class: Additional custom classes (optional)
+  - ratio-layout: Enable ratio-based layout with uniform row height (optional, defaults to false)
+  - height: Row height for ratio-based layout (optional, defaults to 500px)
 
   Usage:
+
+  1. Grid Layout (default - responsive, even width distribution)
   {{< gallery-row cols="2" >}}
     {{< gallery-item src="image1.jpg" ratio="3:2" >}}
     {{< gallery-item src="image2.jpg" ratio="3:2" >}}
+  {{< /gallery-row >}}
+
+  2. Ratio-Based Layout (fixed row height, items sized by aspect ratio)
+  {{< gallery-row ratio-layout="true" height="600px" >}}
+    {{< gallery-item src="image1.jpg" ratio="16:9" >}}
+    {{< gallery-item src="image2.jpg" ratio="3:2" >}}
+    {{< gallery-item src="image3.jpg" ratio="1:1" >}}
   {{< /gallery-row >}}
 */}}
 {{- $cols := .Get "cols" | default "3" -}}
 {{- $gap := .Get "gap" | default "1" -}}
 {{- $class := .Get "class" | default "" -}}
+{{- $ratioLayout := .Get "ratio-layout" | default "false" -}}
+{{- $height := .Get "height" | default "500px" -}}
 
 {{- $colSpan := "grid-cols-3" -}}
 {{- if eq $cols "1" -}}
@@ -28,6 +41,11 @@
   {{- $colSpan = "grid-cols-3" -}}
 {{- end -}}
 
-<div class="gallery-row grid {{ $colSpan }} gap-{{ $gap }} items-stretch {{ $class }}">
+{{- /* Ratio-based layout */ -}}
+{{- if eq $ratioLayout "true" -}}
+  <div class="gallery-row ratio-layout gap-{{ $gap }} {{ $class }}" style="height: {{ $height }};">
+{{- else -}}
+  <div class="gallery-row grid {{ $colSpan }} gap-{{ $gap }} items-stretch {{ $class }}">
+{{- end -}}
   {{- .Inner -}}
 </div>
