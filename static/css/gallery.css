@@ -29,7 +29,8 @@
 /* Calculate dimensions based on aspect ratio */
 .gallery-row.ratio-layout > .gallery-item {
     height: 100%;
-    aspect-ratio: var(--rw)/var(--rh);
+    width: auto !important;
+    aspect-ratio: var(--rw)/var(--rh) !important;
 }
 
 /* For nested galleries, calculate widths appropriately */
@@ -153,11 +154,6 @@
     aspect-ratio: 1 / 3.5 !important;
 }
 
-/* Ensure aspect ratio works in ratio-layout mode */
-.gallery-row.ratio-layout > .gallery-item {
-    aspect-ratio: var(--rw) / var(--rh) !important;
-    height: 100%;
-}
 
 /* Ensure figure element stretches in gallery item */
 .gallery-item > figure {
