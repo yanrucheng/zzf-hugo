@@ -10,7 +10,7 @@
     justify-items: stretch;
 }
 
-/* Ratio-based row layout */
+/* Ratio-based row layout - Fixed height, variable width */
 .gallery-row.ratio-layout {
     display: flex;
     align-items: stretch;
@@ -19,6 +19,16 @@
     max-height: 100vh; /* Prevent overflow beyond viewport */
     width: 100%;
     box-sizing: border-box; /* Ensure consistent sizing */
+    overflow-x: auto; /* Handle overflow if needed */
+}
+
+/* Width-controlled layout - Fixed width (container), variable height */
+.gallery-row.width-controlled {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box; /* Ensure consistent sizing */
+    /* Let height be determined by content */
 }
 
 .gallery-row.ratio-layout > .gallery-item,
@@ -26,10 +36,18 @@
     flex-shrink: 0;
 }
 
-/* Calculate dimensions based on aspect ratio */
+/* Calculate dimensions based on aspect ratio for fixed-height layout */
 .gallery-row.ratio-layout > .gallery-item {
     height: 100%;
     width: auto !important;
+    aspect-ratio: var(--rw)/var(--rh) !important;
+}
+
+/* Calculate dimensions for width-controlled layout */
+.gallery-row.width-controlled > .gallery-item {
+    /* Set base width and let flex grow handle the rest */
+    flex: calc(var(--rw) / var(--rh)) 1 0;
+    min-width: 0; /* Prevent overflow */
     aspect-ratio: var(--rw)/var(--rh) !important;
 }
 

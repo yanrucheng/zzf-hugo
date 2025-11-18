@@ -9,6 +9,7 @@
   - gap: Gap between items (optional, defaults to 1rem)
   - class: Additional custom classes (optional)
   - ratio-layout: Enable ratio-based layout with uniform row height (optional, defaults to false)
+  - width-controlled: Enable width-controlled layout with items fitting within container width (optional, defaults to false)
   - height: Row height for ratio-based layout (optional, defaults to 500px)
 
   Layout Types:
@@ -26,9 +27,20 @@
   2. Ratio-Based Layout (fixed row height, items sized by aspect ratio)
      - Items have the same height (fixed by height parameter)
      - Width is automatically calculated based on aspect ratio
-     - Best for items with different aspect ratios
+     - Can cause horizontal overflow if container is too narrow
      - Maintains consistent row height
   {{< gallery-row ratio-layout="true" height="600px" >}}
+    {{< gallery-item src="image1.jpg" ratio="16:9" >}}
+    {{< gallery-item src="image2.jpg" ratio="3:2" >}}
+    {{< gallery-item src="image3.jpg" ratio="1:1" >}}
+  {{< /gallery-row >}}
+
+  3. Width-Controlled Layout (fixed container width, dynamic height)
+     - Items fit within container width without overflow
+     - Height is automatically calculated based on aspect ratio and container width
+     - Items maintain their aspect ratios
+     - Best for responsive designs where horizontal overflow is not desired
+  {{< gallery-row width-controlled="true" >}}
     {{< gallery-item src="image1.jpg" ratio="16:9" >}}
     {{< gallery-item src="image2.jpg" ratio="3:2" >}}
     {{< gallery-item src="image3.jpg" ratio="1:1" >}}
@@ -38,6 +50,7 @@
 {{- $gap := .Get "gap" | default "1" -}}
 {{- $class := .Get "class" | default "" -}}
 {{- $ratioLayout := .Get "ratio-layout" | default "false" -}}
+{{- $widthControlled := .Get "width-controlled" | default "false" -}}
 {{- $height := .Get "height" | default "500px" -}}
 
 {{- $colSpan := "grid-cols-3" -}}
@@ -49,9 +62,11 @@
   {{- $colSpan = "grid-cols-3" -}}
 {{- end -}}
 
-{{- /* Ratio-based layout */ -}}
+{{- /* Layout selection */ -}}
 {{- if eq $ratioLayout "true" -}}
   <div class="gallery-row ratio-layout gap-{{ $gap }} {{ $class }}" style="height: {{ $height }};">
+{{- else if eq $widthControlled "true" -}}
+  <div class="gallery-row width-controlled gap-{{ $gap }} {{ $class }}">
 {{- else -}}
   <div class="gallery-row grid {{ $colSpan }} gap-{{ $gap }} items-stretch {{ $class }}">
 {{- end -}}
