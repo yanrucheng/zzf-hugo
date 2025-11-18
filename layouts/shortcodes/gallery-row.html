@@ -50,7 +50,7 @@
 {{- $gap := .Get "gap" | default "1" -}}
 {{- $class := .Get "class" | default "" -}}
 {{- $ratioLayout := .Get "ratio-layout" | default "false" -}}
-{{- $widthControlled := .Get "width-controlled" | default "false" -}}
+{{- $width := .Get "width" | default "" -}}
 {{- $height := .Get "height" | default "500px" -}}
 
 {{- $colSpan := "grid-cols-3" -}}
@@ -63,12 +63,18 @@
 {{- end -}}
 
 {{- /* Layout selection */ -}}
+
 {{- if eq $ratioLayout "true" -}}
   <div class="gallery-row ratio-layout gap-{{ $gap }} {{ $class }}" style="height: {{ $height }};">
-{{- else if eq $widthControlled "true" -}}
-  <div class="gallery-row width-controlled gap-{{ $gap }} {{ $class }}">
 {{- else -}}
-  <div class="gallery-row grid {{ $colSpan }} gap-{{ $gap }} items-stretch {{ $class }}">
+  {{- /* Handle width style */ -}}
+  {{- $style := slice -}}
+  {{- if ne $width "" -}}
+    {{- $style = $style | append (printf "width: %s" $width) -}}
+  {{- end -}}
+  {{- $styleAttr := cond (gt (len $style) 0) (printf "style=\"%s\"" (delimit $style "; ")) "" -}}
+
+  <div class="gallery-row width-controlled gap-{{ $gap }} {{ $class }}" {{ $styleAttr | safeHTMLAttr }}>
 {{- end -}}
   {{- .Inner -}}
 </div>
