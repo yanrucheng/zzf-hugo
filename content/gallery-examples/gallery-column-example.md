@@ -8,6 +8,8 @@ date: 2025-01-01
 ## Test 1: Basic Gallery Column
 Vertical stack of items with consistent width:
 
+<!--more-->
+
 {{< gallery-column >}}
   {{< gallery-item src="https://picsum.photos/id/1018/800/600" title="3:2 Aspect Ratio" ratio="3:2" >}}
   {{< gallery-item src="https://picsum.photos/id/1036/800/800" title="1:1 Aspect Ratio" ratio="1:1" >}}
