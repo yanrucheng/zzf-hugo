@@ -17,11 +17,13 @@
       {{ if .Site.Menus.main }}
         <ul class="{{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
           {{ range .Site.Menus.main }}
+          {{ if ne .Page.Section "gallery-examples" }}
           <li class="list f3 f3-ns fw3 dib {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
             <a class="hover-white no-underline white-90 font-align" href="{{ .URL }}" title="{{ i18n "pageTitle" . }}">
               {{ .Name }}
             </a>
           </li>
+          {{ end }}
           {{ end }}
         </ul>
       {{ end }}
