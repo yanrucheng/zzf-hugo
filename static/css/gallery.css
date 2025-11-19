@@ -3,8 +3,8 @@
 /* Gallery Row - Horizontal container for gallery items */
 .gallery-row {
     display: grid;
-    gap: 0.5rem; /* Reduced default gap */
-    margin-bottom: 0.5rem; /* Reduced margin */
+    gap: 1rem; /* Doubled default gap */
+    margin-bottom: 1rem; /* Doubled margin */
     /* Ensure all direct children (items or cols) match height */
     align-items: stretch;
     justify-items: stretch;
@@ -71,23 +71,23 @@
 }
 
 .gap-1 {
-    gap: 0.25rem !important;
-}
-
-.gap-2 {
     gap: 0.5rem !important;
 }
 
-.gap-3 {
+.gap-2 {
     gap: 1rem !important;
 }
 
+.gap-3 {
+    gap: 2rem !important;
+}
+
 .gap-4 {
-    gap: 1.5rem !important;
+    gap: 3rem !important;
 }
 
 .gap-5 {
-    gap: 3rem !important;
+    gap: 6rem !important;
 }
 
 /* Column spans */
