@@ -19,3 +19,8 @@ cascade:
 ---
 
 🐷🐷 回家咯
+
+## Gallery Examples
+
+[Explore our gallery system examples](/gallery-examples/)
+
