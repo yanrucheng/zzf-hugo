@@ -41,3 +41,20 @@ Testing new aspect ratios with decimals:
   {{< gallery-item src="https://picsum.photos/id/1047/500/1250" title="1:2.5 Aspect Ratio" ratio="1:2.5" >}}
   {{< gallery-item src="https://picsum.photos/id/1025/350/1225" title="1:3.5 Aspect Ratio" ratio="1:3.5" >}}
 {{< /gallery-row >}}
+
+
+{{< gallery-row >}}
+  {{< gallery-column >}}
+    {{< gallery-item src="https://picsum.photos/id/1025/350/1225" title="1:3.5 Aspect Ratio" ratio="1:3.5" >}}
+    {{< gallery-item src="https://picsum.photos/id/1025/350/1225" title="1:3.5 Aspect Ratio" ratio="1:1" >}}
+  {{< /gallery-column >}}
+  {{< gallery-column >}}
+    {{< gallery-item src="https://picsum.photos/id/1025/350/1225" title="1:3.5 Aspect Ratio" ratio="1:1" >}}
+    {{< gallery-item src="https://picsum.photos/id/1025/350/1225" title="1:3.5 Aspect Ratio" ratio="1:3.5" >}}
+  {{< /gallery-column >}}
+{{< /gallery-row >}}
+
+
+
+
+
