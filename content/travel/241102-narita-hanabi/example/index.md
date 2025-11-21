@@ -48,12 +48,12 @@ draft: true
 
 ---
 
-{{< live-photo src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/hanabi-girl-scroll.mp4" mode="click" />}}
+{{< live-photo src="https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/hanabi-girl-scroll.mp4" mode="click" />}}
 
-{{< live-photo src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/hanabi-girl-scroll.mp4" mode="loop" />}}
+{{< live-photo src="https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/hanabi-girl-scroll.mp4" mode="loop" />}}
 
-{{< video src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/hanabi-girl.mp4" >}}
+{{< video src="https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/hanabi-girl.mp4" >}}
 
 <!--
-{{< video src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/IMG_0665.mp4" controls="false" preload="auto" autoplay="true" loop="true" muted="true" >}}
+{{< video src="https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/IMG_0665.mp4" controls="false" preload="auto" autoplay="true" loop="true" muted="true" >}}
 -->

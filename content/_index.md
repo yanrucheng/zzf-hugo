@@ -9,7 +9,7 @@ cascade:
   # featured_image: '/images/heroes/240608-shibuyasky-night_full-landscape_q90_cropped.webp' # 8
   # featured_image: '/images/heroes/240610-fuji-up_full-landscape_q90_cropped.webp' # 7.5
   # featured_image: '/images/heroes/240611-yoyogi-near_full-landscape_q90_cropped.webp' # 8
-  featured_image: '/images/heroes/241102-naritahanabi-zmm_full-landscape_q90_cropped.webp' # 8
+  featured_image: 'https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/site-assets/images/heroes/241102-naritahanabi-zmm_full-landscape_q90_cropped.webp' # 8
   # featured_image: '/images/heroes/241102-naritahanabi-both-ip14_full-landscape_q90_cropped.webp' # 8
   featured_image_class: bg-center
 

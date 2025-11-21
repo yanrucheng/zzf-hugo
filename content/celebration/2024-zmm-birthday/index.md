@@ -7,7 +7,7 @@ description: |
 date: 2024-10-13
 type: celebration
 layout: 2024-zmm-birthday
-featured_image: "scene/hasedera-temple-sea-city_full-landscape_q100_cropped.jpg"
+featured_image: "https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/scene/hasedera-temple-sea-city_full-landscape_q100_cropped.jpg"
 featured_image_class: bg-left
 custom_class:
   background_color_class: bg-light-silver
@@ -17,7 +17,7 @@ custom_class:
 
 <!--more-->
 
-{{< bg-music src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/audio/snowbreak-bgm.opus" >}}
+{{< bg-music src="https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/audio/snowbreak-bgm.opus" >}}
 
 <section data-slideInLeft>
 
@@ -55,7 +55,7 @@ custom_class:
 
 </section>
 
-{{< scroll-img src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/scene/sjk-gyoen-lake.jpg"
+{{< scroll-img src="https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/scene/sjk-gyoen-lake.jpg"
   grayout="true"
   parallax="true"
   class="full-width"
@@ -114,7 +114,7 @@ custom_class:
 
 </section>
 
-{{< scroll-img src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/portrait/sjk-gyoen-lake-girl.jpg"
+{{< scroll-img src="https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/portrait/sjk-gyoen-lake-girl.jpg"
   parallax="true"
   class="centered-60vw-l full-width"
   parallax_speed=0
@@ -133,7 +133,7 @@ custom_class:
 
 </section>
 
-{{< scroll-img src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/portrait/changgusi-girl-forest.jpg"
+{{< scroll-img src="https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/portrait/changgusi-girl-forest.jpg"
   parallax="true"
   class="full-width"
   parallax_speed=0
@@ -156,10 +156,11 @@ custom_class:
 
 </section>
 
-{{< live-photo 
-  src = "hanabi/11-goldtale-1026.mp4"
-  mode = "scroll-full" 
+{{< live-photo
+  src = "https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/hanabi/11-goldtale-1026.mp4"
+  mode = "scroll-full"
   custom_class = "white txt-shdw-black-60"
+  skip_file_exist_check = "true"
 >}}
 从点亮到绽放
 每一道光影
@@ -169,7 +170,7 @@ custom_class:
 # 樊樊 生日快乐
 {.justify-center .flex .click-confetti}
 
-![Birthday cake](/scene/cake.jpg "Happy birthday!")
+![Birthday cake](https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/scene/cake.jpg "Happy birthday!")
 {.fade-image .click-firework .in-view-firework}
 
 
