@@ -63,6 +63,8 @@ params:
   background_color_class: bg-washed-red
   featured_image_class: cover bg-top
   cover_dimming_class: bg-black-50
+  # CDN Configuration for media resources
+  cdnBaseUrl: "https://cdn.zhuzhu.family"
 
 sitemap:
   changefreq: monthly

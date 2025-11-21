@@ -17,7 +17,7 @@ custom_class:
 
 <!--more-->
 
-{{< bg-music src="audio/snowbreak-bgm.opus" >}}
+{{< bg-music src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/audio/snowbreak-bgm.opus" >}}
 
 <section data-slideInLeft>
 
@@ -55,7 +55,7 @@ custom_class:
 
 </section>
 
-{{< scroll-img src="scene/sjk-gyoen-lake.jpg"
+{{< scroll-img src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/scene/sjk-gyoen-lake.jpg"
   grayout="true"
   parallax="true"
   class="full-width"
@@ -114,7 +114,7 @@ custom_class:
 
 </section>
 
-{{< scroll-img src="portrait/sjk-gyoen-lake-girl.jpg"
+{{< scroll-img src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/portrait/sjk-gyoen-lake-girl.jpg"
   parallax="true"
   class="centered-60vw-l full-width"
   parallax_speed=0
@@ -133,7 +133,7 @@ custom_class:
 
 </section>
 
-{{< scroll-img src="portrait/changgusi-girl-forest.jpg"
+{{< scroll-img src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/portrait/changgusi-girl-forest.jpg"
   parallax="true"
   class="full-width"
   parallax_speed=0

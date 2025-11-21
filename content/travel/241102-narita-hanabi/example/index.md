@@ -48,12 +48,12 @@ draft: true
 
 ---
 
-{{< live-photo src="hanabi-girl-scroll.mp4" mode="click" />}}
+{{< live-photo src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/hanabi-girl-scroll.mp4" mode="click" />}}
 
-{{< live-photo src="hanabi-girl-scroll.mp4" mode="loop" />}}
+{{< live-photo src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/hanabi-girl-scroll.mp4" mode="loop" />}}
 
-{{< video src="hanabi-girl." >}}
+{{< video src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/hanabi-girl.mp4" >}}
 
 <!--
-{{< video src="IMG_0665.mp4" controls="false" preload="auto" autoplay="true" loop="true" muted="true" >}}
+{{< video src="https://cdn.zhuzhu.family/zzf-hugo-media/content-assets/travel/241102-narita-hanabi/example/IMG_0665.mp4" controls="false" preload="auto" autoplay="true" loop="true" muted="true" >}}
 -->
