@@ -22,8 +22,8 @@ languages:
 params:
   text_color: ""
   author: ""
-  favicon: "images/piggy-face.png"
-  site_logo: "images/piggy-bank-outline.svg"
+  favicon: "https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/site-assets/images/piggy-face.png"
+  site_logo: "https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/site-assets/images/piggy-bank-outline.svg"
   site_logo_text: Home
   description: Gather ye rosebuds while ye may, Old Time is still a-flying.
   recent_posts_number: 4
@@ -44,6 +44,7 @@ params:
     # scrolly video
     # - "https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js"
     - js/scrolly-video.js
+    - js/scroll-video-loading.js
     # confetti effect
     # - "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"
     - js/canvas-confetti.js
@@ -64,7 +65,7 @@ params:
   featured_image_class: cover bg-top
   cover_dimming_class: bg-black-50
   # CDN Configuration for media resources
-  cdnBaseUrl: "https://cdn.zhuzhu.family"
+  cdnBaseUrl: "https://pub-651b791e1cf04a48934616971e0729de.r2.dev"
 
 sitemap:
   changefreq: monthly
