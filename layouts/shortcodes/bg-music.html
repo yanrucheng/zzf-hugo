@@ -1,9 +1,21 @@
 {{- $src := .Get "src" -}}
-{{- with .Page.Resources.GetMatch $src -}}
+
+{{- /* Check if src is an external URL */ -}}
+{{- $isExternal := or (hasPrefix $src "http://") (hasPrefix $src "https://") -}}
+
+{{- /* Render audio element for external URLs or local resources */ -}}
+{{- if $isExternal -}}
   <audio id="bg_music" loop>
-    <source src="{{ .RelPermalink }}" type="audio/mpeg">
+    <source src="{{ $src }}" type="audio/ogg; codecs=opus">
     Your browser does not support the audio element.
   </audio>
+{{- else -}}
+  {{- with .Page.Resources.GetMatch $src -}}
+    <audio id="bg_music" loop>
+      <source src="{{ .RelPermalink }}" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  {{- end -}}
 {{- end -}}
 
 <div id="music_toggle" class="fixed bottom-1 left-1 z-5 pa2">
@@ -34,13 +46,19 @@
     // Set initial volume to 20%
     const bgm_volume = 0.06;
     const bgm_toggle_ease_time_ms = 1500;
-    bg_music.volume = bgm_volume;
+
+    // Check if bg_music exists before accessing properties
+    if (bg_music) {
+      bg_music.volume = bgm_volume;
+    }
 
     // Initialize audio state
     let is_playing = false;
 
     // Smooth volume transition
     const smooth_volume_change = (target_volume, duration) => {
+      if (!bg_music) return; // Return early if bg_music doesn't exist
+
       const step = (target_volume - bg_music.volume) / (duration / 50); // 50ms steps
       const interval = setInterval(() => {
         bg_music.volume = Math.min(Math.max(bg_music.volume + step, 0), 1); // Clamp between 0 and 1
@@ -51,20 +69,22 @@
     };
 
     // Toggle music play/pause with smooth volume transition
-    music_icon_svg.addEventListener('click', function () {
-      if (is_playing) {
-        music_icon_svg.style.animationPlayState = 'paused'; // Pause rotation
-        smooth_volume_change(0, bgm_toggle_ease_time_ms); // Fade out
-        setTimeout(() => {
-          bg_music.pause();
-        }, bgm_toggle_ease_time_ms);
-      } else {
-        bg_music.play();
-        music_icon_svg.style.animationPlayState = 'running'; // Resume rotation
-        smooth_volume_change(bgm_volume, bgm_toggle_ease_time_ms); // Fade in
-      }
-      is_playing = !is_playing;
-    });
+    if (music_icon_svg && bg_music) { // Check if both elements exist
+      music_icon_svg.addEventListener('click', function () {
+        if (is_playing) {
+          music_icon_svg.style.animationPlayState = 'paused'; // Pause rotation
+          smooth_volume_change(0, bgm_toggle_ease_time_ms); // Fade out
+          setTimeout(() => {
+            bg_music.pause();
+          }, bgm_toggle_ease_time_ms);
+        } else {
+          bg_music.play();
+          music_icon_svg.style.animationPlayState = 'running'; // Resume rotation
+          smooth_volume_change(bgm_volume, bgm_toggle_ease_time_ms); // Fade in
+        }
+        is_playing = !is_playing;
+      });
+    }
   });
 </script>
 

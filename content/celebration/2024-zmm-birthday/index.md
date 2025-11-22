@@ -161,6 +161,7 @@ custom_class:
   mode = "scroll-full"
   custom_class = "white txt-shdw-black-60"
   skip_file_exist_check = "true"
+  use_webcodecs = "false"
 >}}
 从点亮到绽放
 每一道光影
