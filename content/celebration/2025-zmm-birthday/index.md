@@ -7,6 +7,7 @@ description: |
 date: 2025-10-13
 type: celebration
 layout: 2025-zmm-birthday
+draft: true
 featured_image: "https://pub-651b791e1cf04a48934616971e0729de.r2.dev/zzf-hugo-media/content-assets/celebration/2024-zmm-birthday/scene/hasedera-temple-sea-city_full-landscape_q100_cropped.jpg"
 featured_image_class: bg-left
 custom_class:
