@@ -16,6 +16,14 @@
 {{- $unsupportedfile := true -}}
 {{- $skip_file_exist_check := eq ($params.skip_file_exist_check | default "false") "true" -}}
 
+{{- /* Check if video_src is a remote URL */ -}}
+{{- $isRemote := or (strings.HasPrefix $video_src "http://") (strings.HasPrefix $video_src "https://") -}}
+
+{{- /* If it's a remote URL, automatically skip file exist check */ -}}
+{{- if $isRemote -}}
+  {{- $skip_file_exist_check = true -}}
+{{- end -}}
+
 {{- /* Find all files with filename (without suffix) matching "src" parameter. */ -}}
 {{- $video_files := $params.page.Resources.Match (printf "%s*" $video_src) -}}
 

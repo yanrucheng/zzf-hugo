@@ -209,39 +209,78 @@
   {{- $link := index $params (math.Add $i 3) -}}
   {{- $class := index $params (math.Add $i 4) -}}
 
-  {{- with $.Page.Resources.GetMatch $filePath -}}
-    {{- $type := .ResourceType -}}
-    <article class="card__article {{ if eq $type "video" }}inner-video-click-play{{ end }}">
-      {{- if and (ne $filePath "_") (eq $type "image") -}}
-        <img src="{{ .RelPermalink }}" alt="{{ .Name | humanize | title }}"
-          class="card__media {{ $class }}">
-      {{- else if and (ne $filePath "_") (eq $type "video") -}}
-        {{- $video_base := index (strings.Split . ".") 0 -}}
-        {{- $poster_src := "" -}}
-        {{- range $.Page.Resources.ByType "image" }}
-          {{- $poster_base := index (strings.Split . ".") 0 -}}
-          {{- if (eq $poster_base $video_base ) -}}
-            {{- $poster_src = .RelPermalink -}}
-            {{- break -}}
+  {{- /* Check if filePath is a remote URL */ -}}
+  {{- $isRemote := or (strings.HasPrefix $filePath "http://") (strings.HasPrefix $filePath "https://") -}}
+
+  {{- if and (ne $filePath "_") $isRemote -}}
+    {{- /* Handle remote URLs */ -}}
+    {{- $type := "" -}}
+    {{- if or (strings.HasSuffix $filePath ".mp4") (strings.HasSuffix $filePath ".webm") (strings.HasSuffix $filePath ".mov") -}}
+      {{- $type = "video" -}}
+    {{- else if or (strings.HasSuffix $filePath ".jpg") (strings.HasSuffix $filePath ".jpeg") (strings.HasSuffix $filePath ".png") (strings.HasSuffix $filePath ".gif") -}}
+      {{- $type = "image" -}}
+    {{- end -}}
+
+    {{- if $type -}}
+      <article class="card__article {{ if eq $type "video" }}inner-video-click-play{{ end }}">
+        {{- if eq $type "image" -}}
+          <img src="{{ $filePath }}" alt="{{ $title | default (path.Base $filePath) | humanize | title }}"
+            class="card__media {{ $class }}">
+        {{- else if eq $type "video" -}}
+          <video src="{{ $filePath }}"
+            preload=false muted
+            class="card__media {{ $class }}"></video>
+        {{- end -}}
+        <div class="card__data">
+          {{- if ne $description "_" -}}
+            <span class="card__description">{{ $description }}</span>
           {{- end -}}
+          <h2 class="card__title">
+            {{ if ne $title "_" }} {{ $title }} {{ else }} {{ path.Base $filePath }} {{ end }}
+          </h2>
+          {{- if ne $link "_" -}}
+            <a href="{{ $link }}" class="card__button">Read More</a>
+          {{- end -}}
+        </div>
+      </article>
+    {{- end -}}
+
+  {{- else -}}
+    {{- /* Handle local files (existing functionality) */ -}}
+    {{- with $.Page.Resources.GetMatch $filePath -}}
+      {{- $type := .ResourceType -}}
+      <article class="card__article {{ if eq $type "video" }}inner-video-click-play{{ end }}">
+        {{- if and (ne $filePath "_") (eq $type "image") -}}
+          <img src="{{ .RelPermalink }}" alt="{{ .Name | humanize | title }}"
+            class="card__media {{ $class }}">
+        {{- else if and (ne $filePath "_") (eq $type "video") -}}
+          {{- $video_base := index (strings.Split . ".") 0 -}}
+          {{- $poster_src := "" -}}
+          {{- range $.Page.Resources.ByType "image" }}
+            {{- $poster_base := index (strings.Split . ".") 0 -}}
+            {{- if (eq $poster_base $video_base ) -}}
+              {{- $poster_src = .RelPermalink -}}
+              {{- break -}}
+            {{- end -}}
+          {{- end -}}
+          <video src="{{ .RelPermalink }}"
+            {{ if $poster_src }} poster="{{ $poster_src }}" {{ end }}
+            preload=false muted
+            class="card__media {{ $class }}"></video>
         {{- end -}}
-        <video src="{{ .RelPermalink }}" 
-          {{ if $poster_src }} poster="{{ $poster_src }}" {{ end }}
-          preload=false muted
-          class="card__media {{ $class }}"></video>
-      {{- end -}}
-      <div class="card__data">
-        {{- if ne $description "_" -}}
-          <span class="card__description">{{ $description }}</span>
-        {{- end -}}
-        <h2 class="card__title">
-          {{ if ne $title "_" }} {{ $title }} {{ else }} {{ $filePath }} {{ end }}
-        </h2>
-        {{- if ne $link "_" -}}
-          <a href="{{ $link }}" class="card__button">Read More</a>
-        {{- end -}}
-      </div>
-    </article>
+        <div class="card__data">
+          {{- if ne $description "_" -}}
+            <span class="card__description">{{ $description }}</span>
+          {{- end -}}
+          <h2 class="card__title">
+            {{ if ne $title "_" }} {{ $title }} {{ else }} {{ .Name | humanize | title }} {{ end }}
+          </h2>
+          {{- if ne $link "_" -}}
+            <a href="{{ $link }}" class="card__button">Read More</a>
+          {{- end -}}
+        </div>
+      </article>
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 </div>
