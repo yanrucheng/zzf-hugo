@@ -1,9 +1,18 @@
 {{- $inner := split (.Inner | chomp) "\n" -}}
 
-{{ partial "live-photo.html" (dict 
-    "page"         $.Page
-    "src"          ($.Get "src")  
-    "mode"         ($.Get "mode") 
-    "custom_class" ($.Get "custom_class")
-    "lines"        $inner
+{{ partial "live-photo.html" (dict
+    "page"                $.Page
+    "src"                 ($.Get "src")
+    "mode"                ($.Get "mode")
+    "custom_class"        ($.Get "custom_class")
+    "lines"               $inner
+    "transition_speed"    ($.Get "transition_speed")
+    "frame_threshold"     ($.Get "frame_threshold")
+    "use_webcodecs"       ($.Get "use_webcodecs")
+    "sticky"              ($.Get "sticky")
+    "cover"               ($.Get "cover")
+    "full"                ($.Get "full")
+    "track_scroll"        ($.Get "track_scroll")
+    "lock_scroll"         ($.Get "lock_scroll")
+    "debug"               ($.Get "debug")
 ) }}

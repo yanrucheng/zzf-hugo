@@ -37,6 +37,16 @@
         scrollyVideoContainer: "scrolly-video-{{ $idSuffix }}",
         src: "{{ $params.src }}",
         onReady: window.finishLoadingFunc,
+        // Optional parameters with fallbacks to default values
+        {{ with $params.transition_speed }}transitionSpeed: {{ . }},{{ end }}
+        {{ with $params.frame_threshold }}frameThreshold: {{ . }},{{ end }}
+        {{ with $params.use_webcodecs }}useWebCodecs: {{ . | lower }},{{ end }}
+        {{ with $params.sticky }}sticky: {{ . | lower }},{{ end }}
+        {{ with $params.cover }}cover: {{ . | lower }},{{ end }}
+        {{ with $params.full }}full: {{ . | lower }},{{ end }}
+        {{ with $params.track_scroll }}trackScroll: {{ . | lower }},{{ end }}
+        {{ with $params.lock_scroll }}lockScroll: {{ . | lower }},{{ end }}
+        {{ with $params.debug }}debug: {{ . | lower }}{{ end }}
       });
     </script>
 
