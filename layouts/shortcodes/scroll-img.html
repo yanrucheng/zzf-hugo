@@ -15,7 +15,18 @@
 
 {{- $lines := split (.Inner | chomp) "\n" -}}
 
-{{- with .Page.Resources.GetMatch $src -}}
+{{- /* Check if src is external URL */ -}}
+{{- $is_external := hasPrefix $src "http" -}}
+{{- $img_url := $src -}}
+{{- /* If internal, get resource */ -}}
+{{- if not $is_external -}}
+  {{- with .Page.Resources.GetMatch $src -}}
+    {{- $img_url = .RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Only render if we have a valid image URL */ -}}
+{{- if $img_url -}}
   <div class="overflow-hidden relative
   {{ if $is_parallax }} h-{{ $parallax_window_height }}vh {{ else }} h-100vh {{ end }}
   {{ $custom_class }}"
@@ -24,7 +35,7 @@
       {{ if $is_parallax }} parallax-background {{ end }}
       {{ if $is_grayout }} scroll-grayout {{ end }}
       absolute left-0 w-100 h-100 cover bg-bottom z-1"
-      style="background-image: url({{ .RelPermalink }})">
+      style="background-image: url('{{ $img_url }}')">
     </div>
     <div class="h-100">
       <div class="z-2 relative flex-l center mw8 h-100">
